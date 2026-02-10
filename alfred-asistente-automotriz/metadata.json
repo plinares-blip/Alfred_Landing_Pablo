@@ -1,0 +1,7 @@
+{
+  "name": "Alfred - Asistente Automotriz",
+  "description": "Servicio premium de mecánica y asistencia automotriz con IA.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
