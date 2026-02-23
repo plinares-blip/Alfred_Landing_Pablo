@@ -141,7 +141,7 @@ export function ImpactCards() {
     };
 
     return (
-        <section className="relative pt-12 lg:pt-16 xl:pt-20 pb-8 lg:pb-12 overflow-hidden bg-[#111E3E]">
+        <section id="impacto" className="relative pt-12 lg:pt-16 xl:pt-20 pb-8 lg:pb-12 overflow-hidden bg-[#111E3E]">
             <div className="absolute inset-0 bg-[#111E3E]" />
             <div className="absolute top-0 inset-x-0 h-64 bg-gradient-to-b from-[#0A0F1A] to-transparent z-10 opacity-50" />
 

@@ -28,8 +28,8 @@ const navLinks = {
         { name: "ADN", href: "#nosotros", targetIds: ["nosotros", "casos-exito"] },
     ],
     business: [
-        { name: "Impacto & ROI", href: "#soluciones-flota", targetIds: ["soluciones-flota"] },
-        { name: "Soluciones", href: "#servicios", targetIds: ["servicios", "command-center", "workshop-certification", "conductores"] },
+        { name: "Impacto & ROI", href: "#impacto", targetIds: ["impacto", "roi-calculator"] },
+        { name: "Soluciones", href: "#soluciones-flota", targetIds: ["soluciones-flota", "servicios", "command-center", "workshop-certification", "conductores"] },
         { name: "ADN", href: "#nosotros", targetIds: ["nosotros"] },
     ],
     alianzas: [

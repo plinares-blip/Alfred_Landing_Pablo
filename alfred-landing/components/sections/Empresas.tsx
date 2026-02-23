@@ -11,7 +11,7 @@ import { B2BLeadForm } from "@/components/sections/B2BLeadForm";
 
 export function Empresas() {
     return (
-        <div id="soluciones-flota" className="space-y-0 bg-[#111E3E]">
+        <div className="space-y-0 bg-[#111E3E]">
             {/* 1. Cards de casos de éxito */}
             <ImpactCards />
 
