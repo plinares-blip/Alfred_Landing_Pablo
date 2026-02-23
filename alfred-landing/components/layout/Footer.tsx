@@ -123,8 +123,7 @@ export function Footer() {
                             title="Producto"
                             links={[
                                 { label: "Servicios", href: "#servicios" },
-                                { label: "Convenios", href: "#convenios" },
-                                { label: "Safety", href: "#conductores" }
+                                { label: "Convenios", href: "#convenios" }
                             ]}
                         />
 
@@ -140,9 +139,8 @@ export function Footer() {
                         <FooterSection
                             title="Soporte"
                             links={[
-                                { label: "Centro de Ayuda", href: "#" },
-                                { label: "Términos", href: "#" },
-                                { label: "Privacidad", href: "#" }
+                                { label: "Centro de Ayuda", href: "#soporte" },
+                                { label: "Términos", href: "#" }
                             ]}
                         />
 
