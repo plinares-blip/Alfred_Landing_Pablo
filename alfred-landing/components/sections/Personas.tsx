@@ -10,12 +10,12 @@ export function Personas() {
     const [activeTab, setActiveTab] = useState<"convenio" | "particular">("convenio");
 
     return (
-        <section id="personas" className="py-24 bg-alfred-dark/50 relative overflow-hidden">
+        <section id="personas" className="py-10 lg:py-12 xl:py-16 bg-alfred-dark/50 relative overflow-hidden">
             {/* Background decoration */}
             <div className="absolute top-0 right-0 w-1/3 h-full bg-alfred-lime/5 blur-[120px] pointer-events-none" />
 
             <div className="container mx-auto px-4">
-                <div className="text-center max-w-3xl mx-auto mb-16">
+                <div className="text-center max-w-3xl mx-auto mb-10 xl:mb-16">
                     <h2 className="text-3xl md:text-5xl font-bold mb-6">
                         Alfred fue diseñado para <span className="text-alfred-lime">Personas</span>
                     </h2>
@@ -27,7 +27,7 @@ export function Personas() {
 
                 {/* Custom Toggle */}
                 {/* Custom Toggle Corregido */}
-                <div className="flex justify-center mb-16">
+                <div className="flex justify-center mb-10 xl:mb-16">
                     <div className="relative grid grid-cols-2 bg-white/5 p-1 rounded-full w-[310px] md:w-[400px]">
                         <div
                             className={`absolute top-1 bottom-1 w-[calc(50%-4px)] rounded-full bg-alfred-lime transition-all duration-300 ${activeTab === "convenio" ? "left-1" : "left-[calc(50%+2px)]"
@@ -51,7 +51,7 @@ export function Personas() {
                 </div>
 
                 {/* Content Area */}
-                <div className="relative max-w-5xl mx-auto group">
+                <div className="relative max-w-6xl mx-auto min-h-[500px] lg:min-h-[500px]">
                     {/* Orange Glow Behind Convenio */}
                     <AnimatePresence>
                         {activeTab === "convenio" && (
@@ -64,7 +64,7 @@ export function Personas() {
                         )}
                     </AnimatePresence>
 
-                    <div className="relative bg-[#0B1226] border border-white/10 rounded-3xl p-8 md:p-12 min-h-[400px] z-10 transition-colors duration-500 shadow-2xl">
+                    <div className="relative bg-[#0B1226] border border-white/10 rounded-3xl p-6 lg:p-8 min-h-[400px] lg:min-h-[350px] z-10 transition-colors duration-500 shadow-2xl">
                         <AnimatePresence mode="wait">
                             {activeTab === "convenio" ? (
                                 <motion.div

@@ -14,7 +14,7 @@ const services = [
         icon: "/images/icono_servicios/mecanica.png",
         glow: "rgba(34, 211, 238, 0.4)", // Cyan
         gridClass: "md:col-span-8 md:row-span-2",
-        iconClass: "w-[50%] h-[50%] right-4 bottom-4 rotate-[15deg]",
+        iconClass: "w-[40%] h-[40%] lg:w-[25%] lg:h-[25%] xl:w-[35%] xl:h-[35%] right-4 bottom-4 drop-shadow-2xl",
         delay: 0,
     },
     {
@@ -25,7 +25,7 @@ const services = [
         icon: "/images/icono_servicios/lavado.png",
         glow: "rgba(251, 191, 36, 0.4)", // Amber
         gridClass: "md:col-span-4 md:row-span-1",
-        iconClass: "w-[45%] h-[45%] right-4 bottom-4",
+        iconClass: "w-[40%] h-[40%] lg:w-[25%] lg:h-[25%] xl:w-[35%] xl:h-[35%] right-4 bottom-4 drop-shadow-2xl",
         delay: 0.1,
     },
     {
@@ -36,7 +36,7 @@ const services = [
         icon: "/images/icono_servicios/tramites.png",
         glow: "rgba(59, 130, 246, 0.4)", // Blue
         gridClass: "md:col-span-4 md:row-span-1",
-        iconClass: "w-[45%] h-[45%] right-4 bottom-4",
+        iconClass: "w-[40%] h-[40%] lg:w-[25%] lg:h-[25%] xl:w-[35%] xl:h-[35%] right-4 bottom-4 drop-shadow-2xl",
         delay: 0.2,
     },
     {
@@ -47,7 +47,7 @@ const services = [
         icon: "/images/icono_servicios/pintura.png",
         glow: "rgba(168, 85, 247, 0.4)", // Purple
         gridClass: "md:col-span-6 md:row-span-1",
-        iconClass: "w-[50%] h-[50%] right-4 bottom-4 -rotate-12",
+        iconClass: "w-[40%] h-[40%] lg:w-[25%] lg:h-[25%] xl:w-[35%] xl:h-[35%] right-4 bottom-4 drop-shadow-2xl",
         delay: 0.3,
     },
     {
@@ -58,7 +58,7 @@ const services = [
         icon: "/images/icono_servicios/preventivo.png",
         glow: "rgba(251, 191, 36, 0.4)", // Amber
         gridClass: "md:col-span-6 md:row-span-1",
-        iconClass: "w-[45%] h-[45%] right-4 bottom-4",
+        iconClass: "w-[40%] h-[40%] lg:w-[25%] lg:h-[25%] xl:w-[35%] xl:h-[35%] right-4 bottom-4 drop-shadow-2xl",
         delay: 0.4,
     },
 ];
@@ -71,10 +71,10 @@ export function Servicios({ mode = "personal" }: ServiciosProps) {
     const isBusiness = mode === "business";
 
     return (
-        <section id="servicios" className="pt-8 pb-16 bg-gradient-to-b from-[#0A0F1A] from-90% to-[#0E1726] overflow-hidden transition-all duration-700">
+        <section id="servicios" className="py-8 lg:py-4 xl:py-16 bg-gradient-to-b from-[#0A0F1A] from-90% to-[#0E1726] overflow-hidden transition-all duration-700">
             <div className="container mx-auto px-4">
                 <div className="max-w-3xl mb-4">
-                    <h2 className="text-3xl md:text-5xl font-black text-white mb-1 uppercase tracking-tight leading-none">
+                    <h2 className="text-3xl lg:text-4xl xl:text-5xl font-black text-white mb-1 uppercase tracking-tight leading-none">
                         {isBusiness ? "Servicios de Flota" : "Todo para tu vehículo"}
                     </h2>
                     <p className="text-white/60 text-sm md:text-base">
@@ -84,7 +84,7 @@ export function Servicios({ mode = "personal" }: ServiciosProps) {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-12 md:grid-rows-3 gap-4 min-h-[800px] md:h-[400px] relative z-10">
+                <div className="grid grid-cols-1 md:grid-cols-12 md:grid-rows-3 gap-4 min-h-[800px] md:h-[350px] lg:h-[180px] xl:h-[300px] relative z-10">
                     {services.map((service, idx) => (
                         <Link
                             key={idx}
@@ -153,8 +153,7 @@ export function Servicios({ mode = "personal" }: ServiciosProps) {
                                 <div className={cn("absolute pointer-events-none z-10 transition-transform duration-700 ease-out group-hover:scale-110", service.iconClass)}>
                                     <motion.div
                                         animate={{
-                                            y: [0, -10, 0],
-                                            rotate: [0, 2, 0]
+                                            y: [0, -5, 0],
                                         }}
                                         transition={{
                                             duration: 4,

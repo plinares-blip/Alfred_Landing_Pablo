@@ -7,7 +7,7 @@ import { DOWNLOAD_LINK } from '@/lib/constants';
 
 export function Conductores() {
     return (
-        <section id="conductores" className="relative w-full bg-[#111E3E] overflow-hidden min-h-screen lg:min-h-[900px] flex flex-col justify-end lg:justify-center">
+        <section id="conductores" className="relative w-full bg-[#111E3E] overflow-hidden min-h-screen lg:min-h-[550px] xl:min-h-[900px] flex flex-col justify-end lg:justify-center">
 
             {/* 1. EL FONDO (Fusión, no división) - Desktop & Mobile */}
             <div className="absolute inset-0 z-0">
@@ -45,7 +45,7 @@ export function Conductores() {
                             transition={{ duration: 0.8 }}
                             className="relative"
                         >
-                            <h2 className="text-4xl md:text-5xl lg:text-5xl xl:text-7xl font-black text-white leading-[0.95] tracking-tighter uppercase mb-6 lg:mb-8">
+                            <h2 className="text-4xl md:text-5xl lg:text-4xl xl:text-6xl 2xl:text-7xl font-black text-white leading-[0.95] tracking-tighter uppercase mb-6 lg:mb-8">
                                 No es solo <br className="hidden lg:block" /> un conductor. <br />
                                 {/* DEPTH TYPOGRAPHY - ES UN ALFRED */}
                                 <span className="relative inline-block mt-2">
@@ -63,7 +63,7 @@ export function Conductores() {
                             whileInView={{ opacity: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.3 }}
-                            className="text-lg text-[#8E9BB4] mb-10 max-w-sm lg:max-w-md font-medium leading-relaxed"
+                            className="text-lg lg:text-base xl:text-lg text-[#8E9BB4] mb-8 lg:mb-10 max-w-sm lg:max-w-md font-medium leading-relaxed"
                         >
                             Verificados, expertos y monitoreados en tiempo real. Control total y cero incertidumbre.
                         </motion.p>
@@ -131,7 +131,7 @@ export function Conductores() {
                     </div>
 
                     {/* LA ZONA DE FOTO (Desktop) - Invisble para layout, pero define el espacio del conductor */}
-                    <div className="hidden lg:block lg:col-span-5 xl:col-span-5 relative h-[600px]">
+                    <div className="hidden lg:block lg:col-span-5 xl:col-span-5 relative h-[450px] xl:h-[600px]">
                         {/* 3. LA TARJETA DE UI (Anclaje Físico) - Desktop Position Over Chest */}
                         <motion.div
                             initial={{ opacity: 0, x: 50 }}

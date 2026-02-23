@@ -227,7 +227,7 @@ function NetworkMesh() {
 // B2B Connection Diagram Component
 function ConnectionDiagram() {
     return (
-        <div className="relative w-full max-w-5xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-0 px-4 lg:px-20 mb-20 lg:mb-32">
+        <div className="relative w-full max-w-5xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-0 px-4 lg:px-20 mb-16 lg:mb-20 xl:mb-32">
 
             {/* Mobile Connector Line (Vertical) - Solo visible en móvil */}
             <div className="absolute top-40 bottom-40 left-1/2 w-[2px] -translate-x-1/2 bg-gradient-to-b from-transparent via-alfred-lime/50 to-transparent lg:hidden" />
@@ -237,7 +237,7 @@ function ConnectionDiagram() {
                 whileInView={{ opacity: 1, y: 0 }}
                 className="relative z-10 flex flex-col items-center gap-4 group"
             >
-                <div className="w-32 h-32 md:w-44 md:h-44 lg:w-[285px] lg:h-[285px] flex items-center justify-center transition-all duration-500 relative bg-[#0B1226] rounded-full lg:bg-transparent">
+                <div className="w-32 h-32 md:w-44 md:h-44 lg:w-[200px] lg:h-[200px] xl:w-[285px] xl:h-[285px] flex items-center justify-center transition-all duration-500 relative bg-[#0B1226] rounded-full lg:bg-transparent">
                     <NextImage
                         src="/images/convenios/empresa.png"
                         alt="Tu Empresa"
@@ -307,7 +307,7 @@ function ConnectionDiagram() {
                 whileInView={{ opacity: 1, y: 0 }}
                 className="relative z-10 flex flex-col items-center gap-4 group"
             >
-                <div className="w-32 h-32 md:w-44 md:h-44 lg:w-[285px] lg:h-[285px] flex items-center justify-center transition-all duration-500 relative bg-[#0B1226] rounded-full lg:bg-transparent">
+                <div className="w-32 h-32 md:w-44 md:h-44 lg:w-[200px] lg:h-[200px] xl:w-[285px] xl:h-[285px] flex items-center justify-center transition-all duration-500 relative bg-[#0B1226] rounded-full lg:bg-transparent">
                     {/* Explosive glow effect */}
                     <motion.div
                         animate={{ opacity: [0, 0.25, 0] }}
@@ -375,7 +375,7 @@ function BusinessView() {
 
                     whileInView={{ opacity: 1, y: 0 }}
 
-                    className="text-[7.5vw] md:text-7xl lg:text-[100px] 2xl:text-[120px] font-black text-white leading-[0.95] uppercase tracking-tighter font-gotham flex flex-col items-center"
+                    className="text-[7.5vw] md:text-7xl lg:text-7xl xl:text-[100px] 2xl:text-[120px] font-black text-white leading-[0.95] uppercase tracking-tighter font-gotham flex flex-col items-center"
 
                 >
 
@@ -411,7 +411,7 @@ function BusinessView() {
 
             <div className="w-full px-6 lg:px-12 mb-24 lg:mb-32">
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-12 min-h-[500px] md:h-[600px] lg:h-[800px]">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 xl:gap-12 min-h-[500px] md:h-[600px] lg:h-[500px] xl:h-[800px]">
 
                     {[
 
@@ -589,7 +589,7 @@ function BusinessView() {
 
                     {/* Strip 2: Punchline (FIXED SNAPPING: Nested Parallax & Loop) */}
 
-                    <div className="w-full overflow-hidden mb-32 border-none">
+                    <div className="w-full overflow-hidden mb-16 lg:mb-20 xl:mb-32 border-none">
 
                         <motion.div
 
@@ -627,7 +627,7 @@ function BusinessView() {
 
                                                 key={i}
 
-                                                className="text-5xl md:text-7xl lg:text-[90px] font-black uppercase tracking-tighter text-white"
+                                                className="text-5xl md:text-7xl lg:text-5xl xl:text-[90px] font-black uppercase tracking-tighter text-white"
 
                                                 style={{ fontFamily: "var(--font-gotham), sans-serif" }}
 
@@ -728,7 +728,7 @@ function BusinessView() {
 
                             whileInView={{ opacity: 1, y: 0 }}
 
-                            className="text-5xl lg:text-[64px] font-black text-white mb-6 leading-tight uppercase tracking-tighter"
+                            className="text-5xl lg:text-5xl xl:text-[64px] font-black text-white mb-6 leading-tight uppercase tracking-tighter"
 
                             style={{ fontFamily: "var(--font-gotham), sans-serif" }}
 
@@ -799,7 +799,7 @@ export function Convenios({ mode }: ConveniosProps) {
 
     return (
 
-        <section id="convenios" className={`relative overflow-hidden transition-colors duration-1000 ${mode === "business" ? "bg-[#0B1226] pt-16 lg:pt-32 pb-0" : "bg-alfred-dark border-y border-white/5 py-16 lg:py-32"} z-20`}>
+        <section id="convenios" className={`relative overflow-hidden transition-colors duration-1000 ${mode === "business" ? "bg-[#0B1226] pt-16 lg:pt-32 pb-0" : "bg-alfred-dark border-y border-white/5 py-16 lg:py-16 xl:py-20"} z-20`}>
 
 
 
@@ -823,7 +823,7 @@ export function Convenios({ mode }: ConveniosProps) {
 
                                 whileInView={{ opacity: 1, y: 0 }}
 
-                                className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-4"
+                                className="text-3xl md:text-5xl lg:text-4xl xl:text-5xl font-black text-white mb-4"
 
                             >
 
@@ -893,7 +893,7 @@ export function Convenios({ mode }: ConveniosProps) {
 
                             {/* Main Layout Container */}
 
-                            <div className="relative flex items-start justify-center gap-8 md:gap-16 min-h-[420px] md:min-h-[480px] overflow-visible">
+                            <div className="relative flex items-start justify-center gap-8 md:gap-16 min-h-[420px] md:min-h-[480px] lg:min-h-[350px] xl:min-h-[450px] overflow-visible">
 
 
 

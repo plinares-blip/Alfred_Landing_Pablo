@@ -141,7 +141,7 @@ export function ImpactCards() {
     };
 
     return (
-        <section className="relative pt-20 pb-12 overflow-hidden bg-[#111E3E]">
+        <section className="relative pt-12 lg:pt-16 xl:pt-20 pb-8 lg:pb-12 overflow-hidden bg-[#111E3E]">
             <div className="absolute inset-0 bg-[#111E3E]" />
             <div className="absolute top-0 inset-x-0 h-64 bg-gradient-to-b from-[#0A0F1A] to-transparent z-10 opacity-50" />
 
@@ -152,7 +152,7 @@ export function ImpactCards() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-4xl md:text-6xl font-black text-white mb-2 tracking-tight"
+                        className="text-4xl md:text-5xl lg:text-4xl xl:text-6xl font-black text-white mb-2 tracking-tight"
                     >
                         Resultados Reales.
                     </motion.h2>
@@ -237,7 +237,7 @@ export function TrackRecord() {
     const [showMap, setShowMap] = useState(false);
 
     return (
-        <section className="relative py-16 md:py-24 overflow-hidden bg-[#111E3E]">
+        <section className="relative py-12 lg:py-16 xl:py-24 overflow-hidden bg-[#111E3E]">
             <div className="container mx-auto px-4 relative z-20">
                 <div className="border-t border-white/5 pt-10 md:pt-20">
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-y-12 gap-x-4 md:gap-12 text-center items-start md:divide-x divide-white/5">
@@ -327,7 +327,7 @@ export function ClientMarquee() {
     const [isPaused, setIsPaused] = useState(false);
 
     return (
-        <section className="relative py-16 overflow-hidden bg-[#111E3E]">
+        <section className="relative py-12 lg:py-16 xl:py-16 overflow-hidden bg-[#111E3E]">
             <div className="relative">
                 <div className="container mx-auto px-4 mb-8">
                     <div className="flex flex-col items-center gap-4">
@@ -407,7 +407,7 @@ export function ClientMarquee() {
 // ============================================================
 export function IndustryRecognition() {
     return (
-        <section className="relative py-24 overflow-hidden bg-[#111E3E]">
+        <section className="relative py-16 lg:py-16 xl:py-24 overflow-hidden bg-[#111E3E]">
             <div>
                 <div className="container mx-auto px-4 mb-16">
                     <div className="flex flex-col items-center gap-4">
@@ -532,7 +532,7 @@ export function SocialProof({ mode }: SocialProofProps) {
         requestAnimationFrame(animation);
     };
     return (
-        <section className="relative pt-20 pb-24 overflow-hidden bg-[#111E3E]">
+        <section className="relative pt-12 lg:pt-16 xl:pt-20 pb-16 lg:pb-16 xl:pb-24 overflow-hidden bg-[#111E3E]">
             {/* Background Atmosphere */}
             <div className="absolute inset-0 bg-[#111E3E]" />
             <div className="absolute top-0 inset-x-0 h-64 bg-gradient-to-b from-[#0A0F1A] to-transparent z-10 opacity-50" />
@@ -624,7 +624,7 @@ export function SocialProof({ mode }: SocialProofProps) {
                     </div>
                 )}
                 {/* LEVEL 2: TRACK RECORD (Alineación corregida) */}
-                <div className={cn("border-t border-white/5 pt-10 md:pt-20 mb-20 md:mb-32", mode === "personal" && "border-t-0 pt-0")}>
+                <div className={cn("border-t border-white/5 pt-10 md:pt-12 lg:pt-16 xl:pt-20 mb-12 md:mb-20 lg:mb-24 xl:mb-32", mode === "personal" && "border-t-0 pt-0")}>
                     {/* CAMBIO: items-start 
                         Esto alinea todo por ARRIBA (los números). 
                         Los labels colgarán a la altura que necesiten.
@@ -705,7 +705,7 @@ export function SocialProof({ mode }: SocialProofProps) {
             </div>
 
             {/* LEVEL 3: RIVER OF TRUST (Marquees/Grids) */}
-            <div className="space-y-32">
+            <div className="space-y-16 lg:space-y-20 xl:space-y-32">
 
                 {/* Strip A: Corporate Clients (Floating Marquee) - ONLY FOR BUSINESS */}
                 {mode === "business" && (

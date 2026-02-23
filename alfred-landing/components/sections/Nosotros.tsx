@@ -67,14 +67,9 @@ export function Nosotros() {
     const ys = [v1Y, v2Y, v3Y, v4Y, v5Y];
 
     return (
-        <section
-            id="nosotros"
-            ref={containerRef}
-            style={{ clipPath: 'inset(0)' }}
-            className="relative bg-[#111E3E] h-[150vh] lg:h-[300vh] z-10"
-        >
-            {/* Background Watermark - Fixed to Viewport but clipped to section (True Curtain Reveal) */}
-            <div className="fixed inset-0 pointer-events-none z-0 flex items-center justify-center">
+        <section ref={containerRef} id="nosotros" className="relative bg-[#111E3E] h-[150vh] lg:h-[180vh] xl:h-[200vh] z-10">
+            {/* Background Watermark - Absolute instead of fixed so it only appears in this section */}
+            <div className="absolute inset-0 pointer-events-none z-0 flex items-center justify-center">
                 <div className="relative w-[30vw] h-[30vw] lg:w-[19vw] lg:h-[19vw] opacity-10">
                     <Image
                         src="/blanco.png"
@@ -87,19 +82,19 @@ export function Nosotros() {
             </div>
 
             {/* Content Wrapper - Using z-20 to be over the logo */}
-            <div className="sticky top-0 h-screen w-full flex flex-col lg:flex-row font-sans z-20 pt-32 lg:pt-0">
+            <div className="sticky top-0 h-screen w-full flex flex-col lg:flex-row font-sans z-20 pt-16 lg:pt-0">
 
                 {/* Left Column - Mission/Vision */}
                 <div className="w-full lg:w-[40%] text-white relative flex flex-col justify-start lg:justify-center px-8 lg:px-16 pb-4 lg:pb-0 shrink-0">
                     {/* CAMBIO: space-y-8 en móvil (antes space-y-4) para dar MUCHO aire entre Misión y Norte */}
-                    <div className="space-y-8 lg:space-y-8 2xl:space-y-10 max-w-xl">
+                    <div className="space-y-4 lg:space-y-4 2xl:space-y-10 max-w-xl">
                         {/* Mission */}
                         <div className="space-y-2 lg:space-y-3">
                             <span className="block text-[#0096FB] text-[10px] lg:text-sm font-bold tracking-[0.2em] uppercase">
                                 NUESTRA MISIÓN
                             </span>
                             {/* CAMBIO: leading-snug en móvil (antes tight) para separar líneas */}
-                            <h2 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-black leading-snug uppercase condensed">
+                            <h2 className="text-xl md:text-2xl lg:text-xl xl:text-2xl 2xl:text-4xl font-black leading-snug uppercase condensed">
                                 Hacer que tener un vehículo sea <span className="text-[#B4FB00]">fácil</span><span>.</span>
                             </h2>
                         </div>
@@ -109,16 +104,15 @@ export function Nosotros() {
                             <span className="block text-[#0096FB] text-[10px] lg:text-sm font-bold tracking-[0.2em] uppercase">
                                 NUESTRO NORTE
                             </span>
-                            {/* CAMBIO: leading-snug en móvil */}
-                            <h2 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-black leading-snug uppercase condensed">
-                                Gestionar 1 millón de vehículos con <span className="text-[#B4FB00]">cero fricción</span>.
+                            <h2 className="text-xl md:text-2xl lg:text-xl xl:text-2xl 2xl:text-4xl font-black leading-snug uppercase condensed">
+                                Gestionar 1 millón de vehículos con <span className="text-[#B4FB00]">cero fricción</span><span>.</span>
                             </h2>
                         </div>
                     </div>
                 </div>
 
                 {/* Right Column - Values Stacking List */}
-                <div className="w-full lg:w-[60%] relative flex flex-col justify-start lg:justify-center px-8 lg:px-20 pt-8 lg:pt-0 shrink-0">
+                <div className="w-full lg:w-[60%] relative flex flex-col justify-start lg:justify-center px-8 lg:px-20 pt-4 lg:pt-0 shrink-0">
                     <div className="max-w-4xl">
 
                         {/* Values Title */}
@@ -132,8 +126,7 @@ export function Nosotros() {
                         </motion.div>
 
                         {/* Values List */}
-                        {/* CAMBIO: space-y-4 en móvil (antes space-y-2) para separar más los items */}
-                        <div className="space-y-4 lg:space-y-4 2xl:space-y-8">
+                        <div className="space-y-2 lg:space-y-2 xl:space-y-4 2xl:space-y-8">
                             {manifestoItems.map((item, index) => (
                                 <motion.div
                                     key={item.id}
@@ -147,7 +140,7 @@ export function Nosotros() {
                                     <div className="mt-2 lg:mt-4 2xl:mt-6 w-6 lg:w-12 2xl:w-16 h-[2px] bg-[#B4FB00] flex-shrink-0 shadow-[0_0_10px_#B4FB00]" />
 
                                     {/* CAMBIO: leading-snug para dar aire al texto */}
-                                    <h3 className="text-sm lg:text-2xl xl:text-3xl 2xl:text-4xl font-bold leading-snug text-white">
+                                    <h3 className="text-xs lg:text-base xl:text-xl 2xl:text-3xl font-bold leading-snug text-white">
                                         {item.text}
                                         <span className="inline-block">
                                             <span className="text-[#B4FB00]">{item.highlight}</span>
@@ -161,10 +154,10 @@ export function Nosotros() {
                         {/* Recruiting Hook */}
                         <motion.div
                             style={{ opacity: recruitingOpacity, y: recruitingY }}
-                            className="mt-8 lg:mt-8 2xl:mt-12 pt-6 lg:pt-6 border-t border-white/10"
+                            className="mt-4 lg:mt-4 2xl:mt-12 pt-4 lg:pt-4 border-t border-white/10"
                         >
                             {/* ... resto del botón igual ... */}
-                            <h4 className="text-[10px] lg:text-lg xl:text-xl font-bold text-white mb-3 lg:mb-6 leading-tight">
+                            <h4 className="text-[10px] lg:text-lg xl:text-xl font-bold text-white mb-2 lg:mb-4 leading-tight">
                                 ¿Compartes este ADN? <span className="text-white/40 block lg:inline">No busques empleo, busca una misión.</span>
                             </h4>
                             <Link

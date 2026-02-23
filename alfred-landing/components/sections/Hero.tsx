@@ -145,7 +145,7 @@ export function Hero({ mode, setMode }: HeroProps) {
 
     return (
 
-        <section id={mode === "personal" ? "personas" : "empresas"} className="relative min-h-[90vh] flex flex-col items-center justify-center pt-32 overflow-hidden bg-[#0B1226] overflow-x-hidden">
+        <section id={mode === "personal" ? "personas" : "empresas"} className="relative min-h-[80vh] flex flex-col items-center justify-center pt-24 lg:pt-28 overflow-hidden bg-[#0B1226] overflow-x-hidden">
 
             <NetworkBackground />
 
@@ -221,12 +221,12 @@ export function Hero({ mode, setMode }: HeroProps) {
                         exit={{ opacity: 0, filter: "blur(10px)" }}
                         transition={{ duration: 0.4, ease: "easeOut" }}
                         // CAMBIO CRÍTICO: Usamos Flex en móvil para controlar mejor el stack, Grid solo en Desktop
-                        className="flex flex-col lg:grid lg:grid-cols-2 gap-0 lg:gap-12 items-center w-full"
+                        className="flex flex-col lg:grid lg:grid-cols-2 gap-0 lg:gap-8 xl:gap-12 items-center w-full"
                     >
                         {/* 1. TEXT CONTENT (Order 1 en móvil) */}
                         <div className="w-full text-center lg:text-left space-y-8 relative z-30 pt-4 lg:pt-0 order-1">
                             <div>
-                                <h1 className="text-5xl md:text-7xl font-black text-white leading-[0.9] tracking-tight mb-6">
+                                <h1 className="text-4xl md:text-6xl lg:text-5xl xl:text-6xl font-black text-white leading-[0.9] tracking-tight mb-4 lg:mb-6">
                                     {mode === "personal" ? (
                                         <>
                                             Tu vehículo. <br />
@@ -243,7 +243,7 @@ export function Hero({ mode, setMode }: HeroProps) {
                                         </>
                                     )}
                                 </h1>
-                                <p className="text-xl md:text-2xl text-white/50 font-light leading-relaxed max-w-lg mx-auto lg:mx-0">
+                                <p className="text-lg md:text-xl lg:text-lg xl:text-xl text-white/50 font-light leading-relaxed max-w-lg mx-auto lg:mx-0">
                                     {mode === "personal"
                                         ? "Olvídate de los talleres, los trámites y el estrés. Alfred es tu copiloto personal. Tú solo conduce."
                                         : "Centraliza gastos, mantenimientos y conductores en un solo dashboard inteligente. Operación en Colombia y México."}
@@ -308,8 +308,8 @@ export function Hero({ mode, setMode }: HeroProps) {
                         {/* 2. VISUAL CONTENT (Order 2 en móvil) */}
                         <div className={`relative w-full flex items-end justify-center order-2 transition-all duration-500
                             ${mode === "personal"
-                                ? "h-[50vh] mt-8 lg:mt-0 lg:h-[700px]"   // PERSONAL
-                                : "h-[55vh] -mt-12 lg:mt-0 lg:h-[700px]" // EMPRESA
+                                ? "h-[50vh] mt-8 lg:mt-0 lg:h-[45vh] xl:h-[550px]"   // PERSONAL
+                                : "h-[55vh] -mt-12 lg:mt-0 lg:h-[45vh] xl:h-[550px]" // EMPRESA
                             }`}
                         >
                             {/* --- GRADIENTE SUPERIOR ELIMINADO --- */}

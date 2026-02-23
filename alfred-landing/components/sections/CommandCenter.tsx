@@ -94,17 +94,17 @@ export function CommandCenter() {
     const isAtEnd = activeIndex === features.length - 1;
 
     return (
-        <section id="soluciones-flota" className="py-24 bg-[#111E3E] relative overflow-hidden">
+        <section id="soluciones-flota" className="py-16 lg:py-8 xl:py-16 bg-[#111E3E] relative overflow-hidden">
             <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-[#B4FB00]/5 blur-[120px] rounded-full pointer-events-none" />
 
             <div className="container mx-auto px-4 relative z-10">
                 {/* Header */}
-                <div className="text-center max-w-4xl mx-auto mb-12 lg:mb-20 space-y-4">
+                <div className="text-center max-w-4xl mx-auto mb-10 lg:mb-12 xl:mb-16 space-y-4">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-4xl md:text-7xl font-black text-white leading-tight"
+                        className="text-4xl md:text-7xl lg:text-4xl xl:text-6xl font-black text-white leading-tight"
                     >
                         El Sistema Operativo <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">
@@ -127,7 +127,7 @@ export function CommandCenter() {
                                     key={feature.id}
                                     onClick={() => setActiveIndex(idx)}
                                     className={cn(
-                                        "w-full text-left p-6 rounded-2xl transition-all duration-500 group relative flex items-center gap-6",
+                                        "w-full text-left p-6 lg:p-4 xl:p-6 rounded-2xl transition-all duration-500 group relative flex items-center gap-6 lg:gap-4 xl:gap-6",
                                         isActive ? "bg-white/5 border border-white/10 shadow-2xl" : "hover:bg-white/5 border border-transparent"
                                     )}
                                 >
@@ -153,7 +153,7 @@ export function CommandCenter() {
                                 <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
                                 <div className="w-3 h-3 rounded-full bg-green-500/50" />
                             </div>
-                            <div className="relative rounded-2xl overflow-hidden border border-white/5 min-h-[450px]">
+                            <div className="relative rounded-2xl overflow-hidden border border-white/5 min-h-[450px] lg:min-h-[300px] xl:min-h-[400px]">
                                 <AnimatePresence mode="wait">
                                     <motion.div
                                         key={activeIndex}
