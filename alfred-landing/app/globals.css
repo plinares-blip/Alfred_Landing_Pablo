@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+@theme {
+  --font-gotham: var(--font-gotham);
+  --font-sans: var(--font-gotham);
+  --font-jakarta: var(--font-jakarta);
+
+  /* Gama Verde */
+  --color-alfred-green: #15EB00;
+  --color-alfred-lime: #B4FB00;
+
+  /* Gama Azul */
+  --color-alfred-sky: #0096FB;
+  --color-alfred-blue: #0075C5;
+
+  /* Fondos / Navy */
+  --color-alfred-navy: #111E3E;
+  --color-alfred-dark: #020D20;
+
+  /* SaaS Dark Mode */
+  --color-alfred-saas-bg: #0D1117;
+
+  --color-background: var(--color-alfred-saas-bg);
+  --color-foreground: #ffffff;
+}
+
+/* Custom Animations */
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes marquee2 {
+  0% {
+    transform: translate3d(100%, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 100s linear infinite;
+}
+
+.animate-marquee2 {
+  animation: marquee2 100s linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse 100s linear infinite;
+}
+
+@keyframes pulse-slow {
+
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 0.2;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Force pause on hover for the parent group */
+.group:hover .animate-marquee,
+.group:hover .animate-marquee2 {
+  animation-play-state: paused !important;
+}
+
+/* Custom Base Utilities */
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-alfred-green to-alfred-lime;
+  }
+
+  .text-gradient-green {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-alfred-green to-alfred-lime;
+  }
+
+  .text-gradient-blue {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-alfred-sky to-alfred-blue;
+  }
+
+  .bg-gradient-green {
+    @apply bg-gradient-to-br from-alfred-green to-alfred-lime;
+  }
+
+  .bg-gradient-blue {
+    @apply bg-gradient-to-br from-alfred-sky to-alfred-blue;
+  }
+
+  .bg-gradient-dark {
+    @apply bg-gradient-to-br from-alfred-navy to-alfred-dark;
+  }
+
+  .badge-plate {
+    @apply inline-flex items-center justify-center px-3 py-1 bg-white border-2 border-yellow-400 rounded-lg shadow-lg font-gotham font-black tracking-wider text-black text-xs uppercase transform rotate-[-2deg] hover:rotate-0 transition-transform;
+  }
+
+  .card-saas {
+    @apply bg-alfred-navy/80 border border-white/5 backdrop-blur-md rounded-xl;
+  }
+}
+
+body {
+  background: var(--color-alfred-saas-bg);
+  color: var(--color-foreground);
+  font-family: var(--font-gotham), sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-gotham), sans-serif;
+  font-weight: 700;
+}
