@@ -140,7 +140,7 @@ export function Footer() {
                             title="Soporte"
                             links={[
                                 { label: "Centro de Ayuda", href: "#soporte" },
-                                { label: "Términos", href: "#" }
+                                { label: "Términos", href: "/terminos" }
                             ]}
                         />
 

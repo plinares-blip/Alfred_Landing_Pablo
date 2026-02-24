@@ -1,0 +1,271 @@
+"use client";
+
+import { useState } from "react";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
+
+export default function TerminosPage() {
+    const [mode, setMode] = useState<"personal" | "business" | "alianzas" | "talleres">("personal");
+    return (
+        <main className="min-h-screen bg-alfred-dark text-white selection:bg-alfred-lime selection:text-alfred-blue">
+            <Navbar mode={mode} setMode={setMode} />
+
+            <div className="pt-32 pb-20 container mx-auto px-6 max-w-4xl">
+                <div className="space-y-8 text-white/80 leading-relaxed font-jakarta">
+
+                    <h1 className="text-3xl md:text-5xl font-bold text-white mb-10 font-gotham text-center md:text-left">Términos y condiciones Alfred 2025</h1>
+
+                    <p className="font-semibold text-white">Términos y Condiciones de uso de la aplicación móvil de Alfred y del sitio web www.alfred.com.co</p>
+                    <p className="text-sm text-white/60">Versión: 012220</p>
+
+                    <p>El sitio web o aplicación que está visitando es propiedad de la sociedad Alfred S.A.S. (“ALFRED”), identificada con el Nit 901.401.410-8, domiciliada en la Calle 93 A # 11 - 36 Oficina 203 de la ciudad de Bogotá, Colombia.</p>
+
+                    <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-gotham">Artículo I. Cláusula general de uso</h2>
+                    <p>Al ingresar, consultar y hacer uso de las funcionalidades de www.alfred.com.co, y/o a la aplicación móvil de ALFRED (en adelante y de forma genérica la “Plataforma”), el Usuario (en adelante, “El Usuario”) se compromete a leer, informarse y cumplir los términos y condiciones de uso acá establecidos, así como la Política de Tratamiento de Datos Personales que encuentra en el siguiente link https://alfred.com.co/politica-de-proteccion-de-datos-personales, los cuales podrán ser modificados unilateralmente por ALFRED, de tiempo en tiempo y sin previo aviso.</p>
+                    <p>En cualquier caso, las modificaciones que ALFRED le haga a estos términos y condiciones, así como a la Política de Tratamiento de Datos Personales, serán publicados en la página Web de ALFRED y le serán informadas de manera oportuna para que El Usuario las conozca y decida si las acepta nuevamente.</p>
+                    <p>Con la aceptación de los presentes términos y condiciones, el Usuario acepta que la prestación de los servicios será realizada por parte de terceros aliados de ALFRED (en adelante los “Aliados”) y que por lo tanto, ALFRED es una Plataforma tecnológica que pone en contacto a Usuarios y Aliados que les permite acceder a servicios relacionados con el cuidado, mantenimiento y reparación de vehículos automotores. En todo caso, la solicitud de servicios a través de la Plataforma, sujetará a los presentes términos y condiciones. Si El Usuario está en desacuerdo con estos Términos y Condiciones, los cuales tienen un carácter obligatorio y vinculante, y decide no acatarlos, no podrá utilizar el sitio web, la aplicación móvil, ni acceder a los servicios ofrecidos a través de la Plataforma.</p>
+                    <p>Canales Autorizados: WhatsApp (+57 323 225 7437) correo electrónico info@alfred.co.</p>
+                    <p><strong>Parágrafo.</strong> El Usuario declara y manifiesta que es consciente que los servicios ofrecidos por la Plataforma de ALFRED son prestados por terceros Aliados, previamente validados y examinados por ALFRED. Por lo tanto, ALFRED no es responsable por el trato o profesionalismo de los Aliados, salvo que afecten la calidad de los servicios prestados. El Usuario podrá, y así lo exhorta ALFRED, enviar comentarios a través de los Canales autorizados relativos a la cordialidad, buen trato y profesionalismo de los Aliados para efectos de que ALFRED pueda tomar las medidas o correctivos necesarios.</p>
+
+                    <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-gotham">Artículo II. Uso de la Plataforma</h2>
+
+                    <h3 className="text-xl font-bold text-white mt-8 mb-4">Sección 2.01 - Registro y uso del sitio</h3>
+                    <p>El registro del cliente en este sitio constituye una condición indispensable para acceder a los servicios y productos ofrecidos por los Aliados a través de ALFRED. Para ello, el Usuario debe registrar en la aplicación móvil los datos básicos requeridos y que se relacionan más adelante, los cuales se considerarán como fidedignos. El registro del cliente en la Plataforma implica el conocimiento y aceptación de los términos y condiciones descritos en el presente documento.</p>
+                    <p>El usuario inscrito podrá solicitar la rectificación, eliminación y/o cancelación de sus datos cuando lo estime conveniente, de acuerdo con el procedimiento para ellos previsto en la Política de Tratamiento de Datos Personales de ALFRED.</p>
+                    <ul className="list-disc pl-6 space-y-2">
+                        <li>(a) Para acceder a cualquiera de los servicios que serán prestados por los Aliados de ALFRED a través de la Plataforma, el registro constituye una condición indispensable. Para el registro, es obligatorio completar el formulario de registro, usando datos válidos y veraces, en todos los campos marcados como obligatorios. Es su deber como usuario actualizar los datos suministrados, conforme resulte aplicable. El formulario de registro solicitará, cómo mínimo la siguiente información:
+                            <ul className="list-disc pl-6 py-2 space-y-1 text-white/70">
+                                <li>Identificación</li>
+                                <li>Dirección</li>
+                                <li>Nombre completo</li>
+                                <li>Correo electrónico</li>
+                                <li>Edad</li>
+                                <li>Teléfono fijo o teléfono celular</li>
+                                <li>Información financiera que puede incluir: tarjeta de crédito a nombre del Usuario o cuentas de ahorros o corrientes de las que puedan realizarse débitos automáticos para el pago de los servicios prestados por los Aliados y solicitados a través de la Plataforma.</li>
+                                <li>Datos de su vehículo: marca, modelo, color, año, kilometraje, fecha vencimiento Soat, fecha vencimiento revisión tecnomecánica, fotocopia tarjeta de propiedad, marca y estado de las llantas, marca y estado de la batería, póliza de seguro todo riesgo.</li>
+                            </ul>
+                        </li>
+                        <li>(b) Al finalizar el diligenciamiento de la información en la Plataforma y aceptar a través de la misma la creación del usuario, El Usuario está confirmando su conocimiento y aceptación de los términos y condiciones descritos en el presente documento.</li>
+                        <li>(c) Para pagos con tarjeta de crédito, con el fin de confirmar la veracidad de la información financiera registrada, ALFRED realizará una transacción de verificación por [COP $100]. El Usuario acepta y se obliga a mantener actualizada la información financiera de la cuenta o tarjetas de crédito registrada para el pago de los servicios.</li>
+                    </ul>
+                    <p>ALFRED se reserva el derecho de monitorear y grabar, haciendo uso de cualquier tecnología disponible o por conocerse, toda la actividad que se dé dentro de su Plataforma sin captar, para este tema en particular, ningún Dato Personal. Lo anterior, se hace (i) para analizar las métricas y estadísticas del sitio, (ii) no permite identificar a ningún Usuario, (iii) no le suministra datos personales de ningún tipo a ALFRED y (iv) no se deriva en un tratamiento de los datos personales de los usuarios.</p>
+                    <p>Para efectos de lo anterior, el monitoreo y grabación de la actividad al que alude este literal puede recaer, entre otros, sobre la identificación de la URL de la que provienen (estén o no en nuestro sitio web), a qué URL acceden seguidamente (estén o no en nuestro sitio web), qué navegador están usando, y sus direcciones IP. También las páginas visitadas, las búsquedas realizadas, las publicaciones, compras o ventas, calificaciones y réplicas ingresadas, mensajes, etc.</p>
+                    <p>(d) ALFRED podrá utilizar diversos medios para verificar la identidad de sus usuarios, pero no será responsable en ningún caso, ni ante tercero alguno, de la veracidad de los datos personales que le sean suministrados.</p>
+
+                    <h3 className="text-xl font-bold text-white mt-8 mb-4">Sección 2.02 - Clave secreta</h3>
+                    <p>Los usuarios registrados tendrán un Nombre de Usuario y una Contraseña que les permitirá el acceso personalizado, confidencial y seguro a la Plataforma. Estos datos configurados por el Usuario serán para su uso exclusivo y, en consecuencia, será responsabilidad del Usuario observar el mayor cuidado y diligencia respecto de las medidas de seguridad que resulten razonables para este tipo de información. El Nombre de Usuario y la Contraseña son de uso personal e intransferible. Su entrega a terceras personas o su utilización por dichas terceras personas, no implicará responsabilidad alguna para ALFRED</p>
+                    <p>ALFRED recomienda a sus Usuarios el cambio periódico de su Contraseña, siguiendo el procedimiento que establezca en su Plataforma.</p>
+                    <p>El Usuario será el único responsable por el manejo de su cuenta y todas y cada una de las actividades que se realicen desde ésta, pues el acceso a la misma está restringido a quienes no tengan el Nombre de Usuario y la Contraseña.</p>
+                    <p>El Usuario se compromete a notificarle a ALFRED, en forma inmediata a la dirección de correo info@alfred.com.co, cualquier uso no autorizado de su cuenta, así como el ingreso realizado por terceros no autorizados a la misma.</p>
+                    <p>El Usuario no podrá vender, ceder o transferir su cuenta.</p>
+
+                    <h3 className="text-xl font-bold text-white mt-8 mb-4">Sección 2.03 - Procedimiento para solicitudes de servicios</h3>
+                    <p>Para realizar solicitudes de servicio, el Usuario ingresará a la Plataforma con su usuario y clave secreta.</p>
+                    <p>El Usuario seleccionará el servicio que desea le sea prestado por el Aliado, diligencia la información específica que, de acuerdo con el tipo de Servicio, sea solicitada por el sistema; información sin la cual no será posible la creación de la solicitud de servicio. Finalizado el diligenciamiento de los formularios de información requeridos por la Plataforma, el Usuario seleccionará la opción “Solicitar Servicio”. Con la solicitud del servicio, el Usuario está aceptando los presentes términos y condiciones, así como los términos de la prestación del servicio específico que se indiquen en la Plataforma.</p>
+                    <p>Una vez el Usuario realice la solicitud del servicio, la Plataforma automáticamente enviará una notificación al Aliado para que este confirme el servicio y reserve el turno para la prestación del mismo. Se deja constancia que el Aliado tiene el compromiso con ALFRED de reservar el turno y prestar los servicios en el horario indicado por la Plataforma, sin embargo, ALFRED no podrá garantizar que el servicio se preste en el horario reservado ya que esto es potestad única y exclusiva del Aliado.</p>
+                    <p>Toda solicitud de servicio que requiera del pago anticipado de algún porcentaje del precio del servicio quedará sujeta a la condición suspensiva de que ALFRED valide con la entidad financiera correspondiente que la transacción se ha realizado exitosamente. Así, la confirmación y/o validación o verificación por parte de ALFRED, será requisito para la formación del consentimiento. Para informar al usuario o consumidor acerca de esta validación, ALFRED deberá enviar una confirmación escrita a la cuenta del Usuario, por cualquier de los canales autorizados, WhatsApp, o al correo electrónico registrado.</p>
+                    <p>Respecto de aquellos servicios que no requieran un pago anticipado, en todo caso, ALFRED informará al Usuario el costo del servicio mediante cotización formal enviada por cualquiera de nuestros canales autorizados, para que, previa aceptación del Usuario respecto a su cotización, se realice el pago correspondiente. Esto con el fin de que ALFRED valide con la entidad financiera correspondiente que la transacción se ha realizado exitosamente, pues la confirmación de aceptación de la transacción, será requisito indispensable para el inicio en la prestación del servicio.</p>
+                    <p>El servicio se entenderá contratado, según sea el caso desde el momento en que el Usuario selecciona la opción “Solicitar Servicio”, o cuando se haya informado al Usuario que la transacción se ha realizado exitosamente.</p>
+                    <p>Desde el momento en que el Usuario realice la solicitud de servicio, se compromete a estar pendiente para dar oportuna respuesta a las comunicaciones que sean enviadas por ALFRED a través de la aplicación o cualquiera de nuestros canales autorizados relacionadas con el estado del servicio.</p>
+
+                    <h3 className="text-xl font-bold text-white mt-8 mb-4">Sección 2.04 - Condiciones para movilizar el vehículo</h3>
+                    <p>En el momento en que el conductor de ALFRED llegue al lugar establecido para recoger el vehículo, El usuario permitirá realizar la inspección del vehículo para determinar el estado físico y los accesorios del mismo, mediante registro fotográfico y diligenciado el formato correspondiente y a su vez verificará que se cumplan los siguientes requisitos mínimos para poder iniciar la movilización del vehículo:</p>
+                    <p>Que el vehículo se movilice por sus propios medios, en caso contrario, se notificará al Usuario para confirmar si requiere apoyo de Alfred en la consecución de una grúa que permita su movilización.</p>
+                    <ul className="list-disc pl-6 space-y-2">
+                        <li>Que el nivel de gasolina mínimo sea de un cuarto de tanque, salvo en aquellos casos en que previamente se haya solicitado el servicio de tanqueo de gasolina, y, en todo caso, si el conductor no alcanza a llegar a la estación de servicio más cercana, se notificará al Usuario y este tendrá que utilizar el servicio de grúa y asumir cualquier multa de tránsito que por este hecho puede imponérsele.</li>
+                        <li>Tener SOAT y certificado de revisión tecnicomecánica vigente.</li>
+                        <li>Que no se hayan encontrado dentro del vehículo al momento de la inspección inicial cualquier elemento de porte ilícito o prohibido, los cuales en caso evidenciarse durante la inspección deberán ser retirados, en todo caso, si la presencia de dichos elementos no es identificada al momento de la inspección inicial, el Usuario asumirá cualquier responsabilidad por el porte de dichos elementos. En consecuencia, el Usuario mantendrá indemne a Alfred y sus conductores y saldrá a su defensa en caso de que sean iniciadas acciones o investigaciones en su contra.</li>
+                        <li>Si el día previsto para el Servicio, el vehículo tiene restricción vial, ALFRED se reserva el derecho de cancelar o rechazar el servicio si considera que no contará con el tiempo suficiente para su atención y devolución al Usuario, situación que se le comunicará oportunamente al Usuario a través de la aplicación.</li>
+                        <li>El usuario deberá retirar del vehículo todos los elementos de valor y dinero para prestación de servicio, adicional, en caso de que aun así existan elementos adicionales que el usuario no constituya de valor deberá informar al conductor los mismos para que queden registrados en el formulario de inspección.</li>
+                    </ul>
+
+                    <h3 className="text-xl font-bold text-white mt-8 mb-4">Sección 2.05 – Tarifas</h3>
+                    <p>Al realizar la solicitud del servicio, el Usuario confirma expresamente el pago de la tarifa por servicio que, al momento de la solicitud se encuentre publicada en la Plataforma, o, que haya sido previamente comunicada al Usuario a través de la aplicación o cualquiera de nuestros canales autorizados en aquellos casos en que se trate de un servicio que no tenga una tarifa definida y requiera una cotización específica, y en todo caso, el Usuario queda obligado a realizar el pago de todos los servicios respecto de los cuales haya dado su visto bueno a través de la aplicación o cualquiera de nuestros canales autorizados.</p>
+                    <p>Cuando se trate de cotizaciones realizadas y notificadas al Usuario a través de la aplicación o cualquiera de nuestros canales autorizados durante el servicio, y respecto de las cuales no se haya recibido una respuesta dentro del término de dos (2) horas y que a su vez dentro de las siguientes 2 horas siguientes a la aprobación no se haya realizado el pago correspondiente para dar inicio a los trabajos, ALFRED cancelará el servicio, devolverá el vehículo a la dirección de devolución establecida y el Usuario asumirá los costos por servicio movilización a que haya lugar. El cobro de la tarifa por servicio iniciará desde el momento en que el conductor notifique al Usuario a través de la aplicación que ha llegado al lugar acordado para recoger el vehículo, para lo cual, el conductor esperará 15 min para que el usuario realice la entrega del vehículo, las demoras del usuario en la entrega del mismo o en la autorización de entrega de las llaves, serán asumidas por el Usuario, pues pasados los 15 minutos, se el conductor a través de la aplicación finalizará el servicio</p>
+
+                    <h3 className="text-xl font-bold text-white mt-8 mb-4">Sección 2.06 - Saldos y métodos de reembolso</h3>
+                    <p>En caso de haber pagado un servicio fallido, El Usuario tendrá un saldo a favor por el valor de los servicios que hayan sido pagados y no prestados. Dicho saldo podrá ser solicitado a ALFRED a través de los canales oficiales, conforme a las dos opciones disponibles mencionadas a continuación y dentro de los cuatro (4) meses posteriores a la cancelación del pago.</p>
+                    <ol className="list-decimal pl-6 space-y-2">
+                        <li>Adquisición de servicios: El Usuario podrá utilizar el saldo a favor cualquier tipo de servicio que seleccione dentro de la Plataforma. El saldo a favor se descontará automáticamente al valor total del servicio.</li>
+                        <li>Reintegro del saldo: El Usuario podrá solicitar la devolución del saldo a favor, aportando la certificación bancaria. El ajuste se verá reflejado dentro de los treinta (30) días hábiles siguientes a la solicitud radicada por el usuario.</li>
+                        <li>Caducidad del saldo: Transcurridos los cuatro (4) meses de la fecha del pago sin que el Usuario haya utilizado el saldo a favor, este quedará automáticamente caducado y no podrá ser reclamado, transferido ni reembolsado bajo ninguna circunstancia.</li>
+                    </ol>
+
+                    <h3 className="text-xl font-bold text-white mt-8 mb-4">Sección 2.07 - Multas de tránsito</h3>
+                    <p>Cualquier multa ocasionada durante el tiempo del servicio, será cubierta por Alfred siempre que la misma se deba a causas atribuibles a infracciones de tránsito cometidas por el conductor.</p>
+                    <p>Cuando se trate de multas atribuibles al mal estado del vehículo, estas serán asumidas por el Usuario, dentro de los tres (3) días hábiles siguientes al momento de su imposición y notificación al usuario a través de nuestros canales autorizados, si dentro de este término no se ha verificado el pago de la misma, el Usuario autoriza expresamente a ALFRED para cargar a la tarjeta de crédito o descontar del saldo a favor del Usuario, el monto del comparendo para realizar el pago. ALFRED entregará al Usuario Copia del respectivo comparendo y del soporte de pago en caso de ser aplicable, al momento de la devolución del vehículo, o a través de la aplicación.</p>
+
+                    <h3 className="text-xl font-bold text-white mt-8 mb-4">Sección 2.08 - Cancelación del Servicio</h3>
+                    <p>El Usuario podrá cancelar la solicitud de servicio únicamente a través de nuestros canales autorizados sin penalidad alguna, dos horas antes de la hora prevista para su inicio, (2) dos horas que se regirán de acuerdo a los horarios hábiles de Alfred es decir de Lunes a viernes de 7:00 a.m. a 6:00 p.m. y sábados de 8:00 a 1:00 p.m, si cancela con un tiempo inferior y teniendo en cuenta los horarios hábiles, deberá pagar una penalidad equivalente a la tarifa mínima de servicio vigente.</p>
+                    <p>En aquellos casos en que el servicio se haya solicitado con una anticipación inferior a dos (2) horas, se podrá cancelar sin penalidad hasta antes del momento en que el conductor haya iniciado su camino para recoger el vehículo, situación que será verificada a través de la aplicación. En aquellos casos en que el conductor haya iniciado su desplazamiento, deberá pagar una penalidad equivalente a la tarifa mínima de servicio vigente.</p>
+                    <p>Si al momento de recibir el vehículo, el conductor encuentra que el vehículo no cuenta con SOAT vigente, o tiene vencido el certificado de revisión tecnomecánica, el usuario deberá asumir el costo de movilización en grúa el cual será notificado, en caso de no aceptación el servicio se cancelará automáticamente, y el Usuario deberá pagar una penalidad equivalente a la tarifa mínima de servicio vigente.</p>
+
+                    <h3 className="text-xl font-bold text-white mt-8 mb-4">Sección 2.09 - Finalización de los servicios.</h3>
+                    <p>El usuario a través de la aplicación podrá detallar el recorrido del conductor para realización de los servicios contratados. Una vez el vehículo finalice los trabajos y el usuario se haya pagado la totalidad de estos, ALFRED notificará al usuario por cualquier de nuestros canales autorizados la programación de un conductor para el retorno del vehículo. El usuario o la persona autorizada por el usuario notificada por cualquier de nuestros canales autorizados deberá recibir el vehículo, con el fin de cumplir:</p>
+                    <ol className="list-decimal pl-6 space-y-2">
+                        <li>Entrega y condiciones: Una vez el conductor llegue al destino del retorno del vehículo, las partes (Conductor y usuario) realizarán una inspección Final de acuerdo con la inicial, para validar la entrega, estado físico del vehículo, objetos de valor y todos los ítems relacionados en el formato de inspección final, en donde el Usuario firmará dicho formato, dejando constancia de recibir el vehículo a conformidad. En caso de existir inconformidad alguna, las partes especificaran en el formato las observaciones que correspondan, para que a su vez el usuario pueda proceder de acuerdo con el proceso de Garantías y reclamaciones establecido por Alfred.</li>
+                    </ol>
+
+                    <h3 className="text-xl font-bold text-white mt-8 mb-4">Sección 2.10 - Garantías y reclamaciones por retardos o fallas en el servicio</h3>
+                    <p>Los Servicios prestados por los Aliados de ALFRED a través de la Plataforma, están cubiertos por las siguientes garantías y de acuerdo con la política de garantías de Alfred</p>
+                    <ul className="list-none space-y-4">
+                        <li>
+                            <p className="font-bold text-white">1) Garantías en los términos para la prestación del servicio</p>
+                            <p>Cuando se identifiquen demoras en la prestación del servicio, bien sea al inicio respecto de la hora pactada para recoger el vehículo, o demora en el tiempo de entrega que haya sido definido al inicio del servicio, y dicha demora exceda 1 hora, ALFRED reconocerá al Usuario el valor de la movilización inicial.</p>
+                        </li>
+                        <li>
+                            <p className="font-bold text-white">2) Garantía de calidad del servicio</p>
+                            <p>Cuando el Usuario identifique una falla o defecto del servicio prestado, podrá presentar reclamación a ALFRED de acuerdo con el siguiente procedimiento:</p>
+                            <ul className="list-[lower-alpha] pl-6 space-y-2 mt-2">
+                                <li>De acuerdo con el tipo de servicio de que se trate, el Usuario deberá presentar la reclamación de garantía únicamente por cualquiera de nuestros canales autorizados dentro del término máximo establecido para cada tipo de servicio, como se relaciona:
+                                    <ul className="list-decimal pl-6 space-y-1 mt-1 font-normal text-white/70">
+                                        <li>48 horas después de la entrega del vehículo para servicios de Lavado, Polichado, revisión tecno mecánica, peritaje, alineación y balanceo, perdidas de valor.</li>
+                                        <li>Servicios de diagnóstico: Serán radicados y estará sujeto a revisión de acuerdo con las políticas de garantías de Alfred.</li>
+                                    </ul>
+                                </li>
+                                <li>Recibida la solicitud, ALFRED cuenta con un término diez (10) días hábiles para hacer un rastreo y análisis de la situación y presentar al Usuario una respuesta por los canales autorizados.</li>
+                                <li>La respuesta presentada por ALFRED al Usuario deberá contener el detalle del alcance de la garantía bien sea el rechazo o garantía conferida y los pasos a seguir.</li>
+                                <li>En caso de aceptación de garantía para los servicios que requieran diagnóstico, Alfred asumirá los costos de movilización. Sin embargo, en caso de que el diagnóstico refleje que es una falla NO relacionada con la garantía y se identifique como un servicio nuevo, se cobrara al Usuario 1 trayecto de movilización. Cuando se reconozcan garantías por defectos en la prestación de los servicios, no se cobrará al Usuario ningún fee de servicio.</li>
+                                <li>Alfred asignará al usuario Reposición del Vehículo, bajo el cumplimiento de la totalidad de las siguientes condiciones.
+                                    <ul className="list-decimal pl-6 space-y-1 mt-1 font-normal text-white/70">
+                                        <li>Cuando la garantía solicitada, NO permita la movilidad del vehículo.</li>
+                                        <li>Cuando el tiempo que el vehículo este en el taller exceda más de 15 días hábiles.</li>
+                                        <li>Cuando el usuario realice la Solicitud expresa a Alfred por medio de los canales autorizados.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h3 className="text-xl font-bold text-white mt-8 mb-4">Sección 2.11 - Exclusiones y/o restricciones de las Garantías y reclamaciones</h3>
+                    <ul className="list-[lower-alpha] pl-6 space-y-2">
+                        <li>El deterioro y /o desgaste normal, resultado de la utilización del vehículo.</li>
+                        <li>Se haya efectuado en el vehículo intervenciones adicionales por cuenta propia del usuario, sin completar el debido proceso de garantas y sin previa autorización por parte de Alfred por cualquier de los canales autorizados, que afecten directa o indirectamente el desempeño de los trabajos y/o servicios y/trabajos que el usuario contrato con Alfred.</li>
+                        <li>Alfred no realizará devolución de dinero en ninguno de los casos.</li>
+                        <li>Cuando se haya efectuado intervenciones adicionales al vehículo por cuenta del usuario y el usuario indique a Alfred garantía para devolución de los gastos en que incurra el usuario.</li>
+                        <li>Cuando el daño sea causado por mantenimiento deficiente, cuando no se sigan las recomendaciones entregadas por la prestación del servicio.</li>
+                        <li>La presente garantía no cubre reparaciones ni cambios de componentes que sufren un desgaste natural por la operación del vehículo, piezas de mantenimiento y/o de desgaste como por ejemplo y sin limitarse a fusibles, cables de alta, bujías, correas, filtros de aire, filtros de aceite, filtros de combustible, bandas, pastillas de freno, discos de embrague, cauchos de cuchillas limpia brisas, (estas piezas aparecen en el manual del propietario).</li>
+                        <li>Cuando se haga uso indebido del vehículo, excediendo los límites establecidos en cuanto a la carga, la inexperiencia o errores en la conducción, utilización en condiciones no conformes a las previstas por LA MARCA o el Fabricante, o por el uso de combustibles no recomendados o de menor octanaje al especificado.</li>
+                        <li>Toda pérdida o daño total o parcial a causa de accidentes o cualquier acto u omisión voluntario, ilegal o negligente por parte del CLIENTE.</li>
+                        <li>Alfred no se hace responsable por gastos incidentales para llevar a cabo la reparación. No cubrirá daños incidentales o consecuentes derivados de la privación de usar el vehículo mientras se realice la intervención, pérdidas de tiempo, de viaje, de alojamiento, honorarios legales, gastos de transporte, de parqueo, grúas o pérdidas o daños de bienes personales o comerciales, perjuicios materiales, morales, daño emergente o lucro cesante. No se responsabiliza por objetos de valor que no hayan sido declarados dentro del formato inicial y/o final de inspección.</li>
+                    </ul>
+
+                    <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-gotham">Artículo III. Alcance de la prestación de servicios específicos</h2>
+                    <h3 className="text-xl font-bold text-white mt-8 mb-4">Sección 3.01 – Servicio de lavado</h3>
+                    <p>El servicio de lavado será prestado por Aliados de ALFRED, por lo tanto, algunos servicios podrán incluir condiciones o pagos adicionales como lo es el de servicio de parqueadero. En todo caso, ALFRED comunicará a El Usuario sobre cualquier costo adicional que exijan los Aliados.</p>
+                    <p>ALFRED informará al Aliado de la reserva de servicios de lavado a través de la Plataforma, sin embargo, el Aliado será el encargado y responsable de la asignación de turnos de atención y prioridad en el servicio. Por lo tanto, ALFRED no será responsable por demoras en la prestación de los servicios de lavado por parte de los Aliados.</p>
+
+                    <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-gotham">Artículo IV. Información del usuario</h2>
+                    <p>Al utilizar la plataforma y/o los servicios de ALFRED, El Usuario deberá suministrarnos algunos datos personales (en adelante, los “Datos Personales”). Los Datos Personales suministrados deben ser completos y exactos.</p>
+                    <p>ALFRED tendrá la potestad de confirmar los Datos Personales suministrados acudiendo, directa o indirectamente, a entidades públicas, compañías especializadas o centrales de riesgo. Con su aceptación de estos términos y condiciones, El Usuario le otorga a ALFRED la autorización amplía y suficiente que se requiera para consultar y/o comprobar sus Datos Personales conforme a lo anteriormente expuesto.</p>
+                    <p>La información que ALFRED obtenga de estas entidades será tratada en forma confidencial y de acuerdo con (i) estos términos y condiciones y (ii) con la Política de Tratamiento de Datos Personales que puede consultar en el siguiente link https://alfred.com.co/politica-de-proteccion-de-datos-personales</p>
+                    <p>Como usuario de ALFRED, El Usuario tendrá derecho a la eliminación de su cuenta y Datos Personales de la base de datos de ALFRED, lo que implicará que El Usuario no pueda acceder al sitio web, la aplicación móvil y/o los servicios ofrecidos por ALFRED.</p>
+                    <p>Igualmente, ALFRED podrá obtener, almacenar y tratar Datos Personales de la correspondencia que los usuarios o terceros le envíen, sin importar el mecanismo a través del cual sea enviada.</p>
+
+                    <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-gotham">Artículo V. Autorización del usuario</h2>
+                    <p>De conformidad con lo dispuesto en la Ley 1581 de 2012 y el Decreto 1377 de 2013, declaro que entrego de forma libre y voluntaria los siguientes datos personales (en adelante los “Datos Personales”):</p>
+                    <ul className="list-disc pl-6 space-y-1">
+                        <li>Identificación</li>
+                        <li>Dirección</li>
+                        <li>Nombre completo</li>
+                        <li>Correo electrónico</li>
+                        <li>Edad</li>
+                        <li>Teléfono fijo o teléfono celular</li>
+                        <li>Información financiera que puede incluir: tarjeta de crédito a nombre del Usuario o cuentas de ahorros o corrientes de las que puedan realizarse débitos automáticos para el pago de los servicios prestados por los Aliados y solicitados a través de la Plataforma.</li>
+                        <li>Datos de su vehículo: marca, modelo, color, año, kilometraje, fecha vencimiento Soat, fecha vencimiento revisión tecnomecánica, fotocopia tarjeta de propiedad, marca y estado de las llantas, marca y estado de la batería, póliza de seguro todo riesgo.</li>
+                        <li>Hábitos y tendencias de consumo en relación con su vehículo y preferencias respecto de marcas y productos.</li>
+                    </ul>
+                    <p>En los términos de las definiciones de la Ley 1581 de 2012, ALFRED actúa como responsable del tratamiento de mis Datos Personales, los cuales serán usados para las finalidades establecidas en la Política de Tratamiento de Datos Personales de ALFRED, de acuerdo con las condiciones y derechos allí establecidos.</p>
+
+                    <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-gotham">Artículo VI. Uso de la información suministrada</h2>
+                    <p>Toda la información suministrada por los usuarios de ALFRED será obtenida, almacenada y tratada de conformidad con (i) la ley 1581 de 2012, (ii) el Decreto 1377 de 2013 y (iii) la Política de Tratamiento de Datos Personales de ALFRED que puede consultar en el siguiente link https://alfred.com.co/politica-de-proteccion-de-datos-personales</p>
+                    <p>En cualquier caso, los Datos Personales serán usados por ALFRED para ofrecerle la mejor experiencia de usuario que pueda ofrecerle, lo cual incluye los servicios y funcionalidades que, a juicio de ALFRED, se adecuan mejor a sus necesidades como usuario, tales como:</p>
+                    <ul className="list-[lower-alpha] pl-6 space-y-2">
+                        <li>Hacerle llegar por distintos medios y vías (incluyendo mail, SMS, MMS, etc.) ofertas de productos y servicios que creemos pueden serle de interés.</li>
+                        <li>Compartir los Datos Personales con los aliados de ALFRED y en general, los proveedores de servicios o empresas de "outsourcing" que colaboren con ALFRED en sus operaciones comerciales o que presten servicios a través de la Plataforma. Estas compañías generalmente tienen políticas de manejo de Datos Personales similares a las nuestras. Sin embargo, ALFRED no se hace responsable por el uso indebido de la información personal del usuario que hagan estas compañías o sitios de Internet.</li>
+                        <li>Evaluar la calidad de nuestros productos y servicios prestados a través de la Plataforma y realizar estudios sobre hábitos de consumo, preferencia, interés de compra, prueba de producto, concepto, evaluación del servicio, satisfacción y otras relacionadas con la Plataforma y los servicios prestados por los Aliados de ALFRED.</li>
+                        <li>Enviar información o mensajes sobre nuevos productos y/o servicios, mostrar publicidad o promociones, banners, noticias sobre ALFRED, además de cualquier otra información que creamos conveniente. Si el usuario lo prefiere, puede solicitar que lo excluyan de las listas para el envío de información promocional o publicitaria.</li>
+                        <li>Prestar asistencia, servicio y soporte técnico de la Plataforma a través de la cual los aliados prestan y comercializan sus productos y/o servicios.</li>
+                        <li>Realizar las gestiones necesarias para dar cumplimiento a las obligaciones inherentes a los servicios y productos prestados y ofrecidos a través de la Plataforma por ALFRED.</li>
+                        <li>Informar sobre cambios de productos y servicios relacionados con el giro ordinario de los negocios de ALFRED.</li>
+                        <li>Controlar y prevenir el fraude en todas sus modalidades.</li>
+                        <li>Facilitar el uso correcto de la Plataforma.</li>
+                    </ul>
+
+                    <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-gotham">Artículo VII. Transmisión de la información</h2>
+                    <p>ALFRED, en calidad de responsable del tratamiento, según este término se define en la Ley 1581 de 2012, podrá transmitir información vinculada o que pueda asociarse a los Usuarios, específicamente la información relacionada con: Nombre completo, número de identificación, dirección, correo electrónico, edad, teléfono fijo o teléfono celular, información financiera que puede incluir datos de tarjeta de crédito o cuentas de ahorros o corrientes de las que puedan realizarse débitos automáticos para el pago de los servicios prestados, datos del vehículo que incluye marca, modelo, color, año, kilometraje, fecha vencimiento Soat, fecha vencimiento revisión tecnomecánica, fotocopia tarjeta de propiedad, marca y estado de las llantas, marca y estado de la batería, póliza de seguro todo riesgo,(los “Datos Personales”) a terceros para que realice el tratamiento de los Datos Personales (el “Tratamiento”) en calidad de encargados, según este término se define en la Ley 1581 de 2012. Los terceros realizarán el Tratamiento por cuenta de Alfred exclusivamente para fines relacionados con la prestación de los servicios por parte de Alfred y sus aliados.</p>
+                    <p>Los terceros, con relación al tratamiento de datos cumplirán con las siguientes obligaciones:</p>
+                    <ul className="list-[lower-alpha] pl-6 space-y-2">
+                        <li>Realizar el Tratamiento de conformidad con lo previsto en este instrumento y en la Comunicación, única y exclusivamente por cuenta de Alfred, y dando cumplimiento a las obligaciones que Alfred haya adquirido con los titulares de los Datos Personales, de acuerdo con la Política de Tratamiento de la Información de Alfred.</li>
+                        <li>Realizar el Tratamiento conforme a los principios que tutelan y protegen a dichos Datos Personales.</li>
+                        <li>Realizar el Tratamiento única y exclusivamente para el logro de los fines y objetivos relacionados con la prestación de los servicios.</li>
+                        <li>Abstenerse de realizar cualquier Tratamiento por cuenta propia o de cualquier tercero diferente a Alfred.</li>
+                        <li>Respetar la titularidad de los derechos de propiedad intelectual que Alfred o cualquier tercero pueda tener en relación con las bases de datos que Alfred le entregue.</li>
+                        <li>Cumplir las instrucciones que de tiempo en tiempo le proporcione Alfred en relación con el Tratamiento.</li>
+                        <li>Permitir el acceso a los Datos Personales únicamente a las personas que deban tener acceso a ellos para que pueda efectuarse la prestación de servicios.</li>
+                        <li>Informar a Alfred acerca de toda solicitud jurídicamente vinculante de una autoridad competente cuyo propósito sea la divulgación o entrega de los Datos Personales.</li>
+                        <li>Devolver y/o destruir todo o parte de las copias de los Datos Personales, cuando Alfred así lo solicite.</li>
+                        <li>Cuando finalice su relación con Alfred, devolver y/o eliminar de sus bases de datos o archivos electrónicos y físicos, todos los Datos Personales, a petición de Alfred.</li>
+                        <li>No mantener ni conservar archivos “espejos”, copias ocultas o back-ups de los Datos Personales una vez Alfred solicite la devolución o destrucción de los mismos.</li>
+                        <li>Dar cumplimiento a las demás obligaciones legales que le corresponda de acuerdo con la ley o con la normativa de protección de datos aplicable en su respectiva jurisdicción.</li>
+                        <li>Adoptar medidas técnicas y organizacionales razonables de seguridad, necesarias para garantizar la seguridad, integridad y confidencialidad de los Datos Personales y evitar su alteración, Tratamiento o acceso no autorizado.</li>
+                        <li>Informar a Alfred, de manera inmediata, sobre cualquier incidente que comprometa la seguridad, integridad y confidencialidad de los Datos Personales.</li>
+                        <li>Informar a Alfred, de manera inmediata, sobre cualquier requerimiento de información formulado por autoridades competentes que se relacione, parcial o totalmente, con los Datos Personales.</li>
+                        <li>Atender las peticiones, quejas y reclamos que presenten los titulares de los Datos Personales y garantizar el efectivo cumplimiento de sus derechos.</li>
+                        <li>Permitir que Alfred realice auditorías periódicas para verificar que el Aliado esté Tratando adecuadamente los Datos Personales, siempre que medie notificación con anticipación razonablemente suficiente.</li>
+                    </ul>
+
+                    <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-gotham">Artículo VIII. Confidencialidad de la información</h2>
+                    <p>ALFRED hará todos los esfuerzos razonables para proteger la confidencialidad de la información suministrada por sus usuarios. Sin embargo, en virtud de órdenes judiciales o de reglamentaciones de tipo legal, es posible que se vea compelida a revelar información a las autoridades o terceras partes.</p>
+                    <p>Igualmente, ALFRED no será responsable por la interceptación y/o el acceder mediante técnicas de hackeo u otros mecanismos de carácter malintencionado y no identificado oportunamente que hagan terceros a sus comunicaciones, servidores y/o bases de datos.</p>
+
+                    <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-gotham">Artículo IX. Aviso de Privacidad</h2>
+                    <p>De conformidad con lo dispuesto en la ley 1581 de 2012, le informamos que los Datos Personales que el Usuario nos ha entregado, como cliente o prestador de bienes y servicios, harán parte de nuestra Base de Datos y serán tratados para las finalidades y de acuerdo con las condiciones establecidas en la Política de Tratamiento de Datos Personales de ALFRED.</p>
+                    <p>La Política de Tratamiento de Datos Personales se encuentra lo suficientemente detallada para permitirle que los usuarios y visitantes de nuestra Plataforma y página Web conozcan las prácticas de ALFRED de la forma más precisa posible. Al aceptar estos términos y condiciones, se entiende que el Usuario está de acuerdo con lo contenido en la Política de Tratamiento de Datos Personales, así, ésta hace parte integral, por simple referencia, de los términos y condiciones acá contenidos.</p>
+
+                    <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-gotham">Artículo X. Fallas en el sistema</h2>
+                    <p>ALFRED no será responsable por daños, perjuicios o pérdidas causados a sus usuarios por fallas en la Plataforma, los servidores o en la conexión a Internet. Tampoco será responsable por cualquier virus informático que pueda infectar el equipo del Usuario como consecuencia del acceso, uso o interacción con su Plataforma, o a raíz de cualquier transferencia de datos, archivos, imágenes, textos, o audio contenidos en la misma. En consecuencia, ALFRED no será responsable por el lucro cesante que puedan sufrir los usuarios por las dificultades técnicas, fallas en la Plataforma o en Internet.</p>
+                    <p>ALFRED no garantiza el acceso y uso continuado o ininterrumpido de la Plataforma. La Plataforma puede, eventualmente, no estar disponible debido a dificultades técnicas o de conexión a Internet, o por cualquier otra circunstancia ajena a ALFRED. En tales casos se procurará restablecerlo con la mayor celeridad posible, sin que por ello pueda imputársele algún tipo de responsabilidad.</p>
+
+                    <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-gotham">Artículo XI. Derechos de Propiedad intelectual e industrial.</h2>
+                    <ul className="list-[lower-alpha] pl-6 space-y-2">
+                        <li>
+                            <p>(a) La Plataforma, así como todos y cada uno de sus componentes, incluyendo, sin limitarlo a, la totalidad del software, los códigos fuente, la interfaz, las marcas y los diseños (en adelante, la “Propiedad Intelectual”), son propiedad exclusiva de ALFRED y, en consecuencia, están amparados por el derecho de autor y/o por la legislación de propiedad industrial e intelectual aplicable en Colombia y en el exterior.</p>
+                            <p>Queda absolutamente prohibida la reproducción total o parcial de la Propiedad Intelectual; así como su traducción, inclusión, transmisión, almacenamiento o acceso a través de medios analógicos, digitales o de cualquier otro sistema o tecnología creada o por crearse, sin autorización previa y por escrito de ALFRED.</p>
+                            <p>No obstante, ALFRED autoriza el uso de su Propiedad Intelectual a los Usuarios registrados, siempre y cuando (i) den estricto cumplimiento a estos términos y condiciones, (ii) la usen de manera razonable conforme al uso comúnmente aceptado para plataformas similares y (iii) dicho uso se limite, de manera exclusiva, al uso personal y no comercial.</p>
+                            <p>Queda absolutamente prohibida cualquier de-compilación, aplicación de técnicas de ingeniería inversa o copia, parcial o total, de la Propiedad Intelectual.</p>
+                        </li>
+                        <li>
+                            <p>(b) La información, documentos (incluyendo imágenes, vídeos, herramientas, gráficos y demás); las marcas, nombres, logos y el material gráfico, escrito o audiovisual que se encuentra en su Plataforma (en adelante, la “Información Protegida”) está protegido conforme a lo establecido en la legislación colombiana e internacional sobre derechos de autor, propiedad intelectual e industrial. Por lo tanto, su uso está exclusivamente limitado al uso personal de sus Usuarios.</p>
+                            <p>En ningún caso será admisible el uso y/o la explotación comercial de la Información Protegida.</p>
+                        </li>
+                    </ul>
+
+                    <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-gotham">Artículo XII. Responsabilidad de Alfred</h2>
+                    <p>ALFRED responderá por los daños que se presenten en el vehículo durante el tiempo en que se encuentre en su poder, siempre que dichos daños no sean consecuencia de situaciones de caso fortuito, fuerza mayor o hechos atribuibles a un tercero. Para el efecto, ALFRED cuenta con una póliza todo riesgo y de responsabilidad civil por daño o muerte a terceros.</p>
+
+                    <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-gotham">Artículo XIII. Modificaciones a los términos y condiciones</h2>
+                    <p>ALFRED se reserva el derecho de modificar, en cualquier momento y por cualquier causa, los términos y condiciones de su Plataforma. Para efectos de lo anterior, hará publicidad en su Plataforma o página Web de cualquier modificación y, pasados diez (10) días desde que se haya hecho pública la modificación, entrarán en vigor las modificaciones correspondientes. Si el usuario no objeta las modificaciones mediante correo electrónico enviado a la dirección info@alfred.com.co, solicitando su desvinculación de las bases de datos de ALFRED, se considerará que el usuario acepta los nuevos términos y condiciones.</p>
+
+                    <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-gotham">Artículo XIV. Cookies</h2>
+                    <p>Los usuarios de la Plataforma conocen y aceptan que ALFRED podrá utilizar un sistema de seguimiento mediante la utilización de cookies (en adelante, las "Cookies"). Las Cookies son pequeños archivos que se instalan en el disco duro, con una duración limitada en el tiempo que ayudan a personalizar los servicios.</p>
+                    <p>Las Cookies se utilizan con el fin de conocer los intereses, el comportamiento y la demografía de quienes visitan o son usuarios de la Plataforma y, de esa forma, comprender mejor sus necesidades e intereses y darles un mejor servicio o proveerle información relacionada.</p>
+                    <p>Se establece que la instalación, permanencia y existencia de las Cookies en el computador del usuario depende de su exclusiva voluntad y puede ser eliminada de su computador cuando el usuario así lo desee.</p>
+
+                    <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-gotham">Artículo XV. Almacenamiento de la información</h2>
+                    <p>ALFRED está obligada a cumplir con toda la normativa aplicable en materia de medidas de seguridad aplicables a la Información Personal. Adicionalmente, ALFRED S.A.S. usa los estándares de la industria en materia de protección de la confidencialidad de su Información Personal, incluyendo, entre otras, medidas cortafuegos ("firewalls") y Secure Socket Layers ("SSL").</p>
+                    <p>ALFRED considera los datos de sus usuarios como un activo que debe ser protegido de cualquier pérdida o acceso no autorizado y, por eso, emplea variadas técnicas de seguridad para proteger los datos de sus usuarios. Sin embargo, resulta sumamente importante que El Usuario tenga en cuenta que la seguridad perfecta no existe en Internet y, por esto, ALFRED no se hace responsable por interceptaciones ilegales o violación de sus sistemas o bases de datos por parte de personas no autorizadas, ni por la indebida utilización de la información obtenida por esos medios.</p>
+
+                    <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-gotham">Artículo XVI. Indemnidad</h2>
+                    <p>El incumplimiento de estos términos y condiciones, así como el uso indebido de la Plataforma por parte de los usuarios, facultará a ALFRED para reclamarles la indemnización de perjuicios a la que haya lugar. En consecuencia, en caso de incumplimiento o uso indebido por parte de El Usuario, ALFRED le exigirá que la mantenga indemne, así como a sus respectivos consejeros, funcionarios, trabajadores, agentes, representantes, accionistas, socios, sucesores o cesionarios y respecto de, sin limitarlo, cualquier reclamación, pérdida, obligación multa, costa, gasto, litigio, sentencia; incluyendo honorarios y gastos razonables de abogados y contadores.</p>
+
+                    <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-gotham">Artículo XVII. Jurisdicción y Ley Aplicable</h2>
+                    <p>Estos términos y condiciones están regidos, en todos sus puntos, por las leyes vigentes en la República de Colombia.</p>
+
+                </div>
+            </div>
+
+            <Footer />
+        </main>
+    );
+}

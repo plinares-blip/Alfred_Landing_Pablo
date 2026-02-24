@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
@@ -47,18 +48,25 @@ export function Navbar({ mode, setMode, lean = false }: NavbarProps) {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [activeSection, setActiveSection] = useState("");
+    const pathname = usePathname();
+    const router = useRouter();
 
     const links = lean
         ? navLinks[mode]?.filter(l => l.name === "Soluciones") || []
         : navLinks[mode] || [];
 
-    // NUEVO: Estado para "Smart Scroll" (Esconder/Mostrar)
     const [isVisible, setIsVisible] = useState(true);
     const lastScrollY = useRef(0);
 
-    const scrollToTop = (e: React.MouseEvent) => {
+    const handleLogoClick = (e: React.MouseEvent) => {
         e.preventDefault();
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        if (pathname === "/") {
+            // Already on home page → smooth scroll to top
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        } else {
+            // On another page → navigate to home (loads at top)
+            router.push("/");
+        }
     };
 
     useEffect(() => {
@@ -120,8 +128,9 @@ export function Navbar({ mode, setMode, lean = false }: NavbarProps) {
             >
                 <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
                     <button
-                        onClick={scrollToTop}
+                        onClick={handleLogoClick}
                         className="relative w-32 h-10 md:w-40 md:h-12 bg-transparent border-none cursor-pointer"
+                        aria-label="Ir al inicio"
                     >
                         <Image
                             src="/images/logos/verde degrade.png"

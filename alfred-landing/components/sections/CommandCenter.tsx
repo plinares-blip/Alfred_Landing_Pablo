@@ -117,8 +117,8 @@ export function CommandCenter() {
                 </div>
 
                 {/* DESKTOP VIEW (Intacto) */}
-                <div className="hidden lg:grid lg:grid-cols-12 gap-12 items-start max-w-7xl mx-auto">
-                    <div className="lg:col-span-5 space-y-4">
+                <div className="hidden lg:grid lg:grid-cols-12 gap-12 items-stretch max-w-7xl mx-auto">
+                    <div className="lg:col-span-5 flex flex-col justify-center gap-2">
                         {features.map((feature, idx) => {
                             const isActive = activeIndex === idx;
                             const Icon = feature.icon;
@@ -127,7 +127,7 @@ export function CommandCenter() {
                                     key={feature.id}
                                     onClick={() => setActiveIndex(idx)}
                                     className={cn(
-                                        "w-full text-left p-6 lg:p-4 xl:p-6 rounded-2xl transition-all duration-500 group relative flex items-center gap-6 lg:gap-4 xl:gap-6",
+                                        "w-full text-left p-4 lg:p-3 xl:p-4 rounded-2xl transition-all duration-500 group relative flex items-center gap-6 lg:gap-4 xl:gap-6",
                                         isActive ? "bg-white/5 border border-white/10 shadow-2xl" : "hover:bg-white/5 border border-transparent"
                                     )}
                                 >
@@ -146,14 +146,14 @@ export function CommandCenter() {
                             );
                         })}
                     </div>
-                    <div className="lg:col-span-7 relative group mt-8 lg:mt-0">
-                        <div className="relative rounded-[2rem] border border-white/10 bg-[#0B1226] p-4 shadow-2xl backdrop-blur-xl aspect-auto">
+                    <div className="lg:col-span-7 relative group mt-8 lg:mt-0 flex flex-col">
+                        <div className="relative rounded-[2rem] border border-white/10 bg-[#0B1226] p-4 shadow-2xl backdrop-blur-xl flex flex-col flex-1">
                             <div className="flex items-center gap-2 mb-4 px-4">
                                 <div className="w-3 h-3 rounded-full bg-red-500/50" />
                                 <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
                                 <div className="w-3 h-3 rounded-full bg-green-500/50" />
                             </div>
-                            <div className="relative rounded-2xl overflow-hidden border border-white/5 min-h-[450px] lg:min-h-[300px] xl:min-h-[400px]">
+                            <div className="relative rounded-2xl overflow-hidden border border-white/5 flex-1 min-h-[300px]">
                                 <AnimatePresence mode="wait">
                                     <motion.div
                                         key={activeIndex}
