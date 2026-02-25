@@ -1330,13 +1330,14 @@ export function Convenios({ mode }: ConveniosProps) {
                                                         {/* Timeline connector */}
                                                         <div className="flex flex-col items-center">
                                                             <div
-                                                                className="w-8 h-8 md:w-10 md:h-10 2xl:w-12 2xl:h-12 rounded-full flex items-center justify-center border-2 flex-shrink-0"
+                                                                className="w-8 h-8 md:w-10 md:h-10 2xl:w-12 2xl:h-12 rounded-full flex items-center justify-center border-2 flex-shrink-0 [&>svg]:w-4 [&>svg]:h-4 md:[&>svg]:w-5 md:[&>svg]:h-5 2xl:[&>svg]:w-6 2xl:[&>svg]:h-6"
                                                                 style={{
                                                                     borderColor: selectedInsurer.color,
                                                                     backgroundColor: `${selectedInsurer.color}15`
                                                                 }}
                                                             >
-                                                                <step.icon color={selectedInsurer.color} className="w-4 h-4 md:w-5 md:h-5 2xl:w-6 2xl:h-6" />
+                                                                {/* El ícono queda limpiecito y TypeScript ya no molesta */}
+                                                                <step.icon color={selectedInsurer.color} />
                                                             </div>
                                                             {idx < array.length - 1 && (
                                                                 <div
