@@ -51,8 +51,8 @@ export function Personas() {
                 </div>
 
                 {/* Content Area */}
-                <div className="relative max-w-6xl mx-auto min-h-[500px] lg:min-h-[500px]">
-                    {/* Orange Glow Behind Convenio */}
+                <div className="relative max-w-6xl mx-auto min-h-[550px]">
+                    {/* Background Glows */}
                     <AnimatePresence>
                         {activeTab === "convenio" && (
                             <motion.div
@@ -62,9 +62,19 @@ export function Personas() {
                                 className="absolute -inset-4 bg-[#ff870e] blur-[100px] pointer-events-none rounded-3xl transition-opacity duration-700 z-0"
                             />
                         )}
+                        {activeTab === "particular" && (
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 0.3 }}
+                                exit={{ opacity: 0 }}
+                                className="absolute -inset-4 bg-[#0096FB] blur-[100px] pointer-events-none rounded-3xl transition-opacity duration-700 z-0"
+                            />
+                        )}
                     </AnimatePresence>
 
-                    <div className="relative bg-[#0B1226] border border-white/10 rounded-3xl p-6 lg:p-8 min-h-[400px] lg:min-h-[350px] z-10 transition-colors duration-500 shadow-2xl">
+                    {/* Fixed Height Main Container with overflow-hidden */}
+                    <div className="relative bg-[#0B1226] border border-white/10 rounded-[2rem] min-h-[600px] lg:min-h-[550px] z-10 transition-colors duration-500 shadow-2xl overflow-hidden flex">
+
                         <AnimatePresence mode="wait">
                             {activeTab === "convenio" ? (
                                 <motion.div
@@ -72,11 +82,12 @@ export function Personas() {
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     exit={{ opacity: 0, x: 20 }}
-                                    transition={{ duration: 0.3 }}
-                                    className="grid md:grid-cols-2 gap-12 items-center"
+                                    transition={{ duration: 0.4 }}
+                                    className="flex flex-col md:grid md:grid-cols-2 w-full h-full min-h-[600px] lg:min-h-[550px] absolute inset-0"
                                 >
-                                    <div className="space-y-6">
-                                        <h3 className="text-3xl font-bold leading-tight mt-4">
+                                    {/* Left Column (Text & Action) - Centered */}
+                                    <div className="flex flex-col justify-center space-y-6 pt-10 px-8 pb-4 md:p-12 lg:p-16 z-20 h-full bg-[#0B1226]/80 md:bg-transparent relative">
+                                        <h3 className="text-3xl lg:text-4xl font-bold leading-tight mt-4">
                                             Usa lo que ya tienes. <br /> Sin llamadas, sin estrés.
                                         </h3>
                                         <p className="text-white/70 text-lg">
@@ -90,22 +101,27 @@ export function Personas() {
                                                 </li>
                                             ))}
                                         </ul>
-                                        <Button
-                                            size="lg"
-                                            className="bg-white text-alfred-navy hover:bg-gray-100 mt-4 font-bold"
-                                            onClick={() => document.getElementById('convenios')?.scrollIntoView({ behavior: 'smooth' })}
-                                        >
-                                            Activar mi convenio
-                                        </Button>
+                                        <div className="pt-2">
+                                            <Button
+                                                size="lg"
+                                                className="bg-white text-alfred-navy hover:bg-gray-100 font-bold px-8"
+                                                onClick={() => document.getElementById('convenios')?.scrollIntoView({ behavior: 'smooth' })}
+                                            >
+                                                Activar mi convenio
+                                            </Button>
+                                        </div>
                                     </div>
-                                    <div className="relative h-64 md:h-full rounded-2xl border border-white/10 flex items-center justify-center overflow-hidden bg-alfred-dark/50">
-                                        <div className="absolute inset-0 bg-gradient-to-br from-alfred-navy/50 to-alfred-dark/80 z-0" />
-                                        <Image
-                                            src="/images/key-visuals/prime.png"
-                                            alt="Alfred para Personas"
-                                            fill
-                                            className="object-contain p-4 md:p-8 z-10 hover:scale-105 transition-transform duration-700"
-                                        />
+
+                                    {/* Right Column (Visuals) - Bottom Bleed */}
+                                    <div className="relative w-full h-[300px] md:h-full flex items-end justify-center pt-10 px-6 lg:px-12 z-10 bg-gradient-to-br from-[#0B1226] to-[#151D3A]">
+                                        <div className="relative w-full max-w-[320px] aspect-[1/1.6] -mb-[5%] md:-mb-10 transition-transform duration-700 hover:scale-[1.03]">
+                                            <Image
+                                                src="/images/key-visuals/prime.png"
+                                                alt="Alfred para Personas"
+                                                fill
+                                                className="object-contain object-center drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)]"
+                                            />
+                                        </div>
                                     </div>
                                 </motion.div>
                             ) : (
@@ -114,11 +130,12 @@ export function Personas() {
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     exit={{ opacity: 0, x: 20 }}
-                                    transition={{ duration: 0.3 }}
-                                    className="grid md:grid-cols-2 gap-12 items-center"
+                                    transition={{ duration: 0.4 }}
+                                    className="flex flex-col md:grid md:grid-cols-2 w-full h-full min-h-[600px] lg:min-h-[550px] absolute inset-0"
                                 >
-                                    <div className="space-y-6">
-                                        <h3 className="text-3xl font-bold leading-tight mt-4">
+                                    {/* Left Column (Text & Action) - Centered */}
+                                    <div className="flex flex-col justify-center space-y-6 pt-10 px-8 pb-4 md:p-12 lg:p-16 z-20 h-full bg-[#0B1226]/80 md:bg-transparent relative">
+                                        <h3 className="text-3xl lg:text-4xl font-bold leading-tight mt-4">
                                             Alfred te lo soluciona. <br /> Transparente y rápido.
                                         </h3>
                                         <p className="text-white/70 text-lg">
@@ -132,28 +149,29 @@ export function Personas() {
                                                 </li>
                                             ))}
                                         </ul>
-                                        <Button
-                                            size="lg"
-                                            className="bg-alfred-sky text-white hover:bg-alfred-blue mt-4 font-bold"
-                                            onClick={() => document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' })}
-                                        >
-                                            Ver Servicios
-                                        </Button>
+                                        <div className="pt-2">
+                                            {/* Mirror visual weight of the other CTA */}
+                                            <Button
+                                                size="lg"
+                                                className="bg-white text-alfred-navy hover:bg-gray-100 font-bold px-8"
+                                                onClick={() => document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' })}
+                                            >
+                                                Ver Servicios
+                                            </Button>
+                                        </div>
                                     </div>
-                                    <div className="relative w-full aspect-[4/5] rounded-2xl border border-white/10 overflow-hidden group bg-alfred-dark">
-                                        <Image
-                                            src="/images/key-visuals/servicios.png"
-                                            alt="App Alfred Interface"
-                                            fill
-                                            /* pt-8 px-8: Genera el "aire" SOLO arriba y a los lados.
-                                               pb-0: Fuerza a que NO haya espacio abajo, pegando el celular al borde.
-                                               object-cover object-top: Mantiene el foco arriba.
-                                            */
-                                            className="object-cover object-top pt-8 px-8 pb-0 z-10 transition-transform duration-700 group-hover:scale-105"
-                                        />
 
-                                        {/* Sombra interna */}
-                                        <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl pointer-events-none z-20" />
+                                    {/* Right Column (Visuals) - Bottom Bleed */}
+                                    <div className="relative w-full h-[300px] md:h-full flex items-end justify-center pt-10 px-8 lg:px-12 z-10 bg-gradient-to-br from-[#0B1226] to-[#0A1128]">
+                                        {/* Phone UI Graphic anchored strictly to the bottom */}
+                                        <div className="relative w-[90%] max-w-[340px] aspect-[1/1.5] -mb-[5%] md:-mb-10 transition-transform duration-700 hover:scale-[1.03]">
+                                            <Image
+                                                src="/images/key-visuals/servicios.png"
+                                                alt="App Alfred Servicios"
+                                                fill
+                                                className="object-contain object-bottom drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)]"
+                                            />
+                                        </div>
                                     </div>
                                 </motion.div>
                             )}

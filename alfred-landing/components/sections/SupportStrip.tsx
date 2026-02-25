@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export function SupportStrip() {
     return (
-        <section id="soporte" className="w-full bg-[#111E3E] py-24 relative overflow-hidden">
+        <section id="soporte" className="w-full bg-[#111E3E] py-24 relative z-20 overflow-hidden">
             {/* Top Transition (Blur/Fade from Convenios #020D20) */}
             <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#020D20] to-transparent z-10 pointer-events-none" />
 

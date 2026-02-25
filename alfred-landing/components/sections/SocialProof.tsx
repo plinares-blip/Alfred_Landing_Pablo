@@ -532,7 +532,7 @@ export function SocialProof({ mode }: SocialProofProps) {
         requestAnimationFrame(animation);
     };
     return (
-        <section className="relative pt-12 lg:pt-16 xl:pt-20 pb-16 lg:pb-16 xl:pb-24 overflow-hidden bg-[#111E3E]">
+        <section className="relative z-20 pt-12 lg:pt-16 xl:pt-20 pb-16 lg:pb-16 xl:pb-24 overflow-hidden bg-[#111E3E]">
             {/* Background Atmosphere */}
             <div className="absolute inset-0 bg-[#111E3E]" />
             <div className="absolute top-0 inset-x-0 h-64 bg-gradient-to-b from-[#0A0F1A] to-transparent z-10 opacity-50" />

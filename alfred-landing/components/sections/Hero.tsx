@@ -145,7 +145,7 @@ export function Hero({ mode, setMode }: HeroProps) {
 
     return (
 
-        <section id={mode === "personal" ? "personas" : "empresas"} className="relative min-h-[80vh] flex flex-col items-center justify-center pt-24 lg:pt-28 overflow-hidden bg-[#0B1226] overflow-x-hidden">
+        <section id={mode === "personal" ? "personas" : "empresas"} className="relative min-h-[80vh] xl:h-screen flex flex-col items-center pt-24 lg:pt-32 pb-12 overflow-hidden bg-[#0B1226] overflow-x-hidden">
 
             <NetworkBackground />
 
@@ -153,7 +153,7 @@ export function Hero({ mode, setMode }: HeroProps) {
 
             {/* Neon Segmented Toggle */}
 
-            <div className="relative z-20 mb-12">
+            <div className="relative z-20 mb-12 shrink-0">
 
                 <div className="relative grid grid-cols-2 bg-alfred-navy/40 backdrop-blur-xl border border-white/10 rounded-full p-1.5 w-[300px] overflow-hidden">
 
@@ -211,8 +211,7 @@ export function Hero({ mode, setMode }: HeroProps) {
 
 
 
-            <div className="container relative z-10 px-4">
-
+            <div className="container relative z-10 px-4 flex-1 flex flex-col justify-center w-full">
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={mode}
@@ -220,8 +219,9 @@ export function Hero({ mode, setMode }: HeroProps) {
                         animate={{ opacity: 1, filter: "blur(0px)" }}
                         exit={{ opacity: 0, filter: "blur(10px)" }}
                         transition={{ duration: 0.4, ease: "easeOut" }}
-                        // CAMBIO CRÍTICO: Usamos Flex en móvil para controlar mejor el stack, Grid solo en Desktop
-                        className="flex flex-col lg:grid lg:grid-cols-2 gap-0 lg:gap-8 xl:gap-12 items-center w-full"
+                        // CAMBIO: Quitamos el xl:min-h-[600px] asesino de Macs. 
+                        // Dejamos un lg:min-h-[420px] que es perfecto para ambas pantallas.
+                        className="flex flex-col lg:grid lg:grid-cols-2 gap-0 lg:gap-8 xl:gap-12 items-center w-full lg:min-h-[420px]"
                     >
                         {/* 1. TEXT CONTENT (Order 1 en móvil) */}
                         <div className="w-full text-center lg:text-left space-y-8 relative z-30 pt-4 lg:pt-0 order-1">
@@ -306,19 +306,14 @@ export function Hero({ mode, setMode }: HeroProps) {
                         </div>
 
                         {/* 2. VISUAL CONTENT (Order 2 en móvil) */}
-                        <div className={`relative w-full flex items-end justify-center order-2 transition-all duration-500
-                            ${mode === "personal"
-                                ? "h-[50vh] mt-8 lg:mt-0 lg:h-[45vh] xl:h-[550px]"   // PERSONAL
-                                : "h-[55vh] -mt-12 lg:mt-0 lg:h-[45vh] xl:h-[550px]" // EMPRESA
-                            }`}
-                        >
-                            {/* --- GRADIENTE SUPERIOR ELIMINADO --- */}
+                        <div className="relative w-full flex items-center justify-center order-2 transition-all duration-500 mt-8 lg:mt-0 h-[50vh] lg:h-[45vh] xl:h-[55vh] 2xl:h-[70vh]">
 
-                            {/* Deep Space Glow (Este sí lo dejamos porque es el brillo de fondo) */}
+                            {/* Deep Space Glow */}
                             <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] rounded-full blur-[100px] opacity-30 pointer-events-none ${mode === "personal" ? "bg-alfred-green/20" : "bg-alfred-sky/20"}`} />
 
                             <motion.div
-                                className={`relative w-full h-full ${mode === "personal" ? "lg:translate-y-12 lg:-translate-x-16" : ""}`}
+                                // Eliminamos el scale-[] que dañó todo. Solo dejamos el ajuste horizontal para balancear el peso visual.
+                                className={`relative w-full h-full ${mode === "personal" ? "lg:-translate-x-6 xl:-translate-x-16" : ""}`}
                                 initial={{ y: 40, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 transition={{ type: "spring", stiffness: 50 }}
@@ -327,7 +322,8 @@ export function Hero({ mode, setMode }: HeroProps) {
                                     src={mode === "personal" ? "/images/key-visuals/kvPersonas.png" : "/images/key-visuals/kvEmpresas.png"}
                                     alt={mode === "personal" ? "Alfred Personas" : "Alfred Empresas"}
                                     fill
-                                    className={`drop-shadow-2xl ${mode === 'personal' ? 'object-contain object-top' : 'object-contain object-bottom'}`}
+                                    // object-center garantiza que ambas fotos floten exactamente en el mismo centro matemático de la caja
+                                    className="drop-shadow-2xl object-contain object-center"
                                     priority
                                 />
                             </motion.div>

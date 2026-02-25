@@ -40,6 +40,14 @@ export function Nosotros() {
         offset: ["start start", "end end"]
     });
 
+    // Track when the container is in the viewport to safely toggle the fixed logo
+    const { scrollYProgress: intersectionProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    });
+    // Maps intersection progress to opacity: only visible when safely intersecting
+    const logoOpacity = useTransform(intersectionProgress, [0, 0.01, 0.99, 1], [0, 1, 1, 0]);
+
     // Animate Title
     const titleOpacity = useTransform(scrollYProgress, [0, 0.05], [0, 1]);
     const titleY = useTransform(scrollYProgress, [0, 0.05], [20, 0]);
@@ -68,8 +76,11 @@ export function Nosotros() {
 
     return (
         <section ref={containerRef} id="nosotros" className="relative bg-[#111E3E] h-[150vh] lg:h-[180vh] xl:h-[200vh] z-10">
-            {/* Background Watermark - Absolute instead of fixed so it only appears in this section */}
-            <div className="absolute inset-0 pointer-events-none z-0 flex items-center justify-center">
+            {/* True Static Background Logo - Stays glued to viewport but exclusively visible while in this section */}
+            <motion.div
+                style={{ opacity: logoOpacity }}
+                className="fixed inset-0 z-[-1] flex items-center justify-center pointer-events-none"
+            >
                 <div className="relative w-[30vw] h-[30vw] lg:w-[19vw] lg:h-[19vw] opacity-10">
                     <Image
                         src="/blanco.png"
@@ -79,32 +90,30 @@ export function Nosotros() {
                         priority
                     />
                 </div>
-            </div>
+            </motion.div>
 
             {/* Content Wrapper - Using z-20 to be over the logo */}
-            <div className="sticky top-0 h-screen w-full flex flex-col lg:flex-row font-sans z-20 pt-16 lg:pt-0">
+            <div className="sticky top-0 h-[100dvh] w-full flex flex-col lg:flex-row font-sans z-20 overflow-hidden pt-20 lg:pt-0">
 
                 {/* Left Column - Mission/Vision */}
-                <div className="w-full lg:w-[40%] text-white relative flex flex-col justify-start lg:justify-center px-8 lg:px-16 pb-4 lg:pb-0 shrink-0">
-                    {/* CAMBIO: space-y-8 en móvil (antes space-y-4) para dar MUCHO aire entre Misión y Norte */}
-                    <div className="space-y-4 lg:space-y-4 2xl:space-y-10 max-w-xl">
+                <div className="w-full lg:w-[40%] text-white relative z-10 flex flex-col justify-center px-6 lg:px-16 shrink-0 h-[40%] lg:h-full">
+                    <div className="space-y-4 lg:space-y-4 2xl:space-y-8 max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
                         {/* Mission */}
                         <div className="space-y-2 lg:space-y-3">
-                            <span className="block text-[#0096FB] text-[10px] lg:text-sm font-bold tracking-[0.2em] uppercase">
+                            <span className="block text-[#0096FB] text-xs lg:text-sm font-bold tracking-[0.2em] uppercase">
                                 NUESTRA MISIÓN
                             </span>
-                            {/* CAMBIO: leading-snug en móvil (antes tight) para separar líneas */}
-                            <h2 className="text-xl md:text-2xl lg:text-xl xl:text-2xl 2xl:text-4xl font-black leading-snug uppercase condensed">
+                            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black leading-tight uppercase condensed">
                                 Hacer que tener un vehículo sea <span className="text-[#B4FB00]">fácil</span><span>.</span>
                             </h2>
                         </div>
 
                         {/* Vision */}
                         <div className="space-y-2 lg:space-y-3">
-                            <span className="block text-[#0096FB] text-[10px] lg:text-sm font-bold tracking-[0.2em] uppercase">
+                            <span className="block text-[#0096FB] text-xs lg:text-sm font-bold tracking-[0.2em] uppercase">
                                 NUESTRO NORTE
                             </span>
-                            <h2 className="text-xl md:text-2xl lg:text-xl xl:text-2xl 2xl:text-4xl font-black leading-snug uppercase condensed">
+                            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black leading-tight uppercase condensed">
                                 Gestionar 1 millón de vehículos con <span className="text-[#B4FB00]">cero fricción</span><span>.</span>
                             </h2>
                         </div>
@@ -112,21 +121,21 @@ export function Nosotros() {
                 </div>
 
                 {/* Right Column - Values Stacking List */}
-                <div className="w-full lg:w-[60%] relative flex flex-col justify-start lg:justify-center px-8 lg:px-20 pt-4 lg:pt-0 shrink-0">
-                    <div className="max-w-4xl">
+                <div className="w-full lg:w-[60%] relative z-10 flex flex-col justify-start lg:justify-center px-6 lg:px-20 shrink-0 h-[60%] lg:h-full pt-4 lg:pt-0">
+                    <div className="max-w-4xl mx-auto lg:mx-0 w-full">
 
                         {/* Values Title */}
                         <motion.div
                             style={{ opacity: titleOpacity, y: titleY }}
-                            className="mb-4 lg:mb-3" // Un poco más de margen abajo del título
+                            className="mb-3 lg:mb-6 text-center lg:text-left"
                         >
-                            <span className="block text-[#0096FB] text-[10px] lg:text-sm font-bold tracking-[0.2em] uppercase">
+                            <span className="block text-[#0096FB] text-xs lg:text-sm font-bold tracking-[0.2em] uppercase">
                                 LO QUE NOS MUEVE
                             </span>
                         </motion.div>
 
                         {/* Values List */}
-                        <div className="space-y-2 lg:space-y-2 xl:space-y-4 2xl:space-y-8">
+                        <div className="space-y-3 lg:space-y-4 xl:space-y-6 2xl:space-y-8">
                             {manifestoItems.map((item, index) => (
                                 <motion.div
                                     key={item.id}
@@ -137,10 +146,9 @@ export function Nosotros() {
                                     className="flex items-start gap-4 lg:gap-6"
                                 >
                                     {/* Indicator Line */}
-                                    <div className="mt-2 lg:mt-4 2xl:mt-6 w-6 lg:w-12 2xl:w-16 h-[2px] bg-[#B4FB00] flex-shrink-0 shadow-[0_0_10px_#B4FB00]" />
+                                    <div className="mt-2 lg:mt-3 2xl:mt-4 w-6 lg:w-10 2xl:w-12 h-[2px] bg-[#B4FB00] flex-shrink-0 shadow-[0_0_10px_#B4FB00]" />
 
-                                    {/* CAMBIO: leading-snug para dar aire al texto */}
-                                    <h3 className="text-xs lg:text-base xl:text-xl 2xl:text-3xl font-bold leading-snug text-white">
+                                    <h3 className="text-base sm:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl font-bold leading-tight text-white">
                                         {item.text}
                                         <span className="inline-block">
                                             <span className="text-[#B4FB00]">{item.highlight}</span>
@@ -154,15 +162,14 @@ export function Nosotros() {
                         {/* Recruiting Hook */}
                         <motion.div
                             style={{ opacity: recruitingOpacity, y: recruitingY }}
-                            className="mt-4 lg:mt-4 2xl:mt-12 pt-4 lg:pt-4 border-t border-white/10"
+                            className="mt-6 lg:mt-8 2xl:mt-12 pt-4 lg:pt-6 border-t border-white/10 text-center lg:text-left"
                         >
-                            {/* ... resto del botón igual ... */}
-                            <h4 className="text-[10px] lg:text-lg xl:text-xl font-bold text-white mb-2 lg:mb-4 leading-tight">
+                            <h4 className="text-sm md:text-base lg:text-xl xl:text-2xl font-bold text-white mb-3 lg:mb-4 leading-tight">
                                 ¿Compartes este ADN? <span className="text-white/40 block lg:inline">No busques empleo, busca una misión.</span>
                             </h4>
                             <Link
                                 href="/careers"
-                                className="inline-block border border-[#B4FB00] text-[#B4FB00] hover:bg-[#B4FB00] hover:text-[#111E3E] text-[10px] lg:text-sm font-bold px-4 lg:px-8 py-2 md:py-3 rounded-full transition-all duration-300 transform hover:scale-105"
+                                className="inline-block border border-[#B4FB00] text-[#B4FB00] hover:bg-[#B4FB00] hover:text-[#111E3E] text-xs lg:text-base font-bold px-6 lg:px-8 py-2.5 md:py-3 rounded-full transition-all duration-300 transform hover:scale-105"
                             >
                                 Unirse al Equipo
                             </Link>

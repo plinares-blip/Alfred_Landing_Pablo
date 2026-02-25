@@ -67,7 +67,7 @@ export function B2BLeadForm() {
     };
 
     return (
-        <section id="contacto" className="relative w-full bg-[#111E3E] py-24 lg:py-32 overflow-hidden selection:bg-alfred-lime selection:text-alfred-navy">
+        <section id="contacto" className="relative z-20 w-full bg-[#111E3E] py-24 lg:py-32 overflow-hidden selection:bg-alfred-lime selection:text-alfred-navy">
             <div className="container mx-auto px-4 lg:px-12 xl:px-24">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
 
