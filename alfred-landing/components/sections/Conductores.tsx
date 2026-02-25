@@ -7,7 +7,7 @@ import { DOWNLOAD_LINK } from '@/lib/constants';
 
 export function Conductores() {
     return (
-        <section id="conductores" className="relative w-full bg-[#111E3E] overflow-hidden min-h-screen lg:min-h-[550px] xl:min-h-[900px] flex flex-col justify-end lg:justify-center">
+        <section id="conductores" className="relative w-full bg-[#111E3E] overflow-hidden h-screen flex flex-col justify-end lg:justify-center">
 
             {/* 1. EL FONDO (Fusión, no división) - Desktop & Mobile */}
             <div className="absolute inset-0 z-0">
