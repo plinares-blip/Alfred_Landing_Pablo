@@ -248,11 +248,11 @@ export function B2BLeadForm() {
                                     )}
 
                                     {/* Submit Botón Terminal */}
-                                    {/* Full Width, Neon Lime, No Radius o Border minimalista */}
+                                    {/* Full Width, Neon Lime, Rounded Full to match landing buttons */}
                                     <button
                                         type="submit"
                                         disabled={isSubmitting}
-                                        className="w-full mt-6 flex items-center justify-center p-6 bg-[#B4FB00] text-black hover:bg-white hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(180,251,0,0.4)] transition-all duration-300 group disabled:opacity-50 disabled:cursor-not-allowed"
+                                        className="w-full mt-6 flex items-center justify-center p-6 bg-[#B4FB00] rounded-full text-black hover:bg-white hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(180,251,0,0.4)] transition-all duration-300 group disabled:opacity-50 disabled:cursor-not-allowed"
                                         style={{ fontFamily: "var(--font-gotham), sans-serif" }}
                                     >
                                         {isSubmitting ? (

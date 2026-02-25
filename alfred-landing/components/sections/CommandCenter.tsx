@@ -94,17 +94,17 @@ export function CommandCenter() {
     const isAtEnd = activeIndex === features.length - 1;
 
     return (
-        <section id="soluciones-flota" className="py-16 lg:py-8 xl:py-16 bg-[#111E3E] relative overflow-hidden">
+        <section id="soluciones-flota" className="py-8 xl:py-12 2xl:py-16 h-screen flex flex-col justify-center bg-[#111E3E] relative overflow-hidden">
             <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-[#B4FB00]/5 blur-[120px] rounded-full pointer-events-none" />
 
             <div className="container mx-auto px-4 relative z-10">
                 {/* Header */}
-                <div className="text-center max-w-4xl mx-auto mb-10 lg:mb-12 xl:mb-16 space-y-4">
+                <div className="text-center max-w-4xl mx-auto mb-6 xl:mb-4 2xl:mb-16 space-y-2 xl:space-y- 2xl:space-y-4">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-4xl md:text-7xl lg:text-4xl xl:text-6xl font-black text-white leading-tight"
+                        className="text-4xl md:text-7xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black text-white leading-tight"
                     >
                         El Sistema Operativo <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">
@@ -117,8 +117,8 @@ export function CommandCenter() {
                 </div>
 
                 {/* DESKTOP VIEW (Intacto) */}
-                <div className="hidden lg:grid lg:grid-cols-12 gap-12 items-stretch max-w-7xl mx-auto">
-                    <div className="lg:col-span-5 flex flex-col justify-center gap-2">
+                <div className="hidden lg:grid lg:grid-cols-12 gap-6 xl:gap-8 2xl:gap-12 items-stretch max-w-7xl mx-auto w-full">
+                    <div className="lg:col-span-6 2xl:col-span-5 flex flex-col justify-center gap-2">
                         {features.map((feature, idx) => {
                             const isActive = activeIndex === idx;
                             const Icon = feature.icon;
@@ -126,8 +126,7 @@ export function CommandCenter() {
                                 <button
                                     key={feature.id}
                                     onClick={() => setActiveIndex(idx)}
-                                    className={cn(
-                                        "w-full text-left p-4 lg:p-3 xl:p-4 rounded-2xl transition-all duration-500 group relative flex items-center gap-6 lg:gap-4 xl:gap-6",
+                                    className={cn("w-full text-left p-4 lg:p-2 xl:py-1.5 xl:px-4 2xl:p-4 rounded-2xl transition-all duration-500 group relative flex items-center gap-4 2xl:gap-6",
                                         isActive ? "bg-white/5 border border-white/10 shadow-2xl" : "hover:bg-white/5 border border-transparent"
                                     )}
                                 >
@@ -146,14 +145,14 @@ export function CommandCenter() {
                             );
                         })}
                     </div>
-                    <div className="lg:col-span-7 relative group mt-8 lg:mt-0 flex flex-col">
+                    <div className="lg:col-span-6 2xl:col-span-7 relative group mt-8 lg:mt-0 flex flex-col justify-center">
                         <div className="relative rounded-[2rem] border border-white/10 bg-[#0B1226] p-4 shadow-2xl backdrop-blur-xl flex flex-col flex-1">
                             <div className="flex items-center gap-2 mb-4 px-4">
                                 <div className="w-3 h-3 rounded-full bg-red-500/50" />
                                 <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
                                 <div className="w-3 h-3 rounded-full bg-green-500/50" />
                             </div>
-                            <div className="relative rounded-2xl overflow-hidden border border-white/5 flex-1 min-h-[300px]">
+                            <div className="relative rounded-2xl overflow-hidden border border-white/5 w-full aspect-[16/10] 2xl:aspect-auto 2xl:flex-1 2xl:min-h-[400px]">
                                 <AnimatePresence mode="wait">
                                     <motion.div
                                         key={activeIndex}

@@ -5,7 +5,11 @@ import { motion } from "framer-motion";
 import NextImage from "next/image";
 import { DOWNLOAD_LINK } from '@/lib/constants';
 
-export function Conductores() {
+interface ConductoresProps {
+    mode?: "personal" | "business";
+}
+
+export function Conductores({ mode = "personal" }: ConductoresProps) {
     return (
         <section id="conductores" className="relative w-full bg-[#111E3E] overflow-hidden h-screen flex flex-col justify-end lg:justify-center">
 
@@ -98,35 +102,53 @@ export function Conductores() {
 
                         {/* EL GATILLO - Zona del pulgar Mobile */}
                         <div className="w-full lg:w-auto flex flex-col items-center">
-                            <motion.a
-                                href={DOWNLOAD_LINK}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="group relative inline-flex items-center justify-center gap-4 px-10 py-5 bg-[#B4FB00] rounded-full w-full lg:min-w-[320px] shadow-[0_10px_40px_rgba(180,251,0,0.2)] hover:shadow-[0_15px_60px_rgba(180,251,0,0.4)] transition-all duration-300 overflow-hidden"
-                            >
-                                <span className="relative z-10 text-[#111E3E] font-black text-sm md:text-base uppercase tracking-widest">
-                                    Pedir un Alfred
-                                </span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-[#111E3E] relative z-10 group-hover:translate-x-1 transition-transform">
-                                    <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
-                                </svg>
-                                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                            </motion.a>
+                            {mode === "business" ? (
+                                <motion.button
+                                    onClick={() => document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })}
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    className="group relative inline-flex items-center justify-center gap-4 px-10 py-5 bg-[#B4FB00] rounded-full w-full lg:min-w-[320px] shadow-[0_10px_40px_rgba(180,251,0,0.2)] hover:shadow-[0_15px_60px_rgba(180,251,0,0.4)] transition-all duration-300 overflow-hidden cursor-pointer border-none"
+                                >
+                                    <span className="relative z-10 text-[#111E3E] font-black text-sm md:text-base uppercase tracking-widest">
+                                        Agenda tu Demo
+                                    </span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-[#111E3E] relative z-10 group-hover:translate-x-1 transition-transform">
+                                        <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+                                    </svg>
+                                </motion.button>
+                            ) : (
+                                <motion.a
+                                    href={DOWNLOAD_LINK}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    className="group relative inline-flex items-center justify-center gap-4 px-10 py-5 bg-[#B4FB00] rounded-full w-full lg:min-w-[320px] shadow-[0_10px_40px_rgba(180,251,0,0.2)] hover:shadow-[0_15px_60px_rgba(180,251,0,0.4)] transition-all duration-300 overflow-hidden"
+                                >
+                                    <span className="relative z-10 text-[#111E3E] font-black text-sm md:text-base uppercase tracking-widest">
+                                        Pedir un Alfred
+                                    </span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-[#111E3E] relative z-10 group-hover:translate-x-1 transition-transform">
+                                        <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+                                    </svg>
+                                    <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                                </motion.a>
+                            )}
 
                             {/* Contenedor de tiendas alineado con el botón */}
-                            <div className="mt-8 flex flex-col items-center gap-4 w-full">
-                                <div className="relative w-60 h-10 transition-transform duration-300 hover:scale-105">
-                                    <NextImage
-                                        src="/images/qr/tienda.png"
-                                        alt="App Store & Google Play"
-                                        fill
-                                        className="object-contain object-center"
-                                        priority
-                                    />
+                            {mode !== "business" && (
+                                <div className="mt-8 flex flex-col items-center gap-4 w-full">
+                                    <div className="relative w-60 h-10 transition-transform duration-300 hover:scale-105">
+                                        <NextImage
+                                            src="/images/qr/tienda.png"
+                                            alt="App Store & Google Play"
+                                            fill
+                                            className="object-contain object-center"
+                                            priority
+                                        />
+                                    </div>
                                 </div>
-                            </div>
+                            )}
                         </div>
                     </div>
 

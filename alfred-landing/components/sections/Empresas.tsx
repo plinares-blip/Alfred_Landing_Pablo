@@ -34,7 +34,7 @@ export function Empresas() {
             <WorkshopCertification />
 
             {/* 8. Conductores */}
-            <Conductores />
+            <Conductores mode="business" />
 
             {/* 9. Reconocimientos de industria + Powered by Alfred */}
             <IndustryRecognition />

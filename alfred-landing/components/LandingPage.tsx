@@ -44,7 +44,7 @@ export function LandingPage() {
                         <Personas />
                         <Servicios mode="personal" />
                         <WorkshopCertification />
-                        <Conductores />
+                        <Conductores mode="personal" />
                         <Convenios mode="personal" />
                         <SupportStrip />
                         <Nosotros />
