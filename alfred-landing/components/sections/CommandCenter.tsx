@@ -18,7 +18,7 @@ const features = [
     {
         id: "centralizacion",
         title: "Centralización",
-        sub: "Todo en un lugar",
+        sub: "Costos, mantenimientos, hoja de vida del vehículo, todo en un solo lugar.",
         icon: LayoutDashboard,
         image: "/images/saas_features/centralizacion_radical.jpeg"
     },
@@ -31,7 +31,7 @@ const features = [
     },
     {
         id: "error-humano",
-        title: "Sin Errores",
+        title: "Notificaciones",
         sub: "Alfred te acuerda. Alertas preventivas antes de que un descuido te cueste.",
         icon: ShieldAlert,
         image: "/images/saas_features/Fin_Error_Humano.jpeg"
@@ -45,7 +45,7 @@ const features = [
     },
     {
         id: "gps",
-        title: "GPS",
+        title: "Rastreo",
         sub: "Rastreo satelital integrado. Controla rutas, tiempos y evita desvíos no autorizados.",
         icon: MapPin,
         image: "/images/saas_features/GPS_mode.jpeg"

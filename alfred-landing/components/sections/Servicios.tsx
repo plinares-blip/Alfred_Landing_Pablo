@@ -14,7 +14,7 @@ const services = [
         icon: "/images/icono_servicios/mecanica.png",
         glow: "rgba(34, 211, 238, 0.4)", // Cyan
         gridClass: "md:col-span-8 md:row-span-2",
-        iconClass: "w-[40%] h-[40%] lg:w-[25%] lg:h-[25%] xl:w-[35%] xl:h-[35%] right-4 bottom-4 drop-shadow-2xl",
+        iconClass: "w-24 h-24 lg:w-32 lg:h-32 xl:w-40 xl:h-40 right-6 bottom-6 drop-shadow-2xl",
         delay: 0,
     },
     {
@@ -25,7 +25,7 @@ const services = [
         icon: "/images/icono_servicios/lavado.png",
         glow: "rgba(251, 191, 36, 0.4)", // Amber
         gridClass: "md:col-span-4 md:row-span-1",
-        iconClass: "w-[40%] h-[40%] lg:w-[25%] lg:h-[25%] xl:w-[35%] xl:h-[35%] right-4 bottom-4 drop-shadow-2xl",
+        iconClass: "w-24 h-24 lg:w-32 lg:h-32 xl:w-40 xl:h-40 right-6 bottom-6 drop-shadow-2xl",
         delay: 0.1,
     },
     {
@@ -36,7 +36,7 @@ const services = [
         icon: "/images/icono_servicios/tramites.png",
         glow: "rgba(59, 130, 246, 0.4)", // Blue
         gridClass: "md:col-span-4 md:row-span-1",
-        iconClass: "w-[40%] h-[40%] lg:w-[25%] lg:h-[25%] xl:w-[35%] xl:h-[35%] right-4 bottom-4 drop-shadow-2xl",
+        iconClass: "w-24 h-24 lg:w-32 lg:h-32 xl:w-40 xl:h-40 right-6 bottom-6 drop-shadow-2xl",
         delay: 0.2,
     },
     {
@@ -47,7 +47,7 @@ const services = [
         icon: "/images/icono_servicios/pintura.png",
         glow: "rgba(168, 85, 247, 0.4)", // Purple
         gridClass: "md:col-span-6 md:row-span-1",
-        iconClass: "w-[40%] h-[40%] lg:w-[25%] lg:h-[25%] xl:w-[35%] xl:h-[35%] right-4 bottom-4 drop-shadow-2xl",
+        iconClass: "w-24 h-24 lg:w-32 lg:h-32 xl:w-40 xl:h-40 right-6 bottom-6 drop-shadow-2xl",
         delay: 0.3,
     },
     {
@@ -58,7 +58,7 @@ const services = [
         icon: "/images/icono_servicios/preventivo.png",
         glow: "rgba(251, 191, 36, 0.4)", // Amber
         gridClass: "md:col-span-6 md:row-span-1",
-        iconClass: "w-[40%] h-[40%] lg:w-[25%] lg:h-[25%] xl:w-[35%] xl:h-[35%] right-4 bottom-4 drop-shadow-2xl",
+        iconClass: "w-24 h-24 lg:w-32 lg:h-32 xl:w-40 xl:h-40 right-6 bottom-6 drop-shadow-2xl",
         delay: 0.4,
     },
 ];

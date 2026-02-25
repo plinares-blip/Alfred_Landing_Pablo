@@ -796,6 +796,20 @@ export function Convenios({ mode }: ConveniosProps) {
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
+    // Freeze body scroll when modal is open
+    useEffect(() => {
+        if (showModal) {
+            document.body.classList.add("overflow-hidden");
+        } else {
+            document.body.classList.remove("overflow-hidden");
+        }
+
+        // Cleanup in case component unmounts while modal is open
+        return () => {
+            document.body.classList.remove("overflow-hidden");
+        };
+    }, [showModal]);
+
 
     return (
 
@@ -1258,13 +1272,13 @@ export function Convenios({ mode }: ConveniosProps) {
 
 
                                     {/* Modal Card */}
-
                                     <motion.div
                                         initial={{ scale: 0.9, y: 20 }}
                                         animate={{ scale: 1, y: 0 }}
                                         exit={{ scale: 0.9, y: 20 }}
                                         onClick={(e) => e.stopPropagation()}
-                                        className="relative bg-alfred-navy border border-white/10 rounded-3xl p-5 md:p-8 max-w-xl w-full max-h-[85vh] shadow-2xl overflow-y-auto custom-scrollbar"
+                                        // CAMBIO: Reducimos padding (p-4) para Mac y 2xl se queda con p-8
+                                        className="relative bg-alfred-navy border border-white/10 rounded-3xl p-4 md:p-5 2xl:p-8 max-w-lg 2xl:max-w-xl w-full max-h-[90vh] 2xl:max-h-[85vh] shadow-2xl overflow-y-auto overflow-x-hidden custom-scrollbar"
                                     >
                                         {/* Glow accent */}
                                         <div
@@ -1275,20 +1289,21 @@ export function Convenios({ mode }: ConveniosProps) {
                                         {/* Close button */}
                                         <button
                                             onClick={() => setShowModal(false)}
-                                            className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-20"
+                                            className="absolute top-3 right-3 2xl:top-4 2xl:right-4 p-1.5 2xl:p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-20"
                                         >
-                                            <X size={18} className="text-white/70" />
+                                            <X className="text-white/70 w-4 h-4 2xl:w-5 2xl:h-5" />
                                         </button>
 
                                         <div className="relative z-10">
                                             {/* Header */}
-                                            <h3 className="text-xl md:text-2xl lg:text-3xl font-black text-white mb-1">
+                                            {/* CAMBIO: Achicamos mb y leading en Mac */}
+                                            <h3 className="text-xl md:text-2xl 2xl:text-3xl font-black text-white mb-0.5 2xl:mb-1 leading-tight">
                                                 Cómo activar tu{' '}
                                                 <span style={{ color: selectedInsurer.color }}>
                                                     {selectedInsurer.name} Prime
                                                 </span>
                                             </h3>
-                                            <p className="text-white/50 text-[11px] md:text-sm mb-6">Sigue estos pasos en la app de Alfred</p>
+                                            <p className="text-white/50 text-[11px] md:text-xs 2xl:text-sm mb-3 2xl:mb-6">Sigue estos pasos en la app de Alfred</p>
 
                                             {/* Steps Timeline */}
                                             <div className="space-y-0">
@@ -1310,42 +1325,44 @@ export function Convenios({ mode }: ConveniosProps) {
                                                         initial={{ opacity: 0, x: -20 }}
                                                         animate={{ opacity: 1, x: 0 }}
                                                         transition={{ delay: 0.1 + (idx * 0.08) }}
-                                                        className="flex items-start gap-4 md:gap-5"
+                                                        className="flex items-start gap-3 md:gap-4 2xl:gap-5"
                                                     >
                                                         {/* Timeline connector */}
                                                         <div className="flex flex-col items-center">
                                                             <div
-                                                                className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center border-2 flex-shrink-0"
+                                                                className="w-8 h-8 md:w-10 md:h-10 2xl:w-12 2xl:h-12 rounded-full flex items-center justify-center border-2 flex-shrink-0"
                                                                 style={{
                                                                     borderColor: selectedInsurer.color,
                                                                     backgroundColor: `${selectedInsurer.color}15`
                                                                 }}
                                                             >
-                                                                <step.icon color={selectedInsurer.color} />
+                                                                <step.icon color={selectedInsurer.color} className="w-4 h-4 md:w-5 md:h-5 2xl:w-6 2xl:h-6" />
                                                             </div>
                                                             {idx < array.length - 1 && (
                                                                 <div
-                                                                    className="w-[2px] h-10 md:h-14 mt-1"
+                                                                    className="w-[2px] h-6 md:h-8 2xl:h-14 mt-1"
                                                                     style={{ backgroundColor: `${selectedInsurer.color}30` }}
                                                                 />
                                                             )}
                                                         </div>
 
                                                         {/* Step content */}
-                                                        <div className="flex-1 pb-4 md:pb-8">
-                                                            <h5 className="font-bold text-white text-base md:text-lg flex items-center gap-2">
+                                                        <div className="flex-1 pb-2 md:pb-3 2xl:pb-8">
+                                                            <h5 className="font-bold text-white text-sm md:text-base 2xl:text-lg flex items-center gap-2">
                                                                 Paso {idx + 1}: {step.title}
                                                                 {step.dynamic && (
                                                                     <NextImage
                                                                         src={selectedInsurer.logo}
                                                                         alt={selectedInsurer.name}
-                                                                        width={50}
-                                                                        height={20}
-                                                                        className="object-contain"
+                                                                        width={40}
+                                                                        height={16}
+                                                                        className="object-contain w-[40px] 2xl:w-[50px]"
                                                                     />
                                                                 )}
                                                             </h5>
-                                                            <p className="text-[11px] md:text-sm text-white/50 mt-0.5 md:mt-1 leading-relaxed">{step.text}</p>
+                                                            <p className="text-[10px] md:text-[11px] 2xl:text-sm text-white/50 mt-0.5 2xl:mt-1 leading-tight 2xl:leading-relaxed">
+                                                                {step.text}
+                                                            </p>
                                                         </div>
                                                     </motion.div>
                                                 ))}
@@ -1354,7 +1371,8 @@ export function Convenios({ mode }: ConveniosProps) {
                                             {/* CTA Button */}
                                             <Button
                                                 size="lg"
-                                                className="w-full mt-2 bg-alfred-lime text-alfred-navy font-black py-5 md:py-6 rounded-xl text-sm md:text-base hover:scale-[1.02] transition-transform"
+                                                // CAMBIO: mt-1 y py-2.5 para Mac
+                                                className="w-full mt-1 2xl:mt-2 bg-alfred-lime text-alfred-navy font-black py-2.5 md:py-3 2xl:py-6 rounded-xl text-sm md:text-base hover:scale-[1.02] transition-transform"
                                                 onClick={() => setShowModal(false)}
                                             >
                                                 Entendido, Ir a la App
