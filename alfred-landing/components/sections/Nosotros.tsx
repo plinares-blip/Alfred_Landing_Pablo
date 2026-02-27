@@ -97,13 +97,13 @@ export function Nosotros() {
 
                 {/* Left Column - Mission/Vision */}
                 <div className="w-full lg:w-[40%] text-white relative z-10 flex flex-col justify-center px-6 lg:px-16 shrink-0 h-[40%] lg:h-full">
-                    <div className="space-y-4 lg:space-y-4 2xl:space-y-8 max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
+                    <div className="space-y-3 xl:space-y-2 2xl:space-y-8 max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
                         {/* Mission */}
                         <div className="space-y-2 lg:space-y-3">
                             <span className="block text-[#0096FB] text-xs lg:text-sm font-bold tracking-[0.2em] uppercase">
                                 NUESTRA MISIÓN
                             </span>
-                            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black leading-tight uppercase condensed">
+                            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-5xl font-black leading-tight uppercase condensed">
                                 Hacer que tener un vehículo sea <span className="text-[#B4FB00]">fácil</span><span>.</span>
                             </h2>
                         </div>
@@ -113,7 +113,7 @@ export function Nosotros() {
                             <span className="block text-[#0096FB] text-xs lg:text-sm font-bold tracking-[0.2em] uppercase">
                                 NUESTRO NORTE
                             </span>
-                            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black leading-tight uppercase condensed">
+                            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-5xl font-black leading-tight uppercase condensed">
                                 Gestionar 1 millón de vehículos con <span className="text-[#B4FB00]">cero fricción</span><span>.</span>
                             </h2>
                         </div>
@@ -135,7 +135,7 @@ export function Nosotros() {
                         </motion.div>
 
                         {/* Values List */}
-                        <div className="space-y-3 lg:space-y-4 xl:space-y-6 2xl:space-y-8">
+                        <div className="space-y-3 lg:space-y-4 xl:space-y-3 2xl:space-y-8">
                             {manifestoItems.map((item, index) => (
                                 <motion.div
                                     key={item.id}
@@ -148,7 +148,7 @@ export function Nosotros() {
                                     {/* Indicator Line */}
                                     <div className="mt-2 lg:mt-3 2xl:mt-4 w-6 lg:w-10 2xl:w-12 h-[2px] bg-[#B4FB00] flex-shrink-0 shadow-[0_0_10px_#B4FB00]" />
 
-                                    <h3 className="text-base sm:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl font-bold leading-tight text-white">
+                                    <h3 className="text-base sm:text-lg lg:text-xl xl:text-xl 2xl:text-3xl font-bold leading-tight text-white">
                                         {item.text}
                                         <span className="inline-block">
                                             <span className="text-[#B4FB00]">{item.highlight}</span>
@@ -162,7 +162,7 @@ export function Nosotros() {
                         {/* Recruiting Hook */}
                         <motion.div
                             style={{ opacity: recruitingOpacity, y: recruitingY }}
-                            className="mt-6 lg:mt-8 2xl:mt-12 pt-4 lg:pt-6 border-t border-white/10 text-center lg:text-left"
+                            className="mt-6 lg:mt-8 xl:mt-5 2xl:mt-12 pt-4 lg:pt-6 xl:pt-3 2xl:pt-6 border-t border-white/10 text-center lg:text-left"
                         >
                             <h4 className="text-sm md:text-base lg:text-xl xl:text-2xl font-bold text-white mb-3 lg:mb-4 leading-tight">
                                 ¿Compartes este ADN? <span className="text-white/40 block lg:inline">No busques empleo, busca una misión.</span>

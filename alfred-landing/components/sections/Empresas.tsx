@@ -12,29 +12,29 @@ import { B2BLeadForm } from "@/components/sections/B2BLeadForm";
 export function Empresas() {
     return (
         <div className="space-y-0 bg-[#111E3E]">
-            {/* 1. Cards de casos de éxito */}
-            <ImpactCards />
-
-            {/* 2. Blocks: Talleres, Cobertura, Servicios */}
-            <TrackRecord />
-
-            {/* 3. Río "Clientes que confían en nosotros" */}
+            {/* 1. Río "Clientes que confían en nosotros" */}
             <ClientMarquee />
 
-            {/* 4. Matemáticas de ahorro */}
-            <ROICalculatorHook />
-
-            {/* 5. Features del SaaS */}
+            {/* 2. Features del SaaS */}
             <CommandCenter />
+
+            {/* 3. Blocks: Talleres, Cobertura, Servicios (inside SaaS & Control spy) */}
+            <TrackRecord />
+
+            {/* 4. Cards de casos de éxito */}
+            <ImpactCards />
+
+            {/* 5. Matemáticas de ahorro */}
+            <ROICalculatorHook />
 
             {/* 6. Servicios */}
             <Servicios mode="business" />
 
-            {/* 7. Workshop Certification */}
-            <WorkshopCertification />
-
-            {/* 8. Conductores */}
+            {/* 7. Conductores */}
             <Conductores mode="business" />
+
+            {/* 8. Workshop Certification */}
+            <WorkshopCertification />
 
             {/* 9. Reconocimientos de industria + Powered by Alfred */}
             <IndustryRecognition />

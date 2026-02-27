@@ -29,8 +29,9 @@ const navLinks = {
         { name: "ADN", href: "#nosotros", targetIds: ["nosotros", "casos-exito"] },
     ],
     business: [
+        { name: "SaaS & Control", href: "#soluciones-flota", targetIds: ["soluciones-flota"] },
         { name: "Impacto & ROI", href: "#impacto", targetIds: ["impacto", "roi-calculator"] },
-        { name: "Soluciones", href: "#soluciones-flota", targetIds: ["soluciones-flota", "servicios", "command-center", "workshop-certification", "conductores"] },
+        { name: "Servicios Operativos", href: "#servicios", targetIds: ["servicios", "workshop-certification", "conductores"] },
         { name: "ADN", href: "#nosotros", targetIds: ["nosotros"] },
     ],
     alianzas: [

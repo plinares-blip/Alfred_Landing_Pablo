@@ -14,7 +14,7 @@ import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import NextImage from "next/image";
 
 import { ContactForm } from "@/components/forms/ContactForm";
-
+import { DOWNLOAD_LINK } from "@/lib/constants";
 
 
 const partners = [
@@ -1243,6 +1243,22 @@ export function Convenios({ mode }: ConveniosProps) {
 
                         </div>
 
+                        {/* B2B Trojan Horse — subtle cross-sell link */}
+                        <div className="flex justify-center mt-16 lg:mt-20">
+                            <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
+                                <span className="text-sm text-white/50 font-medium">¿Quieres ver el logo de tu empresa aquí?</span>
+                                <button
+                                    onClick={() => {
+                                        const el = document.getElementById("contacto");
+                                        if (el) el.scrollIntoView({ behavior: "smooth" });
+                                    }}
+                                    className="text-sm text-white font-bold ml-0 sm:ml-2 hover:text-[#B4FB00] transition-colors cursor-pointer"
+                                >
+                                    Explorar Convenios Corporativos ↗
+                                </button>
+                            </div>
+                        </div>
+
 
 
                         {/* ACTIVATION WALKTHROUGH MODAL */}
@@ -1370,14 +1386,21 @@ export function Convenios({ mode }: ConveniosProps) {
                                             </div>
 
                                             {/* CTA Button */}
-                                            <Button
-                                                size="lg"
-                                                // CAMBIO: mt-1 y py-2.5 para Mac
-                                                className="w-full mt-1 2xl:mt-2 bg-alfred-lime text-alfred-navy font-black py-2.5 md:py-3 2xl:py-6 rounded-xl text-sm md:text-base hover:scale-[1.02] transition-transform"
+                                            <a
+                                                href={DOWNLOAD_LINK}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="w-full block mt-1 2xl:mt-2"
                                                 onClick={() => setShowModal(false)}
                                             >
-                                                Entendido, Ir a la App
-                                            </Button>
+                                                <Button
+                                                    size="lg"
+                                                    // CAMBIO: mt-1 y py-2.5 para Mac
+                                                    className="w-full bg-alfred-lime text-alfred-navy font-black py-2.5 md:py-3 2xl:py-6 rounded-xl text-sm md:text-base hover:scale-[1.02] transition-transform"
+                                                >
+                                                    Entendido, Ir a la App
+                                                </Button>
+                                            </a>
                                         </div>
                                     </motion.div>
 

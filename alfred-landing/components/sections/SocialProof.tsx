@@ -327,7 +327,7 @@ export function ClientMarquee() {
     const [isPaused, setIsPaused] = useState(false);
 
     return (
-        <section className="relative py-12 lg:py-16 xl:py-16 overflow-hidden bg-[#111E3E]">
+        <section id="clientes-marquee" className="relative py-12 lg:py-16 xl:py-16 overflow-hidden bg-[#111E3E]">
             <div className="relative">
                 <div className="container mx-auto px-4 mb-8">
                     <div className="flex flex-col items-center gap-4">

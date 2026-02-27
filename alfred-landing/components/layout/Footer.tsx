@@ -131,8 +131,8 @@ export function Footer() {
                             title="Empresa"
                             links={[
                                 { label: "Nosotros", href: "#nosotros" },
-                                { label: "Carreras", href: "#" },
-                                { label: "Alianzas Corporativas", href: "#", isSpecial: true }
+                                { label: "Carreras", href: "/careers" },
+                                { label: "Alianzas Corporativas", href: "/careers" }
                             ]}
                         />
 

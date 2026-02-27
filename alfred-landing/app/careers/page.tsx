@@ -14,32 +14,32 @@ const coreValues = [
     {
         id: "v1",
         title: "Aprendemos todo el día.",
-        description: "El ego se queda en la puerta. Buscamos la verdad, no tener la razón.",
-        visual: "/images/key-visuals/kvEmpresas.png" // Using existing image as placeholder
+        description: "Aquí nadie viene a demostrar que sabe más, sino a entender mejor. Nos importa encontrar la mejor respuesta, aunque no sea la nuestra.",
+        visual: "/images/careers/aprendemos.png" // Using existing image as placeholder
     },
     {
         id: "v2",
         title: "Hacemos las cosas bien, con el corazón.",
-        description: "Artesanía en el código y en el servicio. Si lo tocamos, lo mejoramos.",
-        visual: "/images/key-visuals/kvPersonas.png"
+        description: "Si algo lleva nuestro nombre, tiene que estar bien hecho. Ya sea una línea de código o una llamada a un cliente, dejamos las cosas mejor de como las encontramos.",
+        visual: "/images/careers/hacemos.png"
     },
     {
         id: "v3",
         title: "Nadie es culpable, todos somos responsables.",
-        description: "Atacamos los problemas, no a las personas. Somos un solo equipo.",
-        visual: "/images/convenios_3d_phones.png"
+        description: "Nos sentamos, lo entendemos y lo resolvemos juntos. Somos un equipo, y eso se nota en los momentos difíciles.",
+        visual: "/images/careers/responsables.png"
     },
     {
         id: "v4",
         title: "Medimos, analizamos y tomamos decisiones.",
-        description: "La data mata a la opinión. Todo experimento genera aprendizaje.",
-        visual: "/images/logos/alfred_connect.png"
+        description: "La data decide. Probamos, medimos, aprendemos y ajustamos. Si algo no funciona, lo cambiamos; si funciona, lo escalamos.",
+        visual: "/images/careers/medimos.png"
     },
     {
         id: "v5",
         title: "Priorizamos el largo plazo.",
-        description: "Construimos catedrales, no carpas. Visión a décadas, ejecución diaria.",
-        visual: "/images/qr/codigo.webp"
+        description: "Hacemos las cosas bien desde el principio, aunque tome más esfuerzo hoy. Pensamos en grande y trabajamos, todos los días.",
+        visual: "/images/careers/plazo.png"
     }
 ];
 

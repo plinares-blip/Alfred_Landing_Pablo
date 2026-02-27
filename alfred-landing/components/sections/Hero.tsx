@@ -283,7 +283,7 @@ export function Hero({ mode, setMode }: HeroProps) {
                                         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
                                             <Button
                                                 size="lg"
-                                                onClick={() => document.getElementById("soluciones-flota")?.scrollIntoView({ behavior: "smooth" })}
+                                                onClick={() => document.getElementById("clientes-marquee")?.scrollIntoView({ behavior: "smooth" })}
                                                 className="w-full sm:w-auto h-14 sm:h-16 px-8 sm:px-12 text-lg sm:text-xl font-bold rounded-full shadow-2xl transition-all duration-500 bg-alfred-sky text-white shadow-[0_0_40px_rgba(0,150,251,0.4)] hover:shadow-[0_0_60px_rgba(0,150,251,0.6)] hover:bg-alfred-blue"
                                             >
                                                 Tengo Flota
