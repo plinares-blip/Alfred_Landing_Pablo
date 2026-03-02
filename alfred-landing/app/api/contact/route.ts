@@ -13,10 +13,34 @@ export async function POST(request: Request) {
             );
         }
 
-        const webhookUrl = process.env.SLACK_WEBHOOK_URL;
+        // ==========================================
+        // 🚥 EL SEMÁFORO: Elegir el Webhook correcto
+        // ==========================================
+        const sourceLower = (source || '').toLowerCase();
+
+        // Empezamos asumiendo que es Empresas por defecto (fallback)
+        let webhookUrl = process.env.SLACK_WEBHOOK_EMPRESAS;
+
+        // 1. TALLERES o ALIADOS
+        if (sourceLower.includes('aliado') || sourceLower.includes('taller')) {
+            webhookUrl = process.env.SLACK_WEBHOOK_ALIADOS;
+        }
+        // 2. CONVENIOS o ALIANZAS (B2B2C)
+        else if (sourceLower.includes('convenio') || sourceLower.includes('alianza')) {
+            webhookUrl = process.env.SLACK_WEBHOOK_CONVENIOS;
+        }
+        // 3. NOSOTROS o CAREERS
+        else if (sourceLower.includes('career') || sourceLower.includes('nosotros')) {
+            webhookUrl = process.env.SLACK_WEBHOOK_NOSOTROS;
+        }
+        // 4. EMPRESAS (B2B)
+        else if (sourceLower.includes('empresa')) {
+            webhookUrl = process.env.SLACK_WEBHOOK_EMPRESAS;
+        }
+        // ==========================================
 
         if (webhookUrl) {
-            // Format message for Slack
+            // Format message for Slack (¡Tu diseño original, intacto!)
             const slackMessage = {
                 text: `🚀 Nuevo Lead de *${source || 'Web Alfred'}*`,
                 blocks: [
@@ -37,7 +61,7 @@ export async function POST(request: Request) {
                             },
                             {
                                 type: "mrkdwn",
-                                text: `*Empresa:*\n${company || 'N/A'}`
+                                text: `*Empresa / Entidad:*\n${company || 'N/A'}`
                             },
                             {
                                 type: "mrkdwn",
@@ -45,7 +69,7 @@ export async function POST(request: Request) {
                             },
                             {
                                 type: "mrkdwn",
-                                text: `*Teléfono:*\n${phone}`
+                                text: `*Teléfono / Enlace:*\n${phone}`
                             }
                         ]
                     },
@@ -53,7 +77,7 @@ export async function POST(request: Request) {
                         type: "section",
                         text: {
                             type: "mrkdwn",
-                            text: `*Mensaje:*\n${message || 'Sin mensaje'}`
+                            text: `*Mensaje / Datos Extra:*\n${message || 'Sin mensaje'}`
                         }
                     },
                     {
@@ -73,13 +97,12 @@ export async function POST(request: Request) {
 
                 if (!response.ok) {
                     console.error('Error sending to Slack:', response.statusText);
-                    // Don't fail the request to the user, but log the error
                 }
             } catch (error) {
                 console.error('Error sending to Slack:', error);
             }
         } else {
-            console.warn("SLACK_WEBHOOK_URL is not defined");
+            console.warn("No se encontró ningún SLACK_WEBHOOK válido en las variables de entorno.");
         }
 
         return NextResponse.json({ success: true, message: 'Mensaje enviado correctamente' });

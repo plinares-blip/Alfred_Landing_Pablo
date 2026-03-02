@@ -147,9 +147,7 @@ export default function TalleresPage() {
 
                 <div className="container mx-auto px-4 text-center relative z-10">
                     <div className="max-w-3xl mx-auto space-y-12">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 text-red-500 text-xs font-bold border border-red-500/20">
-                            CUPOS LIMITADOS POR ZONA
-                        </div>
+
 
                         <h2 className="text-4xl md:text-6xl font-black leading-tight">
                             Buscamos aliados, <br />
@@ -157,13 +155,13 @@ export default function TalleresPage() {
                         </h2>
 
                         <p className="text-xl text-white/50 leading-relaxed">
-                            Joining Alfred is an achievement. Evaluamos infraestructura, cumplimiento y calidad de servicio.
+                            Unirse a Alfred es un logro. Evaluamos infraestructura, cumplimiento y calidad de servicio.
                             Solo el 15% de los aspirantes completa nuestra certificación.
                         </p>
 
                         <div className="pt-8 max-w-2xl mx-auto text-left bg-alfred-navy/40 p-8 rounded-3xl border border-white/5 backdrop-blur-sm">
                             <h3 className="text-2xl font-bold text-white mb-6 text-center">Únete a la Red de Aliados</h3>
-                            <ContactForm source="Talleres" />
+                            <ContactForm source="Formulario Aliados" />
                         </div>
                     </div>
                 </div>
