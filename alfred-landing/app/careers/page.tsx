@@ -430,7 +430,7 @@ export default function CareersPage() {
                                                     disabled={isSubmitting}
                                                     className="w-full flex items-center justify-center py-6 bg-alfred-lime text-[#111E3E] font-black uppercase tracking-[0.2em] transition-all duration-300 hover:bg-white glow-button disabled:opacity-50"
                                                 >
-                                                    {isSubmitting ? <Loader2 className="h-6 w-6 animate-spin text-[#111E3E]" /> : "INICIAR MISIÓN ▶"}
+                                                    {isSubmitting ? <Loader2 className="h-6 w-6 animate-spin text-[#111E3E]" /> : "APLICAR ▶"}
                                                 </button>
                                                 <style jsx>{`
                                                     .glow-button:hover {

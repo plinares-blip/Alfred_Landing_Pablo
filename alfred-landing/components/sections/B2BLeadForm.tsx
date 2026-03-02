@@ -70,6 +70,18 @@ export function B2BLeadForm() {
                 throw new Error(result.error || "Error al enviar el formulario");
             }
 
+            // =========================================
+            // 🎯 DISPARAR CONVERSIÓN DE GOOGLE ADS
+            // =========================================
+            if (typeof window !== 'undefined' && (window as any).gtag) {
+                (window as any).gtag('event', 'conversion', {
+                    'send_to': 'AW-10955810536/Q_2DCOGrjNEDEOjNkego',
+                    'value': 1.0,
+                    'currency': 'COP'
+                });
+            }
+            // =========================================
+
             setIsSuccess(true);
             reset();
             setStep(1);
