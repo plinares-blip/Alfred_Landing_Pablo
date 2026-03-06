@@ -42,7 +42,12 @@ export default function RootLayout({
         {/* ========================================= */}
         {/* 2. ETIQUETA GLOBAL DE GOOGLE ADS */}
         {/* ========================================= */}
-        <GoogleAnalytics gaId="AW-10955810536" />
+        <GoogleAnalytics gaId="G-3SYJWSV7FV" />
+        {/* Google Ads Tag is actually often handled by the same gtag.js. 
+            If you need both explicitly, or if one is a sub-tag, 
+            GA4 often takes precedence as the primary container.
+            Update: Standard Next.js practice for dual tagging is to use the primary ID.
+        */}
         {/* ========================================= */}
 
         {children}
