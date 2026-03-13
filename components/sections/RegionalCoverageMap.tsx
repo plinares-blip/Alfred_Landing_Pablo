@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import dynamic from "next/dynamic";
+import { createPortal } from "react-dom";
 
 // Dynamic import with higher priority loading display
 const Globe = dynamic(() => import("react-globe.gl"), {
@@ -67,14 +68,6 @@ const MEXICO_CITIES = [
 
 const ALL_CITIES = [...COLOMBIA_CITIES, ...MEXICO_CITIES];
 
-const ARCS_DATA = [
-    { startLat: 19.4326, startLng: -99.1332, endLat: 4.6097, endLng: -74.0817, color: '#B4FB00' }, // CDMX -> Bogotá
-    { startLat: 20.6597, startLng: -103.3496, endLat: 19.4326, endLng: -99.1332, color: '#B4FB00' }, // GDL -> CDMX
-    { startLat: 25.6866, startLng: -100.3161, endLat: 19.4326, endLng: -99.1332, color: '#B4FB00' }, // MTY -> CDMX
-    { startLat: 6.2442, startLng: -75.5812, endLat: 4.6097, endLng: -74.0817, color: '#B4FB00' }, // MDE -> BOG
-    { startLat: 3.4516, startLng: -76.5320, endLat: 4.6097, endLng: -74.0817, color: '#B4FB00' }, // CLO -> BOG
-];
-
 interface RegionalCoverageMapProps {
     isOpen: boolean;
     onClose: () => void;
@@ -84,6 +77,9 @@ export function RegionalCoverageMap({ isOpen, onClose }: RegionalCoverageMapProp
     const globeRef = useRef<any>(null);
     const [isGlobeReady, setIsGlobeReady] = useState(false);
     const [altitude, setAltitude] = useState(2.2);
+
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => setMounted(true), []);
 
     // Performance Optimized Point Data
     const pointsData = useMemo(() => {
@@ -117,6 +113,15 @@ export function RegionalCoverageMap({ isOpen, onClose }: RegionalCoverageMapProp
                 // Ejecutamos el posicionamiento
                 globeRef.current.pointOfView({ lat: 15, lng: -90, altitude: startAlt }, 0);
 
+                // --- CALIBRACIÓN DE MOTOR THREE.JS ---
+                const controls = globeRef.current.controls();
+                // Aceleramos la respuesta del pinch/scroll. En móvil lo hacemos aún más sensible.
+                controls.zoomSpeed = isMobile ? 2.5 : 1.2;
+                // Aseguramos que la inercia se sienta natural
+                controls.enableDamping = true;
+                controls.dampingFactor = 0.1;
+                // ---------------------------------------
+
                 setAltitude(startAlt);
                 setIsGlobeReady(true);
 
@@ -137,12 +142,10 @@ export function RegionalCoverageMap({ isOpen, onClose }: RegionalCoverageMapProp
         };
     }, [isOpen, onClose]);
 
-    // PRECISE SCREEN-SPACE SCALING LOGIC (Lead Architect Directives)
-    // We adjust the radius/stroke as a factor of altitude to counteract perspective
-    // This simulates sizeAttenuation: false
+    // PRECISE SCREEN-SPACE SCALING LOGIC
     const pointScale = Math.max(0.08, altitude * 0.2);
     const hubScale = Math.max(0.12, altitude * 0.35);
-    const arcStroke = Math.max(0.1, altitude * 0.4);
+
     // LÓGICA DE ZOOM MANUAL
     const handleZoom = (direction: 'in' | 'out') => {
         if (!globeRef.current) return;
@@ -151,7 +154,10 @@ export function RegionalCoverageMap({ isOpen, onClose }: RegionalCoverageMapProp
         const newAlt = direction === 'in' ? Math.max(0.1, currentAlt - 0.5) : Math.min(4, currentAlt + 0.5);
         globeRef.current.pointOfView({ altitude: newAlt }, 800); // 800ms de transición suave
     };
-    return (
+
+    if (!mounted) return null;
+
+    return createPortal(
         <AnimatePresence>
             {isOpen && (
                 <>
@@ -186,13 +192,13 @@ export function RegionalCoverageMap({ isOpen, onClose }: RegionalCoverageMapProp
                             </div>
                         </div>
 
-                        {/* HIGH-TECH HUD (Z-Index 40) */}
-                        <div className="absolute top-0 left-0 right-0 p-6 md:p-16 z-40 pointer-events-none flex justify-between items-start">
+                        {/* HIGH-TECH HUD (Z-Index 50 - PRIORIDAD ABSOLUTA) */}
+                        <div className="absolute top-0 left-0 right-0 p-4 md:p-16 z-[50] pointer-events-none flex justify-between items-start">
                             <div className="max-w-xl">
                                 <motion.div
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
-                                    className="flex items-center gap-2 md:gap-4 mb-4 md:mb-8"
+                                    className="flex items-center gap-2 md:gap-4 mb-2 md:mb-8"
                                 >
                                     <div className="flex gap-1 md:gap-1.5">
                                         <div className="w-1.5 h-1.5 rounded-full bg-alfred-lime animate-pulse" />
@@ -205,23 +211,27 @@ export function RegionalCoverageMap({ isOpen, onClose }: RegionalCoverageMapProp
                                 <motion.h2
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    className="text-4xl md:text-7xl lg:text-8xl font-black text-white leading-[0.85] mb-4 md:mb-8 tracking-tighter"
+                                    className="text-3xl sm:text-4xl md:text-7xl lg:text-8xl font-black text-white leading-[0.85] mb-4 md:mb-8 tracking-tighter"
                                 >
                                     Red <br />
                                     <span className="text-alfred-lime/90 drop-shadow-[0_0_20px_rgba(180,251,0,0.4)]">Alfred.</span>
                                 </motion.h2>
                             </div>
 
+                            {/* BOTÓN DE CIERRE FIJO Y CLICKABLE */}
                             <button
-                                onClick={onClose}
-                                className="w-10 h-10 md:w-16 md:h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-alfred-lime transition-all pointer-events-auto group shadow-2xl"
+                                onClick={(e) => {
+                                    e.stopPropagation(); // Evita conflictos con eventos del canvas
+                                    onClose();
+                                }}
+                                className="w-10 h-10 md:w-16 md:h-16 mt-2 md:mt-0 rounded-full bg-white/10 md:bg-white/5 border border-white/20 md:border-white/10 flex items-center justify-center hover:bg-alfred-lime transition-all pointer-events-auto group shadow-[0_0_15px_rgba(0,0,0,0.5)] md:shadow-2xl z-[60]"
                             >
                                 <X className="w-5 h-5 md:w-7 md:h-7 text-white group-hover:text-black transition-transform duration-700 group-hover:rotate-180" />
                             </button>
                         </div>
 
-                        {/* WEBGL CANVAS - Cambio a cursor grab/grabbing */}
-                        <div className="absolute inset-0 z-20 w-full h-full overflow-hidden cursor-grab active:cursor-grabbing rounded-[inherit]">
+                        {/* WEBGL CANVAS - touch-none forcea los eventos tactiles al canvas */}
+                        <div className="absolute inset-0 z-20 w-full h-full overflow-hidden cursor-grab active:cursor-grabbing rounded-[inherit] touch-none">
                             <Globe
                                 ref={globeRef}
                                 globeImageUrl="//unpkg.com/three-globe/example/img/earth-dark.jpg"
@@ -240,9 +250,9 @@ export function RegionalCoverageMap({ isOpen, onClose }: RegionalCoverageMapProp
                                 pointColor={() => '#B4FB00'}
                                 pointRadius={(d: any) => d.tier === 1 ? hubScale : pointScale}
                                 pointAltitude={0}
-                                pointsMerge={true} // MAGIC: 650+ Points in 1 DRAW CALL
+                                pointsMerge={true}
 
-                                // HOVER INTERACTION (Solves Data Vomit)
+                                // HOVER INTERACTION
                                 pointLabel={(d: any) => `
                                     <div style="background: rgba(2,4,8,0.98); padding: 24px; border: 1px solid rgba(180,251,0,0.4); border-radius: 24px; backdrop-filter: blur(24px); box-shadow: 0 20px 60px rgba(0,0,0,0.9); min-width: 220px;">
                                         <div style="color: #B4FB00; font-family: monospace; font-size: 10px; font-weight: 900; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 12px; opacity: 0.6;">
@@ -259,48 +269,36 @@ export function RegionalCoverageMap({ isOpen, onClose }: RegionalCoverageMapProp
                                     </div>
                                 `}
 
-                                // ARC SYSTEM (SCREEN-SPACE CONSISTENCY)
-                                arcsData={ARCS_DATA}
-                                arcColor="color"
-                                arcDashLength={0.4}
-                                arcDashGap={4}
-                                arcDashAnimateTime={1500}
-                                arcStroke={arcStroke} // INVERSE SCALING
-                                arcAltitude={0.25}
-
-                                // LABELS - ESTILO GOOGLE MAPS
-                                // Si la altitud es menor a 0.8 (estás cerca), muestra todo. Si estás lejos, solo los hubs.
+                                // LABELS
                                 labelsData={pointsData.filter(city => {
-                                    if (altitude > 1.2) return city.tier === 1; // Muy lejos: Solo Tier 1
-                                    if (altitude > 0.5) return city.tier <= 2;  // Medio: Tier 1 y 2
-                                    return true;                                // Cerca: Todas
+                                    if (altitude > 1.2) return city.tier === 1;
+                                    if (altitude > 0.5) return city.tier <= 2;
+                                    return true;
                                 })}
                                 labelLat="lat"
                                 labelLng="lng"
                                 labelText="name"
-                                // El tamaño del texto se adapta a la altura para no verse gigante
                                 labelSize={Math.max(0.4, altitude * 0.35)}
-                                labelDotRadius={0} // ¡Esto quita el punto/sombra blanca extra!
+                                labelDotRadius={0}
                                 labelColor={() => 'rgba(255, 255, 255, 0.8)'}
-                                labelResolution={3} // Mayor resolución para que las tildes se vean más nítidas
+                                labelResolution={3}
 
-                                // Interaction Logic
+                                // INTERACTION LOGIC
                                 onZoom={({ altitude }) => setAltitude(altitude)}
                                 animateIn={true}
                             />
                             {/* PÍLDORA DE ZOOM (+ / -) */}
-                            {/* CAMBIO: right-4 en vez de right-6, y top-[40%] para que no tape los stats en móvil */}
-                            <div className="absolute right-4 md:right-12 top-[45%] md:top-1/2 -translate-y-1/2 z-50 flex flex-col items-center bg-white/5 backdrop-blur-xl rounded-full border border-transparent shadow-2xl p-1 pointer-events-auto">
+                            <div className="absolute right-4 md:right-12 top-[45%] md:top-1/2 -translate-y-1/2 z-50 flex flex-col items-center bg-white/5 backdrop-blur-xl rounded-full border border-transparent shadow-2xl p-1 pointer-events-auto select-none">
                                 <button
                                     onClick={() => handleZoom('in')}
-                                    className="w-10 h-10 flex items-center justify-center text-white/50 hover:text-alfred-lime transition-colors duration-300"
+                                    className="w-10 h-10 flex items-center justify-center text-white/50 hover:text-alfred-lime transition-colors duration-300 touch-manipulation"
                                 >
                                     <span className="text-2xl font-light leading-none mt-[-2px]">+</span>
                                 </button>
                                 <div className="w-4 h-[1px] bg-white/10 my-0.5" />
                                 <button
                                     onClick={() => handleZoom('out')}
-                                    className="w-10 h-10 flex items-center justify-center text-white/50 hover:text-alfred-lime transition-colors duration-300"
+                                    className="w-10 h-10 flex items-center justify-center text-white/50 hover:text-alfred-lime transition-colors duration-300 touch-manipulation"
                                 >
                                     <span className="text-3xl font-light leading-none mt-[-4px]">-</span>
                                 </button>
@@ -329,6 +327,7 @@ export function RegionalCoverageMap({ isOpen, onClose }: RegionalCoverageMapProp
                     </motion.div>
                 </>
             )}
-        </AnimatePresence>
+        </AnimatePresence>,
+        document.body
     );
 }
