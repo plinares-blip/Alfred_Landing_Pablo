@@ -9,8 +9,8 @@ import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface NavbarProps {
-    mode: "personal" | "business" | "alianzas" | "talleres";
-    setMode: (mode: "personal" | "business" | "alianzas" | "talleres") => void;
+    mode: "personal" | "business" | "alianzas" | "talleres" | "careers";
+    setMode?: (mode: "personal" | "business" | "alianzas" | "talleres" | "careers") => void;
     lean?: boolean;
 }
 
@@ -43,6 +43,11 @@ const navLinks = {
         { name: "Contacto", href: "#formulario-aliados", targetIds: ["formulario-aliados"] },
         // { name: "Contacto", href: "#contacto", targetIds: ["contacto"] }, // Pendiente
     ],
+    careers: [
+        { name: "Reto", href: "#reto", targetIds: ["reto"] },
+        { name: "Cultura", href: "#cultura", targetIds: ["cultura"] },
+        { name: "Aplicar", href: "#aplicar", targetIds: ["aplicar"] },
+    ]
 };
 
 export function Navbar({ mode, setMode, lean = false }: NavbarProps) {
@@ -52,7 +57,8 @@ export function Navbar({ mode, setMode, lean = false }: NavbarProps) {
     const pathname = usePathname();
     const router = useRouter();
 
-    const links = lean
+    // CAMBIO: Si es lean, solo filtramos en personal. Para los demás modos, mostramos todo.
+    const links = lean && mode === "personal"
         ? navLinks[mode]?.filter(l => l.name === "Soluciones") || []
         : navLinks[mode] || [];
 
@@ -73,36 +79,31 @@ export function Navbar({ mode, setMode, lean = false }: NavbarProps) {
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
-
             setIsScrolled(currentScrollY > 20);
-
             lastScrollY.current = currentScrollY;
 
-            // 3. Scroll Spy (Tu lógica original)
-            const currentModeLinks = links;
             let currentSection = "";
 
-            for (const link of currentModeLinks) {
+            // 1. Detectar si estamos en el top (Hero)
+            if (currentScrollY < 100) {
+                setActiveSection("");
+                return;
+            }
+
+            // 2. Iterar sobre los links del modo actual para encontrar la sección visible
+            for (const link of links) {
                 for (const id of link.targetIds) {
                     const el = document.getElementById(id);
                     if (el) {
                         const rect = el.getBoundingClientRect();
-                        if (rect.top <= 150 && rect.bottom >= 150) {
+                        // Si la parte superior de la sección está cerca del top del viewport
+                        if (rect.top <= 200 && rect.bottom >= 200) {
                             currentSection = link.href.substring(1);
                             break;
                         }
                     }
                 }
                 if (currentSection) break;
-            }
-
-            const heroId = mode === "personal" ? "personas" : "empresas";
-            const heroEl = document.getElementById(heroId);
-            if (heroEl) {
-                const rect = heroEl.getBoundingClientRect();
-                if (rect.top <= 150 && rect.bottom >= 150) {
-                    currentSection = "";
-                }
             }
 
             setActiveSection(currentSection);

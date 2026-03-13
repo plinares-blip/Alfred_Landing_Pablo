@@ -31,7 +31,7 @@ const benefits = [
 ];
 
 export default function TalleresClient() {
-    const [mode, setMode] = useState<"personal" | "business" | "alianzas" | "talleres">("talleres");
+    const [mode, setMode] = useState<"personal" | "business" | "alianzas" | "talleres" | "careers">("talleres");
 
     return (
         <main className="min-h-screen bg-alfred-dark text-white selection:bg-alfred-lime selection:text-alfred-navy">

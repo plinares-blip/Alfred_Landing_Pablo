@@ -93,9 +93,9 @@ export default function CareersClient() {
                 body: JSON.stringify({
                     name: data.name,
                     email: data.email,
-                    company: "Candidato", 
-                    phone: data.linkedin, 
-                    cities: "1", 
+                    company: "Candidato",
+                    phone: data.linkedin,
+                    cities: "1",
                     fleetSize: "0",
                     source: "Careers Terminal",
                     message: `Rol: ${data.role}\nDesafío: ${data.challenge}`
@@ -119,7 +119,7 @@ export default function CareersClient() {
 
     return (
         <main className="min-h-screen bg-[#111E3E] text-white selection:bg-alfred-lime selection:text-[#111E3E] font-sans overflow-x-hidden">
-            <Navbar mode="personal" setMode={() => { }} />
+            <Navbar mode="careers" setMode={() => { }} />
 
             {/* SECTION 1 */}
             <section ref={heroRef} className="relative h-[150vh] bg-black">
@@ -163,7 +163,7 @@ export default function CareersClient() {
             </section>
 
             {/* SECTION 2 */}
-            <section className="relative bg-[#111E3E] py-32 lg:py-48 z-20 border-t border-white/5">
+            <section id="reto" className="relative bg-[#111E3E] py-32 lg:py-48 z-20 border-t border-white/5">
                 <div className="container mx-auto px-4 lg:px-12 text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 40 }}
@@ -193,7 +193,7 @@ export default function CareersClient() {
             </section>
 
             {/* SECTION 3 */}
-            <section className="relative bg-[#0A1128] py-24 lg:py-32 z-20">
+            <section id="cultura" className="relative bg-[#0A1128] py-24 lg:py-32 z-20">
                 <div className="container mx-auto px-6 lg:px-12">
                     <div className="mb-20">
                         <span className="block text-[#0096FB] text-xs font-bold tracking-[0.2em] uppercase mb-4">
@@ -268,7 +268,7 @@ export default function CareersClient() {
             </section>
 
             {/* SECTION 4 */}
-            <section className="relative bg-[#111E3E] py-32 z-20 border-t border-white/5">
+            <section id="aplicar" className="relative bg-[#111E3E] py-32 z-20 border-t border-white/5">
                 <div className="container mx-auto px-4 flex justify-center">
                     <div className="w-full max-w-4xl bg-[#0A1128] border border-white/10 rounded-[2rem] p-8 md:p-16 lg:p-20 shadow-2xl relative overflow-hidden">
                         <div className="flex items-center gap-3 mb-10 border-b border-white/10 pb-6">
