@@ -358,7 +358,7 @@ export function Hero({ mode, setMode }: HeroProps) {
 
                 transition={{ duration: 3, repeat: Infinity }}
 
-                className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/20"
+                className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60"
 
             >
 
