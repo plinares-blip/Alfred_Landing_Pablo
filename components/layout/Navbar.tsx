@@ -40,7 +40,7 @@ const navLinks = {
     ],
     talleres: [
         { name: "Por qué Alfred", href: "#por-que-alfred", targetIds: ["por-que-alfred"] },
-        { name: "Proceso", href: "#proceso", targetIds: ["proceso"] },
+        { name: "Contacto", href: "#formulario-aliados", targetIds: ["formulario-aliados"] },
         // { name: "Contacto", href: "#contacto", targetIds: ["contacto"] }, // Pendiente
     ],
 };
@@ -171,15 +171,17 @@ export function Navbar({ mode, setMode, lean = false }: NavbarProps) {
                     </nav>
 
                     <div className="hidden md:flex items-center gap-4">
-                        <Link href="/talleres">
-                            <Button
-                                variant="ghost"
-                                size="sm"
-                                className="text-white hover:text-alfred-lime transition-colors font-bold"
-                            >
-                                Ser taller Alfred
-                            </Button>
-                        </Link>
+                        {mode !== "talleres" && (
+                            <Link href="/talleres">
+                                <Button
+                                    variant="ghost"
+                                    size="sm"
+                                    className="text-white hover:text-alfred-lime transition-colors font-bold"
+                                >
+                                    Ser taller Alfred
+                                </Button>
+                            </Link>
+                        )}
                         {mode === "personal" ? (
                             <Link href="/asistente">
                                 <Button

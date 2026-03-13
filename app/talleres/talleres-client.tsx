@@ -57,6 +57,7 @@ export default function TalleresClient() {
                             <div className="flex flex-wrap gap-4 pt-4">
                                 <Button
                                     size="lg"
+                                    onClick={() => document.getElementById("formulario-aliados")?.scrollIntoView({ behavior: "smooth" })}
                                     className="bg-alfred-lime text-alfred-navy hover:bg-white font-black rounded-full px-10 h-16 text-lg transition-all duration-300 shadow-[0_0_30px_rgba(180,251,0,0.2)] hover:shadow-[0_0_40px_rgba(180,251,0,0.4)]"
                                 >
                                     Quiero ser Aliado Alfred
@@ -82,7 +83,7 @@ export default function TalleresClient() {
             </section>
 
             {/* Value Proposition */}
-            <section className="py-32 bg-[#0B1226] overflow-hidden">
+            <section id="por-que-alfred" className="py-32 bg-[#0B1226] overflow-hidden">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-24 space-y-4">
                         <span className="text-white/40 font-bold tracking-[0.2em] uppercase text-sm">¿Por qué Alfred?</span>
@@ -128,7 +129,7 @@ export default function TalleresClient() {
             </section>
 
             {/* Exclusivity Section */}
-            <section className="py-32 relative overflow-hidden">
+            <section id="formulario-aliados" className="py-32 relative overflow-hidden">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(50,56,66,0.3),transparent_70%)]" />
 
                 <div className="container mx-auto px-4 text-center relative z-10">
