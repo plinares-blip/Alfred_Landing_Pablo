@@ -132,8 +132,8 @@ function NetworkBackground() {
 
 
 interface HeroProps {
-    mode: "personal" | "business" | "alianzas" | "talleres";
-    setMode: (mode: "personal" | "business" | "alianzas" | "talleres") => void;
+    mode: "personal" | "business" | "alianzas" | "talleres" | "careers";
+    setMode: (mode: "personal" | "business" | "alianzas" | "talleres" | "careers") => void;
 }
 
 
@@ -254,9 +254,9 @@ export function Hero({ mode, setMode }: HeroProps) {
                             <div className="relative z-30 flex justify-center lg:justify-start w-full">
                                 {mode === "personal" ? (
                                     /* --- Bloque "Para Ti" --- */
-                                    <div className="flex flex-col xl:flex-row items-center gap-4 xl:gap-10 mt-2 w-full xl:w-auto">
+                                    <div className="flex flex-col items-center lg:items-start gap-8 mt-2 w-full">
 
-                                        {/* 1. CTA Principal en Móvil (Oculto en Desktop porque allá tienes el QR) */}
+                                        {/* 1. CTA Principal en Móvil (Botón grande) */}
                                         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto px-8 sm:px-0 xl:hidden">
                                             <Link href={DOWNLOAD_LINK} target="_blank" className="block w-full">
                                                 <Button
@@ -268,27 +268,34 @@ export function Hero({ mode, setMode }: HeroProps) {
                                             </Link>
                                         </motion.div>
 
-                                        {/* 2. Botón Secundario (Outline en Móvil, Sólido en Desktop) */}
-                                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto px-8 sm:px-0">
-                                            <Link href="/asistente" className="block w-full">
-                                                <Button
-                                                    size="lg"
-                                                    className="w-full sm:w-auto h-16 px-12 text-xl font-bold rounded-full transition-all duration-500 whitespace-nowrap bg-transparent border-2 border-alfred-green text-alfred-green hover:bg-alfred-green/10 xl:bg-alfred-green xl:border-transparent xl:text-alfred-navy xl:shadow-[0_0_40px_rgba(21,235,0,0.4)] xl:hover:shadow-[0_0_60px_rgba(21,235,0,0.6)] xl:hover:bg-alfred-lime"
-                                                >
-                                                    Hablar con Alfred
-                                                </Button>
-                                            </Link>
-                                        </motion.div>
-
-                                        {/* QR Section */}
-                                        <div className="hidden xl:flex items-center gap-6 cursor-pointer group">
-                                            <div className="relative w-24 h-24 flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
-                                                <Image src="/images/qr/codigo.webp" alt="Descarga Alfred" fill className="object-contain p-1" sizes="96px" priority />
+                                        {/* 2. QR y Tiendas (Enfoque Total en Desktop) */}
+                                        <div className="hidden xl:flex items-center gap-10 cursor-pointer group">
+                                            {/* QR Agrandado */}
+                                            <div className="relative w-36 h-36 flex-shrink-0 transition-all duration-500 group-hover:scale-110 p-2 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 shadow-[0_0_50px_rgba(180,251,0,0.1)] group-hover:shadow-[0_0_60px_rgba(180,251,0,0.25)]">
+                                                <Image
+                                                    src="/images/qr/codigo.webp"
+                                                    alt="Descarga Alfred"
+                                                    fill
+                                                    className="object-contain p-2"
+                                                    sizes="144px"
+                                                    priority
+                                                />
                                             </div>
-                                            <div className="flex flex-col justify-center h-full gap-3">
-                                                <span className="text-sm text-white/90 uppercase tracking-[0.15em] font-black leading-none">Descárgala en</span>
-                                                <div className="relative w-40 h-12 opacity-100 transition-transform duration-300 group-hover:translate-x-1">
-                                                    <Image src="/images/qr/tienda.png" alt="App Store & Google Play" fill className="object-contain object-left" sizes="160px" priority />
+
+                                            {/* Labels y Tiendas Agrandados */}
+                                            <div className="flex flex-col justify-center gap-4">
+                                                <span className="text-lg text-white font-black uppercase tracking-[0.2em] leading-none opacity-80 group-hover:opacity-100 group-hover:text-alfred-lime transition-all">
+                                                    Descárgala en
+                                                </span>
+                                                <div className="relative w-56 h-16 transition-transform duration-500 group-hover:translate-x-2">
+                                                    <Image
+                                                        src="/images/qr/tienda.png"
+                                                        alt="App Store & Google Play"
+                                                        fill
+                                                        className="object-contain object-left"
+                                                        sizes="224px"
+                                                        priority
+                                                    />
                                                 </div>
                                             </div>
                                         </div>
