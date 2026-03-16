@@ -98,11 +98,12 @@ export default function ServiceLandingTemplate({
                         src={data.hero.image}
                         alt={data.name}
                         fill
-                        className="object-cover opacity-30 md:opacity-40 grayscale-[0.5]"
+                        className="object-cover opacity-60 md:opacity-70" // Subimos opacidad y quitamos grayscale
                         sizes="100vw"
                         priority
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-[#111E3E]/60 via-[#111E3E] to-[#111E3E] md:bg-gradient-to-r md:from-[#111E3E] md:via-[#111E3E]/80 md:to-transparent" />
+                    {/* Gradiente refinado: ahora es realmente transparente en el centro para dejar ver la foto */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#111E3E]/80 via-[#111E3E]/20 to-[#111E3E] md:bg-gradient-to-r md:from-[#111E3E] md:via-[#111E3E]/40 md:to-transparent" />
                 </div>
 
                 <div className="container mx-auto px-6 md:px-12 relative z-10">
@@ -111,15 +112,15 @@ export default function ServiceLandingTemplate({
                         animate={{ opacity: 1, y: 0 }}
                         className="max-w-3xl"
                     >
-                        <h1 className="text-4xl md:text-7xl font-black mb-6 leading-tight md:leading-[1.1] text-left">
+                        <h1 className="text-4xl md:text-7xl font-black mb-6 leading-tight md:leading-[1.1] text-left drop-shadow-2xl">
                             {data.hero.title}
                         </h1>
-                        <p className="text-lg md:text-2xl text-white/70 mb-8 md:mb-10 leading-relaxed font-light text-left">
+                        <p className="text-lg md:text-2xl text-white mb-8 md:mb-10 leading-relaxed font-medium text-left drop-shadow-lg">
                             {data.hero.subtext}
                         </p>
                         <div className="flex flex-col md:flex-row gap-4">
                             <a href={ctaLink} target={isBusiness ? "_self" : "_blank"} rel="noopener noreferrer" className="w-full md:w-auto">
-                                <Button size="lg" className="h-16 w-full md:px-10 text-lg shadow-[0_4px_20px_rgba(180,251,0,0.3)]">
+                                <Button size="lg" className="h-16 w-full md:px-10 text-lg shadow-[0_4px_30px_rgba(180,251,0,0.4)] bg-alfred-lime text-alfred-navy font-black hover:bg-white transition-all">
                                     {data.hero.ctaText}
                                 </Button>
                             </a>

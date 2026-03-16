@@ -7,7 +7,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         hero: {
             title: "Mecánica de Precisión con Garantía Alfred",
             subtext: "Desde un cambio de aceite hasta reparaciones de motor complejas. Expertos certificados cuidan tu vehículo mientras tú sigues con tu día.",
-            image: "/images/services/service_mecanica.png",
+            image: "/images/services/service_mecanica.webp",
             ctaText: "Agendar Mecánica Ahora",
         },
         comparison: {
@@ -66,7 +66,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         hero: {
             title: "Tu carro como nuevo, sin salir de casa",
             subtext: "Estética automotriz de alto nivel. Desde limpieza profunda hasta protección cerámica de pintura.",
-            image: "/images/services/service_lavado.png",
+            image: "/images/services/service_lavado.webp",
             ctaText: "Pedir Lavado Premium",
         },
         comparison: {
