@@ -20,7 +20,7 @@ const features = [
         title: "Centralización",
         sub: "Costos, mantenimientos, hoja de vida del vehículo, todo en un solo lugar.",
         icon: LayoutDashboard,
-        image: "/images/saas_features/centralizacion_radical.jpeg"
+        image: "/images/saas_features/centralizacion_radical.webp"
     },
     {
         id: "visibilidad",

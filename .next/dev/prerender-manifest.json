@@ -1,1 +1,11 @@
-{"version":4,"routes":{"/servicios/mecanica-experta":{},"/servicios/lavado-y-detailing":{},"/servicios/tramites-y-revision-tecnico-mecanica":{},"/servicios/latoneria-y-pintura":{},"/servicios/mantenimiento-preventivo":{}},"dynamicRoutes":{"/servicios/[slug]":{"dataRoute":null,"dataRouteRegex":null,"fallback":null,"fallbackRevalidate":false,"fallbackSourceRoute":"/servicios/[slug]","routeRegex":"^\\/servicios\\/([^/]+?)(?:\\/)?$","allowHeader":[]}},"notFoundRoutes":[],"preview":{"previewModeId":"c7d0b6349760f9d017a0372378c49530","previewModeSigningKey":"39118622bb1677cf051ee14b43ad8f987fa2ba5e22d48b0add73b96643b5f3f0","previewModeEncryptionKey":"d6fbb628a2ec550ce1ea940481bec7ca8772a6d047c48e63259b5495cd5fbed5"}}
+{
+  "version": 4,
+  "routes": {},
+  "dynamicRoutes": {},
+  "notFoundRoutes": [],
+  "preview": {
+    "previewModeId": "c41a3fab9627e10ec34211301408f34c",
+    "previewModeSigningKey": "b38bc425f15338e556b6431754372db795fb81223ce31cd00645bfcbd0c3266c",
+    "previewModeEncryptionKey": "3f250fd5cb201d83ab90c4e7877851b4d79970496c0da72c50e8e0138eb57d8e"
+  }
+}
