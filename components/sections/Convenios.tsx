@@ -799,21 +799,31 @@ export function Convenios({ mode }: ConveniosProps) {
     // Freeze body scroll when modal is open
     useEffect(() => {
         if (showModal) {
-            document.body.classList.add("overflow-hidden");
+            const scrollY = window.scrollY;
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${scrollY}px`;
+            document.body.style.width = '100%';
+            document.body.style.overflowY = 'scroll'; // Cambiado de 'hidden' a 'scroll' para mantener el espacio de la barra
         } else {
-            document.body.classList.remove("overflow-hidden");
+            const scrollY = document.body.style.top;
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            document.body.style.overflowY = '';
+            if (scrollY) {
+                window.scrollTo(0, parseInt(scrollY || '0') * -1);
+            }
         }
-
-        // Cleanup in case component unmounts while modal is open
-        return () => {
-            document.body.classList.remove("overflow-hidden");
-        };
+        // ... resto del return
     }, [showModal]);
 
 
     return (
 
-        <section id="convenios" className={`relative overflow-hidden transition-colors duration-1000 ${mode === "business" ? "bg-[#0B1226] pt-16 lg:pt-32 pb-0" : "bg-alfred-dark border-y border-white/5 py-16 lg:py-16 xl:py-20"} z-20`}>
+        <section
+            id="convenios"
+            className={`relative overflow-hidden ${mode === "business" ? "bg-[#0B1226] pt-16 lg:pt-32 pb-0" : "bg-alfred-dark border-y border-white/5 py-16 lg:py-16 xl:py-20"} z-20`}
+        >
 
 
 
@@ -874,35 +884,21 @@ export function Convenios({ mode }: ConveniosProps) {
                             {/* Massive Ambient Glow - Behind everything */}
 
                             <AnimatePresence>
-
                                 {selectedInsurer && (
-
                                     <motion.div
-
                                         initial={{ opacity: 0, scale: 0.8 }}
-
                                         animate={{ opacity: 1, scale: 1 }}
-
                                         exit={{ opacity: 0, scale: 0.8 }}
-
-                                        className="absolute inset-0 pointer-events-none z-0"
-
+                                        // CAMBIO AQUÍ: Añadimos 'hidden lg:block'
+                                        className="absolute inset-0 pointer-events-none z-0 hidden lg:block"
                                     >
-
                                         <div
-
                                             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] blur-[200px] opacity-40"
-
                                             style={{ backgroundColor: selectedInsurer.color }}
-
                                         />
-
                                     </motion.div>
-
                                 )}
-
                             </AnimatePresence>
-
 
 
                             {/* Main Layout Container */}
@@ -1293,22 +1289,21 @@ export function Convenios({ mode }: ConveniosProps) {
                                         animate={{ scale: 1, opacity: 1 }}
                                         exit={{ scale: 0.9, opacity: 0 }}
                                         onClick={(e) => e.stopPropagation()}
-                                        // CAMBIO: Reducimos p-14 a p-8 en laptops (p-10 base) y p-12 en monitores grandes (2xl:p-12)
-                                        className="relative bg-alfred-navy border border-white/10 rounded-[2.5rem] p-8 lg:p-10 2xl:p-14 max-w-5xl w-full max-h-[92vh] shadow-2xl overflow-y-auto lg:overflow-hidden custom-scrollbar"
+                                        className="relative bg-alfred-navy border border-white/10 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 2xl:p-14 max-w-lg lg:max-w-5xl w-full max-h-[92vh] shadow-2xl overflow-y-auto lg:overflow-hidden custom-scrollbar"
                                     >
-                                        {/* Botón Cerrar - Un poco más pequeño para no estorbar en 13" */}
+                                        {/* Botón Cerrar */}
                                         <button
                                             onClick={() => setShowModal(false)}
                                             className="absolute top-5 right-5 lg:top-8 lg:right-8 p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors z-30 group"
                                         >
-                                            <X className="text-white/40 group-hover:text-white" size={isMobile ? 20 : 24} />
+                                            <X className="text-white/40 group-hover:text-white" size={24} />
                                         </button>
 
-                                        <div className="flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-12 2xl:gap-16 items-center">
+                                        <div className="flex flex-col lg:grid lg:grid-cols-12 gap-8 lg:gap-12 2xl:gap-16 items-center">
 
-                                            {/* COLUMNA IZQUIERDA: Pasos (7/12) */}
+                                            {/* COLUMNA IZQUIERDA: Pasos */}
                                             <div className="lg:col-span-7 w-full">
-                                                <div className="mb-6 lg:mb-8 2xl:mb-10">
+                                                <div className="mb-6 lg:mb-8 2xl:mb-10 text-center lg:text-left">
                                                     <h3 className="text-2xl md:text-3xl 2xl:text-5xl font-black text-white leading-tight tracking-tight">
                                                         Activa <span style={{ color: selectedInsurer.color }}>{selectedInsurer.name} Prime</span>
                                                     </h3>
@@ -1346,10 +1341,23 @@ export function Convenios({ mode }: ConveniosProps) {
                                                 </div>
                                             </div>
 
-                                            {/* COLUMNA DERECHA: QR y Tiendas (5/12) */}
-                                            <div className="lg:col-span-5 w-full flex flex-col items-center justify-center lg:border-l lg:border-white/10 lg:pl-10 2xl:pl-16 py-4 lg:py-6">
-                                                <div className="hidden xl:flex flex-col items-center gap-6 2xl:gap-8 text-center">
-                                                    {/* QR: w-32 en laptop, w-48 en monitor grande */}
+                                            {/* COLUMNA DERECHA: QR (Desktop) o Botón (Móvil) */}
+                                            <div className="lg:col-span-5 w-full flex flex-col items-center justify-center lg:border-l lg:border-white/10 lg:pl-10 2xl:pl-16 py-4 lg:py-6 mt-4 lg:mt-0">
+
+                                                {/* BOTÓN MÓVIL: Visible hasta lg */}
+                                                <div className="lg:hidden w-full">
+                                                    <a href={DOWNLOAD_LINK} target="_blank" rel="noopener noreferrer" className="block w-full">
+                                                        <Button
+                                                            size="lg"
+                                                            className="w-full bg-alfred-lime text-alfred-navy font-black py-7 rounded-2xl text-base uppercase tracking-widest shadow-lg active:scale-95 transition-transform"
+                                                        >
+                                                            Descargar la App
+                                                        </Button>
+                                                    </a>
+                                                </div>
+
+                                                {/* QR DESKTOP: Visible desde lg */}
+                                                <div className="hidden lg:flex flex-col items-center gap-6 2xl:gap-8 text-center">
                                                     <div className="relative w-32 h-32 2xl:w-48 2xl:h-48 drop-shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:scale-105 transition-transform duration-500">
                                                         <NextImage src="/images/qr/codigo.webp" alt="QR" fill className="object-contain" priority />
                                                     </div>
