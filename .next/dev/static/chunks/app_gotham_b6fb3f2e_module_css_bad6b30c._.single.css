@@ -1,0 +1,59 @@
+/* [project]/app/gotham_b6fb3f2e.module.css [app-client] (css) */
+@font-face {
+  font-family: gotham;
+  src: url("../media/Gotham_Light-s.p.b2b6869b.otf") format("opentype");
+  font-display: swap;
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: gotham;
+  src: url("../media/Gotham_Book-s.p.a0254b89.otf") format("opentype");
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: gotham;
+  src: url("../media/Gotham_Medium-s.p.d9717062.otf") format("opentype");
+  font-display: swap;
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: gotham;
+  src: url("../media/Gotham_Bold-s.p.ca018747.otf") format("opentype");
+  font-display: swap;
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: gotham;
+  src: url("../media/Gotham_Black-s.p.d0a726c2.otf") format("opentype");
+  font-display: swap;
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: gotham Fallback;
+  src: local(Arial);
+  ascent-override: 79.9%;
+  descent-override: 17.62%;
+  line-gap-override: 7.31%;
+  size-adjust: 113.52%;
+}
+
+.gotham_b6fb3f2e-module__KLn3yG__className {
+  font-family: gotham, gotham Fallback;
+}
+
+.gotham_b6fb3f2e-module__KLn3yG__variable {
+  --font-gotham: "gotham", "gotham Fallback";
+}
+
+/*# sourceMappingURL=app_gotham_b6fb3f2e_module_css_bad6b30c._.single.css.map*/

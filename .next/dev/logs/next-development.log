@@ -1,0 +1,8 @@
+[00:00:01.144] Server  LOG     ✓ Ready in 925ms
+[00:00:04.153] Server  LOG     ○ Compiling / ...
+[00:00:06.458] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:06.913] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:00:06.913] Browser WARN    Image with src "/images/qr/tienda.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:10.309] Browser WARN    Image with src "/images/logos/iphone_mockup_mapfreV3.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:10.309] Browser WARN    Image with src "/images/logos/iphone_mockup_zurichV3.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:12.942] Browser WARN    Image with src "/images/qr/codigo.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
