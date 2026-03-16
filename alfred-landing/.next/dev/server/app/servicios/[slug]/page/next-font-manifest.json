@@ -1,0 +1,15 @@
+{
+  "pages": {},
+  "app": {
+    "[project]/app/servicios/[slug]/page": [
+      "static/media/Gotham_Light-s.p.b2b6869b.otf",
+      "static/media/Gotham_Book-s.p.a0254b89.otf",
+      "static/media/Gotham_Medium-s.p.d9717062.otf",
+      "static/media/Gotham_Bold-s.p.ca018747.otf",
+      "static/media/Gotham_Black-s.p.d0a726c2.otf",
+      "static/media/fba5a26ea33df6a3-s.p.1bbdebe6.woff2"
+    ]
+  },
+  "appUsingSizeAdjust": true,
+  "pagesUsingSizeAdjust": false
+}
