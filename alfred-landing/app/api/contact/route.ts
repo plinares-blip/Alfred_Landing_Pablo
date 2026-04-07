@@ -105,6 +105,64 @@ export async function POST(request: Request) {
             console.warn("No se encontró ningún SLACK_WEBHOOK válido en las variables de entorno.");
         }
 
+        // ==========================================
+        // ✉️ ENVÍO DE CORREO AUTOMÁTICO (WEBHOOK)
+        // ==========================================
+        if (process.env.MAIL_WEBHOOK_URL) {
+            let emailSubject = 'Gracias por contactar a Alfred';
+            let emailBodyText = `Hola ${name},\n\nRecibimos tu solicitud y un experto de nuestro equipo te contactará lo más pronto posible.\n\nSaludos,\nEquipo Alfred`;
+
+            if (sourceLower.includes('aliado') || sourceLower.includes('taller')) {
+                emailSubject = 'Información sobre incorporación de nuevos aliados';
+                emailBodyText = `Buenos días ${name}.
+
+Me complace presentarme: soy Samuel Camacho, el nuevo gerente encargado de liderar desde Alfred todo el manejo de la red de aliados. Es un gusto conocerlos.
+
+Les quiero informar que, por el momento, no estamos incorporando nuevas alianzas en Alfred, debido a una reorganización interna de nuestra red actual de aliados. Por esta razón, en esta etapa no estaremos afiliando nuevos aliados.
+
+Sin embargo, sí vamos a estar consolidando una lista de aliados potenciales. Agradecemos mucho el interés que han mostrado en hacer parte de Alfred y valoramos profundamente la oportunidad de conocer sus servicios.
+
+Una vez retomemos la incorporación de nuevos aliados a nuestra red, nos pondremos en contacto con ustedes para que puedan tener acceso tanto a nuestra red de clientes como a nuestras soluciones tecnológicas.
+
+Esperamos más adelante poder acompañarlos y ayudar a que sus negocios crezcan de la mano de la tecnología de Alfred.
+
+Muchas gracias por su interés y comprensión.`;
+            } else if (sourceLower.includes('empresa') || sourceLower.includes('flota')) {
+                emailSubject = 'Eleva el control de tu flota con Alfred 🚀';
+                emailBodyText = `Hola ${name},
+
+Gracias por dejarnos tus datos. Nos emociona la oportunidad de revolucionar la forma en que operas.
+Nos comunicaremos contigo muy pronto para mostrarte cómo centralizar el control de tu flota con Alfred.
+
+Si prefieres adelantarte, puedes agendar un espacio de 15 minutos en el momento que mejor te quede aquí: [ESPACIO_PARA_LINK_AGENDAMIENTO]
+
+Saludos,
+Equipo Alfred Automotriz`;
+            }
+
+            try {
+                const mailResponse = await fetch(process.env.MAIL_WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        to_email: email,
+                        to_name: name,
+                        phone: phone,
+                        company: company || '',
+                        subject: emailSubject,
+                        body_text: emailBodyText,
+                        source: source || 'General'
+                    })
+                });
+
+                if (!mailResponse.ok) {
+                    console.error('Error al enviar webhook de correo:', mailResponse.statusText);
+                }
+            } catch (error) {
+                console.error('Error enviando webhook de correo:', error);
+            }
+        }
+
         return NextResponse.json({ success: true, message: 'Mensaje enviado correctamente' });
     } catch (error) {
         console.error('Error processing contact form:', error);
