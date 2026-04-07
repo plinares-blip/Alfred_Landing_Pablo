@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   title: "Alfred | Tu ecosistema de servicios automotrices",
   description: "Alfred conecta tu vehículo con seguros, talleres, conductores y todo lo que necesitas. Sin fricción.",
   icons: {
-    icon: "/images/logos/azul oscuro plano.png",
+    icon: "/images/logos/azul oscuro plano.webp",
   },
 };
 
@@ -51,7 +51,7 @@ export default function RootLayout({
                 "@type": "Organization",
                 "name": "Alfred",
                 "url": "https://alfred.co",
-                "logo": "https://alfred.co/images/logos/azul oscuro plano.png",
+                "logo": "https://alfred.co/images/logos/azul oscuro plano.webp",
                 "sameAs": [
                   "https://www.instagram.com/alfred_colombia/",
                   "https://www.linkedin.com/company/alfred-automotriz/"

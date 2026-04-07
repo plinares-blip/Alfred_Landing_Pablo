@@ -140,7 +140,7 @@ export function Conductores({ mode = "personal" }: ConductoresProps) {
                                 <div className="mt-8 flex flex-col items-center gap-4 w-full">
                                     <div className="relative w-60 h-10 transition-transform duration-300 hover:scale-105">
                                         <NextImage
-                                            src="/images/qr/tienda.png"
+                                            src="/images/qr/tienda.webp"
                                             alt="App Store & Google Play"
                                             fill
                                             className="object-contain object-center"

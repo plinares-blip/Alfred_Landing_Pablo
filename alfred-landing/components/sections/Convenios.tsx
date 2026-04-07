@@ -22,12 +22,12 @@ const partners = [
 ];
 
 const alianzaLogos = [
-    "/images/alianzas/LOGO-MAPFRE.png",
-    "/images/alianzas/LOGO-ZURICH.png",
-    "/images/alianzas/Rappi.png",
-    "/images/alianzas/falabella.png",
-    "/images/alianzas/itau.png",
-    "/images/alianzas/movistar.png"
+    "/images/alianzas/LOGO-MAPFRE.webp",
+    "/images/alianzas/LOGO-ZURICH.webp",
+    "/images/alianzas/Rappi.webp",
+    "/images/alianzas/falabella.webp",
+    "/images/alianzas/itau.webp",
+    "/images/alianzas/movistar.webp"
 ];
 
 
@@ -68,7 +68,7 @@ const INSURERS: Insurer[] = [
 
         name: "Mapfre",
 
-        logo: "/images/logos/LOGO-MAPFRE.png",
+        logo: "/images/logos/LOGO-MAPFRE.webp",
 
         color: "#f8002b",
 
@@ -92,7 +92,7 @@ const INSURERS: Insurer[] = [
 
         name: "Zurich",
 
-        logo: "/images/logos/LOGO-ZURICH.png",
+        logo: "/images/logos/LOGO-ZURICH.webp",
 
         color: "#2773c4",
 
@@ -291,7 +291,7 @@ function ConnectionDiagram() {
                         className="absolute inset-0 rounded-full border-2 border-alfred-lime"
                     />
                     <NextImage
-                        src="/blanco.png"
+                        src="/blanco.webp"
                         alt="Alfred"
                         width={80}
                         height={80}
@@ -1365,7 +1365,7 @@ export function Convenios({ mode }: ConveniosProps) {
                                                     <div className="space-y-3 2xl:space-y-4">
                                                         <p className="text-[9px] 2xl:text-xs text-white/50 font-black uppercase tracking-[0.4em] leading-none">Escanea para descargar</p>
                                                         <div className="relative w-40 h-10 2xl:w-56 2xl:h-14 opacity-90 transition-all hover:opacity-100">
-                                                            <NextImage src="/images/qr/tienda.png" alt="Stores" fill className="object-contain" />
+                                                            <NextImage src="/images/qr/tienda.webp" alt="Stores" fill className="object-contain" />
                                                         </div>
                                                     </div>
                                                 </div>

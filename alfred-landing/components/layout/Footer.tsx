@@ -86,7 +86,7 @@ export function Footer() {
                     <div className="col-span-1 lg:col-span-2 space-y-6 mb-8 lg:mb-0">
                         <Link href="/" className="relative w-32 h-10 lg:w-40 lg:h-12 block">
                             <Image
-                                src="/images/logos/blanco.png"
+                                src="/images/logos/blanco.webp"
                                 alt="Alfred"
                                 fill
                                 className="object-contain object-left"

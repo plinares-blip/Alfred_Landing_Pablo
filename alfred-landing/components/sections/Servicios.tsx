@@ -33,7 +33,7 @@ const services = [
         slug: "tramites-y-revision-tecnico-mecanica",
         subtitle: <span className="text-white/40">Papeles <span className="text-alfred-lime">al día</span></span>,
         bgImage: "/images/services/service_revision.avif",
-        icon: "/images/icono_servicios/tramites.png",
+        icon: "/images/icono_servicios/tramites.webp",
         glow: "rgba(59, 130, 246, 0.4)", // Blue
         gridClass: "md:col-span-4 md:row-span-1",
         iconClass: "w-24 h-24 lg:w-32 lg:h-32 xl:w-40 xl:h-40 right-6 bottom-6 drop-shadow-2xl",
@@ -55,7 +55,7 @@ const services = [
         slug: "mantenimiento-preventivo",
         subtitle: <span className="text-white/40">Viaja <span className="text-alfred-lime">seguro</span></span>,
         bgImage: "/images/services/service_oil.avif",
-        icon: "/images/icono_servicios/preventivo.png",
+        icon: "/images/icono_servicios/preventivo.webp",
         glow: "rgba(251, 191, 36, 0.4)", // Amber
         gridClass: "md:col-span-6 md:row-span-1",
         iconClass: "w-24 h-24 lg:w-32 lg:h-32 xl:w-40 xl:h-40 right-6 bottom-6 drop-shadow-2xl",
@@ -102,7 +102,7 @@ export function Servicios({ mode = "personal" }: ServiciosProps) {
                                 className="w-full h-full relative"
                             >
                                 {/* Carbon Fiber Texture Overlay */}
-                                <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+                                <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.webp')]" />
 
                                 {/* Radial Glow */}
                                 <motion.div

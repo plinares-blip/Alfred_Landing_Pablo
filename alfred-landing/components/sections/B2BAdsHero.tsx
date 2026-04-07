@@ -20,7 +20,7 @@ export function B2BAdsHero() {
             <div className="absolute top-8 left-0 right-0 z-50 flex justify-start w-full px-6 lg:px-12">
                 <Link href="/" className="relative w-32 h-10 block hover:scale-105 transition-transform cursor-pointer">
                     <Image
-                         src="/images/logos/verde plano.png"
+                         src="/images/logos/verde plano.webp"
                          alt="Alfred Logo"
                          fill
                          className="object-contain"

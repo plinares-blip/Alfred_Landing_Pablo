@@ -305,7 +305,7 @@ export function Hero({ mode, setMode }: HeroProps) {
                                                 </span>
                                                 <div className="relative w-56 h-16 transition-transform duration-500 group-hover:translate-x-2">
                                                     <Image
-                                                        src="/images/qr/tienda.png"
+                                                        src="/images/qr/tienda.webp"
                                                         alt="App Store & Google Play"
                                                         fill
                                                         className="object-contain object-left"

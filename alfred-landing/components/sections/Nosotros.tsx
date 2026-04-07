@@ -83,7 +83,7 @@ export function Nosotros() {
             >
                 <div className="relative w-[30vw] h-[30vw] lg:w-[19vw] lg:h-[19vw] opacity-10">
                     <Image
-                        src="/blanco.png"
+                        src="/blanco.webp"
                         alt="Alfred Logo Watermark"
                         fill
                         className="object-contain"

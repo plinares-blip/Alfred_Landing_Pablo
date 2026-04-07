@@ -235,7 +235,7 @@ export function RegionalCoverageMap({ isOpen, onClose }: RegionalCoverageMapProp
                             <Globe
                                 ref={globeRef}
                                 globeImageUrl="//unpkg.com/three-globe/example/img/earth-dark.jpg"
-                                bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
+                                bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.webp"
                                 backgroundColor="rgba(0,0,0,0)"
 
                                 // Atmosphere System

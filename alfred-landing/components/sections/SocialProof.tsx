@@ -15,21 +15,21 @@ const impactMetrics = [
         metric: "$116M+",
         label: "Ahorro promedio anual detectado",
         color: "#e62126",
-        logo: "/images/logos/Coca-Cola_Femsa_Logo.png"
+        logo: "/images/logos/Coca-Cola_Femsa_Logo.webp"
     },
     {
         name: "Adama Colombia",
         metric: "40%",
         label: "Reducción de tiempo muerto en talleres",
         color: "#009442",
-        logo: "/images/logos/adama_logo.png"
+        logo: "/images/logos/adama_logo.webp"
     },
     {
         name: "Reckitt Benckiser",
         metric: "99.8%",
         label: "Disponibilidad operativa garantizada",
         color: "#ed0b80",
-        logo: "/images/logos/reckitt_logo.png"
+        logo: "/images/logos/reckitt_logo.webp"
     }
 ];
 
@@ -42,27 +42,27 @@ const trackRecord = [
 
 // STRIP A: CLIENTS
 const clientLogos = [
-    "/images/logos/alamo_logo.png",
-    "/images/logos/arval_logo.png",
-    "/images/logos/blindex_logo.png",
-    "/images/logos/bravoauto_logo.png",
-    "/images/logos/enterprise_logo.png",
-    "/images/logos/europcar_logo.png",
-    "/images/logos/mareauto_logo.png",
-    "/images/logos/messer_logo.png",
+    "/images/logos/alamo_logo.webp",
+    "/images/logos/arval_logo.webp",
+    "/images/logos/blindex_logo.webp",
+    "/images/logos/bravoauto_logo.webp",
+    "/images/logos/enterprise_logo.webp",
+    "/images/logos/europcar_logo.webp",
+    "/images/logos/mareauto_logo.webp",
+    "/images/logos/messer_logo.webp",
     "/images/logos/national_logo.webp",
-    "/images/logos/precisagro_logo.png",
-    "/images/logos/sany_logo.png"
+    "/images/logos/precisagro_logo.webp",
+    "/images/logos/sany_logo.webp"
 ];
 
 // STRIP B: PRESS
 const pressLogos = [
-    "/images/logos/press/logo_forbes.png",
-    "/images/logos/press/logo_larepublica.png",
-    "/images/logos/press/logo_valoraanalitik.png",
-    "/images/logos/press/logo_elespectador.png",
-    "/images/logos/press/logo_losandes.png",
-    "/images/logos/press/logo_elcolombiano.png"
+    "/images/logos/press/logo_forbes.webp",
+    "/images/logos/press/logo_larepublica.webp",
+    "/images/logos/press/logo_valoraanalitik.webp",
+    "/images/logos/press/logo_elespectador.webp",
+    "/images/logos/press/logo_losandes.webp",
+    "/images/logos/press/logo_elcolombiano.webp"
 ];
 
 function Counter({ value, prefix = "", suffix = "" }: { value: number, prefix?: string, suffix?: string }) {
@@ -461,7 +461,7 @@ export function IndustryRecognition() {
                     >
                         <span className="text-white/40 text-[10px] md:text-sm font-black uppercase tracking-[0.3em]">Powered by</span>
                         <div className="relative w-24 h-8">
-                            <Image src="/blanco.png" alt="Alfred Logo" fill className="object-contain" sizes="100px" />
+                            <Image src="/blanco.webp" alt="Alfred Logo" fill className="object-contain" sizes="100px" />
                         </div>
                     </motion.div>
                 </div>
@@ -839,7 +839,7 @@ export function SocialProof({ mode }: SocialProofProps) {
                         >
                             <span className="text-white/40 text-[10px] md:text-sm font-black uppercase tracking-[0.3em]">Powered by</span>
                             <div className="relative w-24 h-8">
-                                <Image src="/blanco.png" alt="Alfred Logo" fill className="object-contain" sizes="100px" />
+                                <Image src="/blanco.webp" alt="Alfred Logo" fill className="object-contain" sizes="100px" />
                             </div>
                         </motion.div>
                     </div>

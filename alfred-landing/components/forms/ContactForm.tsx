@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { motion } from "framer-motion";
 import { CheckCircle2, Loader2, Send } from "lucide-react";
 
@@ -10,6 +10,7 @@ interface ContactFormData {
     email: string;
     phone: string;
     company?: string;
+    cities?: string[];
     message?: string;
 }
 
@@ -44,6 +45,55 @@ const MinimalistTextarea = ({ label, error, ...props }: any) => (
     </div>
 );
 
+const COLOMBIAN_CITIES = [
+    "Bogotá", "Medellín", "Cali", "Barranquilla", "Cartagena", 
+    "Bucaramanga", "Pereira", "Manizales", "Cúcuta", "Santa Marta", 
+    "Villavicencio", "Ibagué", "Pasto", "Montería", "Valledupar", 
+    "Armenia", "Sincelejo", "Popayán", "Tunja", "Neiva", "Riohacha",
+    "Otra"
+];
+
+const MinimalistMultiSelectDropdown = ({ label, error, options, value = [], onChange }: any) => {
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+        <div className="flex flex-col gap-2 relative z-40">
+            <label className="text-white/40 font-bold uppercase tracking-widest text-[10px] ml-1" style={{ fontFamily: "var(--font-gotham), sans-serif" }}>{label}</label>
+            <div 
+                onClick={() => setIsOpen(!isOpen)}
+                className="w-full bg-white/[0.03] border-none border-b border-white/10 px-6 py-5 text-xl text-white placeholder-white/20 hover:bg-white/[0.05] transition-all duration-300 rounded-xl cursor-pointer flex items-center justify-between"
+                style={{ fontFamily: "var(--font-gotham), sans-serif" }}
+            >
+                <div className="truncate pr-4 text-white/50">
+                    {value.length === 0 ? "Selecciona una o más ciudades" : <span className="text-white">{value.join(", ")}</span>}
+                </div>
+                <div className={`text-white/30 transition-transform text-sm ${isOpen ? "rotate-180" : ""}`}>▼</div>
+            </div>
+            {isOpen && (
+                <div className="absolute top-[105%] left-0 w-full max-h-[300px] overflow-y-auto bg-[#0B1226] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-50 rounded-2xl p-2 flex flex-col gap-1">
+                    {options.map((opt: string) => (
+                        <label key={opt} className="flex items-center gap-4 p-3 cursor-pointer hover:bg-white/5 rounded-xl transition-colors">
+                            <div className={`w-5 h-5 rounded border flex items-center justify-center transition-colors flex-shrink-0 ${value.includes(opt) ? "bg-alfred-lime border-alfred-lime" : "border-white/20"}`}>
+                                {value.includes(opt) && <div className="w-2.5 h-2.5 bg-[#0B1226] rounded-sm" />}
+                            </div>
+                            <span className="text-white font-medium text-lg">{opt}</span>
+                            <input 
+                                type="checkbox" 
+                                className="hidden"
+                                checked={value.includes(opt)}
+                                onChange={(e) => {
+                                    if(e.target.checked) onChange([...value, opt]);
+                                    else onChange(value.filter((v: string) => v !== opt));
+                                }}
+                            />
+                        </label>
+                    ))}
+                </div>
+            )}
+            {error && <p className="text-red-400 text-xs mt-1 ml-1 font-medium" style={{ fontFamily: "var(--font-gotham), sans-serif" }}>{error}</p>}
+        </div>
+    );
+};
+
 export function ContactForm({ source, className, onSuccess }: ContactFormProps) {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
@@ -53,6 +103,7 @@ export function ContactForm({ source, className, onSuccess }: ContactFormProps) 
         register,
         handleSubmit,
         reset,
+        control,
         formState: { errors },
     } = useForm<ContactFormData>();
 
@@ -151,6 +202,25 @@ export function ContactForm({ source, className, onSuccess }: ContactFormProps) 
                     {...register("company")}
                 />
             </div>
+
+            {source === "Formulario Aliados" && (
+                <div className="grid md:grid-cols-1 gap-8 lg:gap-12">
+                    <Controller
+                        name="cities"
+                        control={control}
+                        rules={{ required: source === "Formulario Aliados" ? "Debes seleccionar al menos una ciudad" : false }}
+                        render={({ field }) => (
+                            <MinimalistMultiSelectDropdown
+                                label="Red de Cobertura"
+                                options={COLOMBIAN_CITIES}
+                                error={errors.cities?.message}
+                                value={field.value || []}
+                                onChange={field.onChange}
+                            />
+                        )}
+                    />
+                </div>
+            )}
 
             <MinimalistTextarea
                 label="¿Cómo podemos ayudarte?"

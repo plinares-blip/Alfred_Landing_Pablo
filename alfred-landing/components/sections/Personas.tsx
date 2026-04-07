@@ -116,7 +116,7 @@ export function Personas() {
                                     <div className="hidden md:flex relative w-full h-full items-end justify-center pt-10 px-6 lg:px-12 z-10 bg-gradient-to-br from-[#0B1226] to-[#151D3A]">
                                         <div className="relative w-full max-w-[320px] aspect-[1/1.6] -mb-[5%] md:-mb-10 transition-transform duration-700 hover:scale-[1.03]">
                                             <Image
-                                                src="/images/key-visuals/prime.png"
+                                                src="/images/key-visuals/prime.webp"
                                                 alt="Alfred para Personas"
                                                 fill
                                                 className="object-contain object-center drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)]"

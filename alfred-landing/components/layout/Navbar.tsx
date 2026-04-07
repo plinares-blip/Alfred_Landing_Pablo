@@ -135,7 +135,7 @@ export function Navbar({ mode, setMode, lean = false }: NavbarProps) {
                         aria-label="Ir al inicio"
                     >
                         <Image
-                            src="/images/logos/verde degrade.png"
+                            src="/images/logos/verde degrade.webp"
                             alt="Alfred"
                             fill
                             className="object-contain object-left"

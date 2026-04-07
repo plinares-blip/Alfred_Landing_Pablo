@@ -45,7 +45,7 @@ export default function ROICalculatorClient() {
                         <div className="h-6 w-px bg-white/10 hidden sm:block" />
                         <Link href="/" className="flex items-center">
                             <Image
-                                src="/images/logos/blanco.png"
+                                src="/images/logos/blanco.webp"
                                 alt="Alfred Logo"
                                 width={120}
                                 height={40}
