@@ -8,7 +8,7 @@ import { ArrowDown } from "lucide-react";
 
 export function B2BAdsHero() {
     return (
-        <section className="relative min-h-[85vh] flex flex-col items-center pt-24 lg:pt-32 pb-12 overflow-hidden bg-[#0B1226] text-white overflow-x-hidden w-full">
+        <section className="relative min-h-[85vh] xl:min-h-screen flex flex-col items-center pt-24 lg:pt-32 pb-12 overflow-hidden bg-[#0B1226] text-white overflow-x-hidden w-full">
             
             {/* Background Effects */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -29,18 +29,18 @@ export function B2BAdsHero() {
                 </Link>
             </div>
 
-            <div className="container relative z-10 px-4 flex-1 flex flex-col lg:grid lg:grid-cols-12 gap-8 lg:gap-12 items-center justify-center w-full mt-10">
+            <div className="container relative z-10 px-4 flex-1 flex flex-col lg:grid lg:grid-cols-12 gap-8 lg:gap-12 items-center justify-center w-full mt-24 lg:mt-0">
                 {/* TEXT CONTENT */}
-                <div className="w-full lg:col-span-5 text-center lg:text-left space-y-8 relative z-30 order-1">
+                <div className="w-full lg:col-span-5 text-center lg:text-left space-y-6 lg:space-y-8 relative z-30 order-1">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
                     >
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight mb-6">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight mb-4 lg:mb-6">
                             El <span className="text-transparent bg-clip-text bg-gradient-to-r from-alfred-sky to-alfred-blue drop-shadow-[0_0_30px_rgba(0,117,197,0.3)]">Control de Flota</span> definitivo en la Nube.
                         </h1>
-                        <p className="text-lg md:text-xl text-white/60 font-light leading-relaxed max-w-lg mx-auto lg:mx-0 mb-8">
+                        <p className="text-base sm:text-lg md:text-xl text-white/60 font-light leading-relaxed max-w-lg mx-auto lg:mx-0 mb-6 lg:mb-8">
                             Centraliza gastos, inspecciones y mantenimientos en un solo dashboard inteligente. Diseñado para líderes de operaciones que no pueden permitirse perder dinero.
                         </p>
                         
@@ -59,7 +59,7 @@ export function B2BAdsHero() {
                 </div>
 
                 {/* VISUAL CONTENT (Video Placeholder) */}
-                <div className="w-full lg:col-span-7 relative flex items-center justify-center order-2 aspect-video">
+                <div className="w-full lg:col-span-7 relative flex items-center justify-center order-2 aspect-video mt-4 lg:mt-0">
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] rounded-full blur-[100px] opacity-30 pointer-events-none bg-alfred-sky/20" />
                     <motion.div 
                         initial={{ y: 40, opacity: 0 }}

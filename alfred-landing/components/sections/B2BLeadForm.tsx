@@ -144,17 +144,17 @@ export function B2BLeadForm() {
     const progressPercent = step === 1 ? 33 : step === 2 ? 66 : 100;
 
     return (
-        <section id="contacto" className="relative z-20 w-full bg-[#111E3E] py-24 lg:py-32 overflow-hidden selection:bg-alfred-lime selection:text-alfred-navy">
+        <section id="contacto" className="relative z-20 w-full bg-[#111E3E] py-16 lg:py-32 overflow-hidden selection:bg-alfred-lime selection:text-alfred-navy">
             <div className="container mx-auto px-4 lg:px-12 xl:px-24">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start relative">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 lg:gap-24 items-start relative">
 
                     {/* Left Column: The Hook (Sticky) */}
-                    <div className="lg:sticky lg:top-32 flex flex-col gap-6 w-full max-w-xl">
+                    <div className="lg:sticky lg:top-32 flex flex-col gap-4 lg:gap-6 w-full max-w-xl">
                         <motion.h2
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="text-6xl md:text-7xl lg:text-[80px] font-black text-white leading-[0.9] tracking-tighter uppercase"
+                            className="text-5xl sm:text-6xl md:text-7xl lg:text-[80px] font-black text-white leading-[0.9] tracking-tighter uppercase"
                             style={{ fontFamily: "var(--font-gotham), sans-serif" }}
                         >
                             Hablemos.

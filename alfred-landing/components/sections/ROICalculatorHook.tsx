@@ -71,7 +71,7 @@ function TaxiMeter() {
 
                 {/* Animated Counter Display */}
                 <div className="text-center relative">
-                    <div className="font-mono text-4xl md:text-5xl lg:text-7xl font-bold text-white tracking-tighter">
+                    <div className="font-mono text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white tracking-tighter">
                         <AnimatedCounter value={baseValue} />
                     </div>
                     <p className="text-white/20 text-[10px] uppercase tracking-widest mt-4 font-bold">Actualización en tiempo real • COP</p>
@@ -130,9 +130,9 @@ export function ROICalculatorHook() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="text-center mb-12"
+                        className="text-center mb-8 lg:mb-12 px-2"
                     >
-                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 lg:mb-6 leading-tight">
                             Las matemáticas <span className="text-alfred-lime">no mienten.</span>
                         </h2>
                         <p className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto">
