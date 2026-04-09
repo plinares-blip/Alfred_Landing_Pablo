@@ -12,6 +12,7 @@ interface NavbarProps {
     mode: "personal" | "business" | "alianzas" | "talleres" | "careers";
     setMode?: (mode: "personal" | "business" | "alianzas" | "talleres" | "careers") => void;
     lean?: boolean;
+    hideLinks?: boolean;
 }
 
 const scrollToSection = (href: string) => {
@@ -50,17 +51,18 @@ const navLinks = {
     ]
 };
 
-export function Navbar({ mode, setMode, lean = false }: NavbarProps) {
+export function Navbar({ mode, setMode, lean = false, hideLinks = false }: NavbarProps) {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [activeSection, setActiveSection] = useState("");
     const pathname = usePathname();
     const router = useRouter();
 
-    // CAMBIO: Si es lean, solo filtramos en personal. Para los demás modos, mostramos todo.
-    const links = lean && mode === "personal"
-        ? navLinks[mode]?.filter(l => l.name === "Soluciones") || []
-        : navLinks[mode] || [];
+    const links = hideLinks 
+        ? [] 
+        : lean && mode === "personal"
+            ? navLinks[mode]?.filter(l => l.name === "Soluciones") || []
+            : navLinks[mode] || [];
 
     const [isVisible, setIsVisible] = useState(true);
     const lastScrollY = useRef(0);
@@ -171,66 +173,70 @@ export function Navbar({ mode, setMode, lean = false }: NavbarProps) {
                         ))}
                     </nav>
 
-                    <div className="hidden md:flex items-center gap-4">
-                        {mode !== "talleres" && (
-                            <Link href="/talleres">
-                                <Button
-                                    variant="ghost"
-                                    size="sm"
-                                    className="text-white hover:text-alfred-lime transition-colors font-bold"
-                                >
-                                    Ser taller Alfred
-                                </Button>
-                            </Link>
-                        )}
-                        {mode === "personal" ? (
-                            <Link href="/asistente">
-                                <Button
-                                    size="sm"
-                                    className="bg-alfred-lime text-alfred-navy hover:bg-white transition-colors font-bold rounded-full px-6"
-                                >
-                                    Hablar con Alfred
-                                </Button>
-                            </Link>
-                        ) : (
-                            <a href="https://empresas.alfred.co/" target="_blank" rel="noopener noreferrer">
-                                <Button
-                                    size="sm"
-                                    className="bg-alfred-lime text-alfred-navy hover:bg-white transition-colors font-bold rounded-full px-6"
-                                >
-                                    Iniciar Sesión
-                                </Button>
-                            </a>
-                        )}
-                    </div>
+                    {!hideLinks && (
+                        <div className="hidden md:flex items-center gap-4">
+                            {mode !== "talleres" && (
+                                <Link href="/talleres">
+                                    <Button
+                                        variant="ghost"
+                                        size="sm"
+                                        className="text-white hover:text-alfred-lime transition-colors font-bold"
+                                    >
+                                        Ser taller Alfred
+                                    </Button>
+                                </Link>
+                            )}
+                            {mode === "personal" ? (
+                                <Link href="/asistente">
+                                    <Button
+                                        size="sm"
+                                        className="bg-alfred-lime text-alfred-navy hover:bg-white transition-colors font-bold rounded-full px-6"
+                                    >
+                                        Hablar con Alfred
+                                    </Button>
+                                </Link>
+                            ) : (
+                                <a href="https://empresas.alfred.co/" target="_blank" rel="noopener noreferrer">
+                                    <Button
+                                        size="sm"
+                                        className="bg-alfred-lime text-alfred-navy hover:bg-white transition-colors font-bold rounded-full px-6"
+                                    >
+                                        Iniciar Sesión
+                                    </Button>
+                                </a>
+                            )}
+                        </div>
+                    )}
 
                     {/* Mobile Toggle: Hamburguesa Corregida (Grosor sólido 2px) */}
-                    <button
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        className="md:hidden relative z-50 p-2 focus:outline-none group"
-                        aria-label="Toggle Menu"
-                    >
-                        <div className="flex flex-col justify-center items-end gap-2.5">
-                            <motion.span
-                                animate={isMobileMenuOpen ? "open" : "closed"}
-                                variants={{
-                                    closed: { rotate: 0, y: 0 },
-                                    open: { rotate: 45, y: 6 }
-                                }}
-                                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                                className="w-8 h-[2px] bg-white/60 group-hover:bg-white transition-colors duration-300 block rounded-full"
-                            />
-                            <motion.span
-                                animate={isMobileMenuOpen ? "open" : "closed"}
-                                variants={{
-                                    closed: { rotate: 0, y: 0 },
-                                    open: { rotate: -45, y: -6 }
-                                }}
-                                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                                className="w-8 h-[2px] bg-white/60 group-hover:bg-white transition-colors duration-300 block rounded-full"
-                            />
-                        </div>
-                    </button>
+                    {!hideLinks && (
+                        <button
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                            className="md:hidden relative z-50 p-2 focus:outline-none group"
+                            aria-label="Toggle Menu"
+                        >
+                            <div className="flex flex-col justify-center items-end gap-2.5">
+                                <motion.span
+                                    animate={isMobileMenuOpen ? "open" : "closed"}
+                                    variants={{
+                                        closed: { rotate: 0, y: 0 },
+                                        open: { rotate: 45, y: 6 }
+                                    }}
+                                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                                    className="w-8 h-[2px] bg-white/60 group-hover:bg-white transition-colors duration-300 block rounded-full"
+                                />
+                                <motion.span
+                                    animate={isMobileMenuOpen ? "open" : "closed"}
+                                    variants={{
+                                        closed: { rotate: 0, y: 0 },
+                                        open: { rotate: -45, y: -6 }
+                                    }}
+                                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                                    className="w-8 h-[2px] bg-white/60 group-hover:bg-white transition-colors duration-300 block rounded-full"
+                                />
+                            </div>
+                        </button>
+                    )}
                 </div>
             </header>
 

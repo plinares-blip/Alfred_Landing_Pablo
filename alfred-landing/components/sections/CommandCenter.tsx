@@ -38,8 +38,8 @@ const features = [
     },
     {
         id: "protocolos",
-        title: "Protocolos",
-        sub: "Inspecciones fotográficas obligatorias desde el celular, notificando novedades al instante.",
+        title: "Cumplimiento PESV",
+        sub: "Digitaliza las inspecciones preoperacionales desde el celular y mantén tu historial impecable para cualquier auditoría",
         icon: ClipboardCheck,
         image: "/images/saas_features/protocolos_digitales.webp"
     },

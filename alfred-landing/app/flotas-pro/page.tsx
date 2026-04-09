@@ -1,9 +1,9 @@
 import { B2BAdsHero } from "@/components/sections/B2BAdsHero";
-import { ROICalculatorHook } from "@/components/sections/ROICalculatorHook";
 import { CommandCenter } from "@/components/sections/CommandCenter";
 import { ClientMarquee } from "@/components/sections/SocialProof";
 import { B2BLeadForm } from "@/components/sections/B2BLeadForm";
 import { Footer } from "@/components/layout/Footer";
+import { Navbar } from "@/components/layout/Navbar";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -18,16 +18,11 @@ export const metadata: Metadata = {
 export default function FlotasProLanding() {
     return (
         <main className="min-h-screen bg-alfred-dark text-white selection:bg-alfred-lime selection:text-alfred-blue">
+            <Navbar mode="business" hideLinks={true} />
             <B2BAdsHero />
-            <ROICalculatorHook />
             <CommandCenter />
             
             <section className="bg-[#111E3E] pt-12 pb-24">
-                <div className="container mx-auto px-4 mb-10">
-                    <p className="text-center text-sm font-bold tracking-[0.2em] uppercase text-white/40 mb-2">
-                        Empresas que ya controlan su flota con nosotros
-                    </p>
-                </div>
                 <ClientMarquee />
             </section>
             

@@ -16,20 +16,9 @@ export function B2BAdsHero() {
                 <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-alfred-sky rounded-full filter blur-[100px] opacity-20" />
             </div>
 
-            {/* Logo at the top left */}
-            <div className="absolute top-8 left-0 right-0 z-50 flex justify-start w-full px-6 lg:px-12">
-                <Link href="/" className="relative w-32 h-10 block hover:scale-105 transition-transform cursor-pointer">
-                    <Image
-                         src="/images/logos/verde plano.webp"
-                         alt="Alfred Logo"
-                         fill
-                         className="object-contain"
-                         priority
-                    />
-                </Link>
-            </div>
+            {/* Removed the absolute Logo block because Navbar handles it */}
 
-            <div className="container relative z-10 px-4 flex-1 flex flex-col lg:grid lg:grid-cols-12 gap-8 lg:gap-12 items-center justify-center w-full mt-24 lg:mt-0">
+            <div className="container relative z-10 px-4 flex-1 flex flex-col lg:grid lg:grid-cols-12 gap-8 lg:gap-12 items-center justify-center w-full mt-10 lg:mt-0">
                 {/* TEXT CONTENT */}
                 <div className="w-full lg:col-span-5 text-center lg:text-left space-y-6 lg:space-y-8 relative z-30 order-1">
                     <motion.div
@@ -38,10 +27,10 @@ export function B2BAdsHero() {
                         transition={{ duration: 0.5 }}
                     >
                         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight mb-4 lg:mb-6">
-                            El <span className="text-transparent bg-clip-text bg-gradient-to-r from-alfred-sky to-alfred-blue drop-shadow-[0_0_30px_rgba(0,117,197,0.3)]">Control de Flota</span> definitivo en la Nube.
+                            El software de flotas que reemplaza Excel y garantiza tu <span className="text-transparent bg-clip-text bg-gradient-to-r from-alfred-sky to-alfred-blue drop-shadow-[0_0_30px_rgba(0,117,197,0.3)]">PESV.</span>
                         </h1>
                         <p className="text-base sm:text-lg md:text-xl text-white/60 font-light leading-relaxed max-w-lg mx-auto lg:mx-0 mb-6 lg:mb-8">
-                            Centraliza gastos, inspecciones y mantenimientos en un solo dashboard inteligente. Diseñado para líderes de operaciones que no pueden permitirse perder dinero.
+                            Deja de reaccionar a los problemas. Centraliza mantenimientos, controla gastos en tiempo real y automatiza las inspecciones preoperacionales para cumplir con la normativa sin dolores de cabeza. Vuelve a tener el control.
                         </p>
                         
                         <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 justify-center lg:justify-start">
@@ -85,9 +74,9 @@ export function B2BAdsHero() {
                 animate={{ y: [0, 10, 0], opacity: [0.3, 1, 0.3] }}
                 transition={{ duration: 3, repeat: Infinity }}
                 className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 cursor-pointer"
-                onClick={() => document.getElementById("roi-calculator")?.scrollIntoView({ behavior: "smooth" })}
+                onClick={() => document.getElementById("command-center")?.scrollIntoView({ behavior: "smooth" })}
             >
-                <div className="text-[10px] tracking-[0.3em] uppercase mb-1">Descubre cuánto ahorras</div>
+                <div className="text-[10px] tracking-[0.3em] uppercase mb-1">Explora</div>
                 <ArrowDown size={20} className="mx-auto" />
             </motion.div>
         </section>
