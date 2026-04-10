@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 export function B2BAdsHero() {
     return (
-        <section className="relative min-h-[85vh] xl:min-h-screen flex flex-col items-center pt-24 lg:pt-32 pb-12 overflow-hidden bg-[#0B1226] text-white overflow-x-hidden w-full">
+        <section className="relative min-h-[80vh] xl:h-screen flex flex-col items-center pt-24 lg:pt-32 pb-16 overflow-hidden bg-[#0B1226] text-white overflow-x-hidden w-full">
             
             {/* Background Effects */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -18,18 +18,19 @@ export function B2BAdsHero() {
 
             {/* Removed the absolute Logo block because Navbar handles it */}
 
-            <div className="container relative z-10 px-4 flex-1 flex flex-col lg:grid lg:grid-cols-12 gap-8 lg:gap-12 items-center justify-center w-full mt-10 lg:mt-0">
+            <div className="container relative z-10 px-4 flex-1 flex flex-col justify-center w-full">
+              <div className="flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-10 items-center w-full">
                 {/* TEXT CONTENT */}
-                <div className="w-full lg:col-span-5 text-center lg:text-left space-y-6 lg:space-y-8 relative z-30 order-1">
+                <div className="w-full lg:col-span-5 text-center lg:text-left space-y-4 lg:space-y-6 relative z-30 order-1">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
                     >
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight mb-4 lg:mb-6">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.75rem] xl:text-5xl 2xl:text-6xl font-black leading-[1.1] tracking-tight mb-3 lg:mb-4">
                             El software de flotas que reemplaza Excel y garantiza tu <span className="text-transparent bg-clip-text bg-gradient-to-r from-alfred-sky to-alfred-blue drop-shadow-[0_0_30px_rgba(0,117,197,0.3)]">PESV.</span>
                         </h1>
-                        <p className="text-base sm:text-lg md:text-xl text-white/60 font-light leading-relaxed max-w-lg mx-auto lg:mx-0 mb-6 lg:mb-8">
+                        <p className="text-base sm:text-lg lg:text-base xl:text-lg text-white/60 font-light leading-relaxed max-w-lg mx-auto lg:mx-0 mb-4 lg:mb-6">
                             Deja de reaccionar a los problemas. Centraliza mantenimientos, controla gastos en tiempo real y automatiza las inspecciones preoperacionales para cumplir con la normativa sin dolores de cabeza. Vuelve a tener el control.
                         </p>
                         
@@ -47,37 +48,38 @@ export function B2BAdsHero() {
                     </motion.div>
                 </div>
 
-                {/* VISUAL CONTENT (Video Placeholder) */}
-                <div className="w-full lg:col-span-7 relative flex items-center justify-center order-2 aspect-video mt-4 lg:mt-0">
+                {/* VISUAL CONTENT (Video) */}
+                <div className="w-full lg:col-span-7 relative flex items-center justify-center order-2 mt-4 lg:mt-0 h-[35vh] lg:h-[38vh] xl:h-[45vh] 2xl:h-[55vh]">
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] rounded-full blur-[100px] opacity-30 pointer-events-none bg-alfred-sky/20" />
-                    <motion.div 
+                    <motion.div
                         initial={{ y: 40, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ type: "spring", stiffness: 50, delay: 0.2 }}
-                        className="relative w-full h-full rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(0,117,197,0.2)] border border-white/10"
+                        className="relative w-full h-full rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,117,197,0.2)] border border-white/10"
                     >
                         <video
                             autoPlay
                             loop
                             muted
                             playsInline
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover rounded-2xl"
                         >
+                            <source src="/videos/kv-flotas.webm" type="video/webm" />
                             <source src="/videos/kv-flotas.mp4" type="video/mp4" />
                         </video>
                     </motion.div>
                 </div>
+              </div>
             </div>
             
             {/* Scroll Indicator */}
-            <motion.div 
+            <motion.div
                 animate={{ y: [0, 10, 0], opacity: [0.3, 1, 0.3] }}
                 transition={{ duration: 3, repeat: Infinity }}
-                className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 cursor-pointer"
-                onClick={() => document.getElementById("command-center")?.scrollIntoView({ behavior: "smooth" })}
+                className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60"
             >
-                <div className="text-[10px] tracking-[0.3em] uppercase mb-1">Explora</div>
-                <ArrowDown size={20} className="mx-auto" />
+                <div className="text-xs tracking-[0.3em] uppercase mb-2">Explora</div>
+                <ChevronDown size={24} className="mx-auto" />
             </motion.div>
         </section>
     );

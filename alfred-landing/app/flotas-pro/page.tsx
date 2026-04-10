@@ -22,7 +22,7 @@ export default function FlotasProLanding() {
             <B2BAdsHero />
             <CommandCenter />
             
-            <section className="bg-[#111E3E] pt-12 pb-24">
+            <section className="bg-[#111E3E] pt-12 pb-0">
                 <ClientMarquee />
             </section>
             
