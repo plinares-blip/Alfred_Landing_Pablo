@@ -2,53 +2,42 @@
 
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import dynamic from "next/dynamic";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
-import { Personas } from "@/components/sections/Personas";
-import { Empresas } from "@/components/sections/Empresas";
-import { Servicios } from "@/components/sections/Servicios";
-import { WorkshopCertification } from "@/components/sections/WorkshopCertification";
-import { Convenios } from "@/components/sections/Convenios";
-import { Conductores } from "@/components/sections/Conductores";
-import { Nosotros } from "@/components/sections/Nosotros";
-import { SocialProof } from "@/components/sections/SocialProof";
-import { SupportStrip } from "@/components/sections/SupportStrip";
-import { AnimatePresence, motion } from "framer-motion";
+
+// Lazy-load below-fold sections — these won't block initial paint
+const Personas = dynamic(() => import("@/components/sections/Personas").then(m => ({ default: m.Personas })));
+const Empresas = dynamic(() => import("@/components/sections/Empresas").then(m => ({ default: m.Empresas })));
+const Servicios = dynamic(() => import("@/components/sections/Servicios").then(m => ({ default: m.Servicios })));
+const WorkshopCertification = dynamic(() => import("@/components/sections/WorkshopCertification").then(m => ({ default: m.WorkshopCertification })));
+const Convenios = dynamic(() => import("@/components/sections/Convenios").then(m => ({ default: m.Convenios })));
+const Conductores = dynamic(() => import("@/components/sections/Conductores").then(m => ({ default: m.Conductores })));
+const Nosotros = dynamic(() => import("@/components/sections/Nosotros").then(m => ({ default: m.Nosotros })));
+const SocialProof = dynamic(() => import("@/components/sections/SocialProof").then(m => ({ default: m.SocialProof })));
+const SupportStrip = dynamic(() => import("@/components/sections/SupportStrip").then(m => ({ default: m.SupportStrip })));
 
 export function LandingPage() {
     const searchParams = useSearchParams();
     const [mode, setMode] = useState<"personal" | "business" | "alianzas" | "talleres" | "careers">("personal");
-    const [mounted, setMounted] = useState(false);
 
-    // Initial load: Priorizamos queryMode, si no, personal. Ignoramos localStorage para el primer render.
+    // Sync mode from URL query param on mount
     useEffect(() => {
         const queryMode = searchParams.get("mode");
-
-        // Eliminamos la dependencia de savedMode para el estado inicial
         if (queryMode && ["personal", "business", "alianzas", "talleres", "careers"].includes(queryMode)) {
             setMode(queryMode as any);
-        } else {
-            // Aquí es donde sucede la magia: Forzamos personal por defecto.
-            setMode("personal");
         }
-
-        setMounted(true);
     }, [searchParams]);
 
     // Save mode on change and update the URL silently to enable back-button restoration
     useEffect(() => {
-        if (!mounted) return;
-
         localStorage.setItem("alfred_mode", mode);
 
-        // Sync URL so navigating back remembers the mode that matches the scroll position
         const url = new URL(window.location.href);
         url.searchParams.set("mode", mode);
         window.history.replaceState({}, "", url.toString());
-    }, [mode, mounted]);
-
-    if (!mounted) return null; // Prevent hydration layout shifts affecting scroll restoration
+    }, [mode]);
 
     return (
         <main className="min-h-screen bg-alfred-dark text-white selection:bg-alfred-lime selection:text-alfred-blue">
@@ -56,14 +45,9 @@ export function LandingPage() {
 
             <Hero mode={mode} setMode={setMode} />
 
-            <AnimatePresence mode="wait">
+            <div key={mode}>
                 {mode === "personal" ? (
-                    <motion.div
-                        key="personal-sections"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                    >
+                    <>
                         <Personas />
                         <Servicios mode="personal" />
                         <WorkshopCertification />
@@ -72,18 +56,11 @@ export function LandingPage() {
                         <SupportStrip />
                         <Nosotros />
                         <SocialProof mode="personal" />
-                    </motion.div>
+                    </>
                 ) : (
-                    <motion.div
-                        key="business-sections"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                    >
-                        <Empresas />
-                    </motion.div>
+                    <Empresas />
                 )}
-            </AnimatePresence>
+            </div>
 
             <Footer />
         </main>

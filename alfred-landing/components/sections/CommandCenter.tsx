@@ -71,6 +71,14 @@ export function CommandCenter() {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+    // Preload all feature images so tab switching feels instant
+    useEffect(() => {
+        features.forEach((f) => {
+            const img = new window.Image();
+            img.src = f.image;
+        });
+    }, []);
+
     const nextFeature = () => {
         if (activeIndex < features.length - 1) setActiveIndex(activeIndex + 1);
     };

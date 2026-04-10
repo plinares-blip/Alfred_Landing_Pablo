@@ -66,10 +66,11 @@ export function B2BAdsHero() {
                             loop
                             muted
                             playsInline
+                            poster="/videos/kv-flotas-poster.webp"
+                            preload="none"
                             className="w-full h-full object-cover rounded-2xl"
                         >
-                            <source src="/videos/kv-flotas.webm" type="video/webm" />
-                            <source src="/videos/kv-flotas.mp4" type="video/mp4" />
+                            <source src="/videos/kv-flotas-opt.webm" type="video/webm" />
                         </video>
                     </motion.div>
                 </div>
