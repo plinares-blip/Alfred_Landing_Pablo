@@ -107,7 +107,7 @@ export function Conductores({ mode = "personal" }: ConductoresProps) {
                                     onClick={() => document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })}
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
-                                    className="group relative inline-flex items-center justify-center gap-4 px-10 py-5 bg-[#B4FB00] rounded-full w-full lg:min-w-[320px] shadow-[0_10px_40px_rgba(180,251,0,0.2)] hover:shadow-[0_15px_60px_rgba(180,251,0,0.4)] transition-all duration-300 overflow-hidden cursor-pointer border-none"
+                                    className="group relative inline-flex items-center justify-center gap-4 px-10 py-5 bg-[#B4FB00] rounded-xl w-full lg:min-w-[320px] shadow-[0_10px_40px_rgba(180,251,0,0.2)] hover:shadow-[0_15px_60px_rgba(180,251,0,0.4)] transition-all duration-300 overflow-hidden cursor-pointer border-none"
                                 >
                                     <span className="relative z-10 text-[#111E3E] font-black text-sm md:text-base uppercase tracking-widest">
                                         Agenda tu Demo
@@ -123,7 +123,7 @@ export function Conductores({ mode = "personal" }: ConductoresProps) {
                                     rel="noopener noreferrer"
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
-                                    className="group relative inline-flex items-center justify-center gap-4 px-10 py-5 bg-[#B4FB00] rounded-full w-full lg:min-w-[320px] shadow-[0_10px_40px_rgba(180,251,0,0.2)] hover:shadow-[0_15px_60px_rgba(180,251,0,0.4)] transition-all duration-300 overflow-hidden"
+                                    className="group relative inline-flex items-center justify-center gap-4 px-10 py-5 bg-[#B4FB00] rounded-xl w-full lg:min-w-[320px] shadow-[0_10px_40px_rgba(180,251,0,0.2)] hover:shadow-[0_15px_60px_rgba(180,251,0,0.4)] transition-all duration-300 overflow-hidden"
                                 >
                                     <span className="relative z-10 text-[#111E3E] font-black text-sm md:text-base uppercase tracking-widest">
                                         Pedir un Alfred

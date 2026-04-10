@@ -101,7 +101,7 @@ export function Footer() {
                                 href="https://www.linkedin.com/company/alfredappco/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-alfred-lime hover:border-alfred-lime/50 transition-all duration-300"
+                                className="w-10 h-10 rounded-xl border border-white/10 flex items-center justify-center text-white/40 hover:text-alfred-lime hover:border-alfred-lime/50 transition-all duration-300"
                             >
                                 <Linkedin size={18} />
                             </a>
@@ -109,7 +109,7 @@ export function Footer() {
                                 href="https://www.instagram.com/alfred_auto/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-alfred-lime hover:border-alfred-lime/50 transition-all duration-300"
+                                className="w-10 h-10 rounded-xl border border-white/10 flex items-center justify-center text-white/40 hover:text-alfred-lime hover:border-alfred-lime/50 transition-all duration-300"
                             >
                                 <Instagram size={18} />
                             </a>

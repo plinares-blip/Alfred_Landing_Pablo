@@ -172,7 +172,7 @@ export default function CareersClient() {
                         transition={{ duration: 0.8 }}
                         className="max-w-4xl mx-auto flex flex-col items-center gap-8"
                     >
-                        <span className="inline-block px-4 py-1 rounded-full border border-alfred-lime/30 text-alfred-lime text-[10px] font-bold uppercase tracking-widest bg-alfred-lime/5">
+                        <span className="inline-block px-4 py-1 rounded-xl border border-alfred-lime/30 text-alfred-lime text-[10px] font-bold uppercase tracking-widest bg-alfred-lime/5">
                             La Magnitud del Reto
                         </span>
 
@@ -335,7 +335,7 @@ export default function CareersClient() {
                                                                         key={role}
                                                                         type="button"
                                                                         onClick={() => field.onChange(role)}
-                                                                        className={`px-6 py-3 rounded-full text-sm font-bold transition-all duration-300 ${field.value === role
+                                                                        className={`px-6 py-3 rounded-xl text-sm font-bold transition-all duration-300 ${field.value === role
                                                                             ? "bg-[#0096FB] text-white shadow-[0_0_20px_rgba(0,150,251,0.4)]"
                                                                             : "bg-white/5 text-white/60 hover:text-white border border-white/10 hover:border-white/20"
                                                                             }`}
@@ -387,7 +387,7 @@ export default function CareersClient() {
                                                 <button
                                                     type="submit"
                                                     disabled={isSubmitting}
-                                                    className="w-full flex items-center justify-center py-6 bg-alfred-lime text-[#111E3E] font-black uppercase tracking-[0.2em] transition-all duration-300 hover:bg-white disabled:opacity-50"
+                                                    className="w-full flex items-center justify-center py-6 bg-alfred-lime text-[#111E3E] font-black rounded-xl uppercase tracking-[0.2em] transition-all duration-300 hover:bg-white disabled:opacity-50"
                                                 >
                                                     {isSubmitting ? <Loader2 className="h-6 w-6 animate-spin text-[#111E3E]" /> : "APLICAR ▶"}
                                                 </button>

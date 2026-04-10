@@ -224,7 +224,7 @@ export function RegionalCoverageMap({ isOpen, onClose }: RegionalCoverageMapProp
                                     e.stopPropagation(); // Evita conflictos con eventos del canvas
                                     onClose();
                                 }}
-                                className="w-10 h-10 md:w-16 md:h-16 mt-2 md:mt-0 rounded-full bg-white/10 md:bg-white/5 border border-white/20 md:border-white/10 flex items-center justify-center hover:bg-alfred-lime transition-all pointer-events-auto group shadow-[0_0_15px_rgba(0,0,0,0.5)] md:shadow-2xl z-[60]"
+                                className="w-10 h-10 md:w-16 md:h-16 mt-2 md:mt-0 rounded-xl bg-white/10 md:bg-white/5 border border-white/20 md:border-white/10 flex items-center justify-center hover:bg-alfred-lime transition-all pointer-events-auto group shadow-[0_0_15px_rgba(0,0,0,0.5)] md:shadow-2xl z-[60]"
                             >
                                 <X className="w-5 h-5 md:w-7 md:h-7 text-white group-hover:text-black transition-transform duration-700 group-hover:rotate-180" />
                             </button>
@@ -288,7 +288,7 @@ export function RegionalCoverageMap({ isOpen, onClose }: RegionalCoverageMapProp
                                 animateIn={true}
                             />
                             {/* PÍLDORA DE ZOOM (+ / -) */}
-                            <div className="absolute right-4 md:right-12 top-[45%] md:top-1/2 -translate-y-1/2 z-50 flex flex-col items-center bg-white/5 backdrop-blur-xl rounded-full border border-transparent shadow-2xl p-1 pointer-events-auto select-none">
+                            <div className="absolute right-4 md:right-12 top-[45%] md:top-1/2 -translate-y-1/2 z-50 flex flex-col items-center bg-white/5 backdrop-blur-xl rounded-xl border border-transparent shadow-2xl p-1 pointer-events-auto select-none">
                                 <button
                                     onClick={() => handleZoom('in')}
                                     className="w-10 h-10 flex items-center justify-center text-white/50 hover:text-alfred-lime transition-colors duration-300 touch-manipulation"

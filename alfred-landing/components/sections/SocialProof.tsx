@@ -57,12 +57,12 @@ const clientLogos = [
 
 // STRIP B: PRESS
 const pressLogos = [
-    "/images/logos/press/logo_forbes.webp",
-    "/images/logos/press/logo_larepublica.webp",
-    "/images/logos/press/logo_valoraanalitik.webp",
-    "/images/logos/press/logo_elespectador.webp",
-    "/images/logos/press/logo_losandes.webp",
-    "/images/logos/press/logo_elcolombiano.webp"
+    { src: "/images/logos/press/logo_forbes.webp", href: "https://forbes.co/tag/alfred/" },
+    { src: "/images/logos/press/logo_larepublica.webp", href: "https://www.larepublica.co/empresas/alfred-crecio-600-en-el-ultimo-semestre-y-apunta-a-superar-los-2-000-servicios-al-mes-3280382" },
+    { src: "/images/logos/press/logo_valoraanalitik.webp", href: "https://www.valoraanalitik.com/alfred-us-2-5-millones-acelerar-servicios-vehiculos-colombia/" },
+    { src: "/images/logos/press/logo_elespectador.webp", href: "https://www.elespectador.com/economia/emprendimiento-y-liderazgo/alfred-el-emprendimiento-colombiano-que-recibio-us25-millones-de-inversion/" },
+    { src: "/images/logos/press/logo_losandes.webp", href: "https://ingenieria.uniandes.edu.co/es/ingenieros-uniandinos-en-forbes-30-under-30" },
+    { src: "/images/logos/press/logo_elcolombiano.webp", href: "https://www.elcolombiano.com/negocios/alfred-la-aplicacion-colombiana-a-la-que-terpel-le-aposto-MH17239252" },
 ];
 
 function Counter({ value, prefix = "", suffix = "" }: { value: number, prefix?: string, suffix?: string }) {
@@ -206,7 +206,7 @@ export function ImpactCards() {
                         <button
                             onClick={() => scroll('left')}
                             disabled={!canScrollLeft}
-                            className={`w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/10 transition-all active:scale-95 ${!canScrollLeft ? 'opacity-30 cursor-default' : 'opacity-100 hover:bg-white/20'
+                            className={`w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/10 transition-all active:scale-95 ${!canScrollLeft ? 'opacity-30 cursor-default' : 'opacity-100 hover:bg-white/20'
                                 }`}
                         >
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
@@ -216,7 +216,7 @@ export function ImpactCards() {
                         <button
                             onClick={() => scroll('right')}
                             disabled={!canScrollRight}
-                            className={`w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/10 transition-all active:scale-95 ${!canScrollRight ? 'opacity-30 cursor-default' : 'opacity-100 hover:bg-white/20'
+                            className={`w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/10 transition-all active:scale-95 ${!canScrollRight ? 'opacity-30 cursor-default' : 'opacity-100 hover:bg-white/20'
                                 }`}
                         >
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
@@ -290,7 +290,7 @@ export function TrackRecord() {
                                 onClick={() => setShowMap(true)}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.98 }}
-                                className="group/btn relative flex items-center gap-3 px-6 py-2.5 rounded-full border border-alfred-lime bg-white/5 shadow-[0_0_15px_rgba(180,251,0,0.2)] transition-all duration-300 hover:bg-alfred-lime/15 hover:shadow-[0_0_25px_rgba(180,251,0,0.4)]"
+                                className="group/btn relative flex items-center gap-3 px-6 py-2.5 rounded-xl border border-alfred-lime bg-white/5 shadow-[0_0_15px_rgba(180,251,0,0.2)] transition-all duration-300 hover:bg-alfred-lime/15 hover:shadow-[0_0_25px_rgba(180,251,0,0.4)]"
                             >
                                 <span className="text-white text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em]">
                                     Explorar Mapa 3D
@@ -425,8 +425,11 @@ export function IndustryRecognition() {
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-x-4 gap-y-10 md:gap-8 items-center justify-items-center max-w-7xl mx-auto px-4">
                         {pressLogos.map((logo, i) => (
-                            <motion.div
+                            <motion.a
                                 key={i}
+                                href={logo.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{
                                     opacity: 1,
@@ -442,13 +445,13 @@ export function IndustryRecognition() {
                                 className="relative w-16 md:w-32 h-auto opacity-40 grayscale hover:grayscale-0 transition-all duration-200 cursor-pointer flex items-center justify-center"
                             >
                                 <Image
-                                    src={logo}
+                                    src={logo.src}
                                     alt="Press Recognition"
                                     width={200}
                                     height={100}
                                     className="w-full h-auto object-contain"
                                 />
-                            </motion.div>
+                            </motion.a>
                         ))}
                     </div>
                 </div>
@@ -457,7 +460,7 @@ export function IndustryRecognition() {
                     <motion.div
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
-                        className="inline-flex items-center gap-6 px-8 py-4 rounded-full bg-white/5 border border-white/10 backdrop-blur-xl shadow-2xl"
+                        className="inline-flex items-center gap-6 px-8 py-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-xl shadow-2xl"
                     >
                         <span className="text-white/40 text-[10px] md:text-sm font-black uppercase tracking-[0.3em]">Powered by</span>
                         <div className="relative w-24 h-8">
@@ -603,7 +606,7 @@ export function SocialProof({ mode }: SocialProofProps) {
                             <button
                                 onClick={() => scroll('left')}
                                 disabled={!canScrollLeft}
-                                className={`w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/10 transition-all active:scale-95 ${!canScrollLeft ? 'opacity-30 cursor-default' : 'opacity-100 hover:bg-white/20'
+                                className={`w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/10 transition-all active:scale-95 ${!canScrollLeft ? 'opacity-30 cursor-default' : 'opacity-100 hover:bg-white/20'
                                     }`}
                             >
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
@@ -615,7 +618,7 @@ export function SocialProof({ mode }: SocialProofProps) {
                             <button
                                 onClick={() => scroll('right')}
                                 disabled={!canScrollRight}
-                                className={`w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/10 transition-all active:scale-95 ${!canScrollRight ? 'opacity-30 cursor-default' : 'opacity-100 hover:bg-white/20'
+                                className={`w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/10 transition-all active:scale-95 ${!canScrollRight ? 'opacity-30 cursor-default' : 'opacity-100 hover:bg-white/20'
                                     }`}
                             >
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
@@ -681,7 +684,7 @@ export function SocialProof({ mode }: SocialProofProps) {
                                 onClick={() => setShowMap(true)}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.98 }}
-                                className="group/btn relative flex items-center gap-3 px-6 py-2.5 rounded-full border border-alfred-lime bg-white/5 shadow-[0_0_15px_rgba(180,251,0,0.2)] transition-all duration-300 hover:bg-alfred-lime/15 hover:shadow-[0_0_25px_rgba(180,251,0,0.4)]"
+                                className="group/btn relative flex items-center gap-3 px-6 py-2.5 rounded-xl border border-alfred-lime bg-white/5 shadow-[0_0_15px_rgba(180,251,0,0.2)] transition-all duration-300 hover:bg-alfred-lime/15 hover:shadow-[0_0_25px_rgba(180,251,0,0.4)]"
                             >
                                 <span className="text-white text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em]">
                                     Explorar Mapa 3D
@@ -803,8 +806,11 @@ export function SocialProof({ mode }: SocialProofProps) {
                     <div className="container mx-auto px-4">
                         <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-x-4 gap-y-10 md:gap-8 items-center justify-items-center max-w-7xl mx-auto px-4">
                             {pressLogos.map((logo, i) => (
-                                <motion.div
+                                <motion.a
                                     key={i}
+                                    href={logo.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{
                                         opacity: 1,
@@ -820,13 +826,13 @@ export function SocialProof({ mode }: SocialProofProps) {
                                     className="relative w-16 md:w-32 h-auto opacity-40 grayscale hover:grayscale-0 transition-all duration-200 cursor-pointer flex items-center justify-center"
                                 >
                                     <Image
-                                        src={logo}
+                                        src={logo.src}
                                         alt="Press Recognition"
                                         width={200}
                                         height={100}
                                         className="w-full h-auto object-contain"
                                     />
-                                </motion.div>
+                                </motion.a>
                             ))}
                         </div>
                     </div>
@@ -835,7 +841,7 @@ export function SocialProof({ mode }: SocialProofProps) {
                         <motion.div
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
-                            className="inline-flex items-center gap-6 px-8 py-4 rounded-full bg-white/5 border border-white/10 backdrop-blur-xl shadow-2xl"
+                            className="inline-flex items-center gap-6 px-8 py-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-xl shadow-2xl"
                         >
                             <span className="text-white/40 text-[10px] md:text-sm font-black uppercase tracking-[0.3em]">Powered by</span>
                             <div className="relative w-24 h-8">

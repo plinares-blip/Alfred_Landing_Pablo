@@ -156,13 +156,13 @@ export function Hero({ mode, setMode }: HeroProps) {
 
             <div className="relative z-20 mb-12 shrink-0">
 
-                <div className="relative grid grid-cols-2 bg-alfred-navy/40 backdrop-blur-xl border border-white/10 rounded-full p-1.5 w-[300px] overflow-hidden">
+                <div className="relative grid grid-cols-2 bg-alfred-navy/40 backdrop-blur-xl border border-white/10 rounded-xl p-1.5 w-[300px] overflow-hidden">
 
                     <motion.div
 
                         layoutId="active-pill"
 
-                        className="absolute top-1.5 bottom-1.5 bg-alfred-lime rounded-full shadow-[0_0_20px_rgba(180,251,0,0.3)]"
+                        className="absolute top-1.5 bottom-1.5 bg-alfred-lime rounded-xl shadow-[0_0_20px_rgba(180,251,0,0.3)]"
 
                         initial={false}
 
@@ -263,7 +263,7 @@ export function Hero({ mode, setMode }: HeroProps) {
                                                 <Link href="/asistente" className="block w-full">
                                                     <Button
                                                         size="lg"
-                                                        className="w-full h-16 text-xl font-bold rounded-full transition-all duration-500 bg-alfred-green text-alfred-navy shadow-[0_0_30px_rgba(21,235,0,0.3)] hover:bg-alfred-lime whitespace-nowrap"
+                                                        className="w-full h-16 text-xl font-bold transition-all duration-500 bg-alfred-green text-alfred-navy shadow-[0_0_30px_rgba(21,235,0,0.3)] hover:bg-alfred-lime whitespace-nowrap"
                                                     >
                                                         Hablar con Alfred
                                                     </Button>
@@ -276,7 +276,7 @@ export function Hero({ mode, setMode }: HeroProps) {
                                                     <Button
                                                         variant="outline"
                                                         size="lg"
-                                                        className="w-full h-14 text-lg font-bold rounded-full border-alfred-green text-alfred-green hover:bg-alfred-green/10"
+                                                        className="w-full h-14 text-lg font-bold border-alfred-green text-alfred-green hover:bg-alfred-green/10"
                                                     >
                                                         Descargar la App
                                                     </Button>
@@ -323,7 +323,7 @@ export function Hero({ mode, setMode }: HeroProps) {
                                             <Button
                                                 size="lg"
                                                 onClick={() => document.getElementById("clientes-marquee")?.scrollIntoView({ behavior: "smooth" })}
-                                                className="w-full sm:w-auto h-14 sm:h-16 px-8 sm:px-12 text-lg sm:text-xl font-bold rounded-full shadow-2xl transition-all duration-500 bg-alfred-sky text-white shadow-[0_0_40px_rgba(0,150,251,0.4)] hover:shadow-[0_0_60px_rgba(0,150,251,0.6)] hover:bg-alfred-blue"
+                                                className="w-full sm:w-auto h-14 sm:h-16 px-8 sm:px-12 text-lg sm:text-xl font-bold shadow-2xl transition-all duration-500 bg-alfred-sky text-white shadow-[0_0_40px_rgba(0,150,251,0.4)] hover:shadow-[0_0_60px_rgba(0,150,251,0.6)] hover:bg-alfred-blue"
                                             >
                                                 Tengo Flota
                                             </Button>
@@ -333,7 +333,7 @@ export function Hero({ mode, setMode }: HeroProps) {
                                                 <Button
                                                     variant="outline"
                                                     size="lg"
-                                                    className="w-full sm:w-auto h-14 sm:h-16 px-8 sm:px-12 text-lg font-bold rounded-full border-alfred-sky text-alfred-sky hover:bg-alfred-sky/10 hover:text-alfred-blue transition-all"
+                                                    className="w-full sm:w-auto h-14 sm:h-16 px-8 sm:px-12 text-lg font-bold border-alfred-sky text-alfred-sky hover:bg-alfred-sky/10 hover:text-alfred-blue transition-all"
                                                 >
                                                     Busco una Alianza
                                                 </Button>

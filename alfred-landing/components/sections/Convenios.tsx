@@ -1349,7 +1349,7 @@ export function Convenios({ mode }: ConveniosProps) {
                                                     <a href={DOWNLOAD_LINK} target="_blank" rel="noopener noreferrer" className="block w-full">
                                                         <Button
                                                             size="lg"
-                                                            className="w-full bg-alfred-lime text-alfred-navy font-black py-7 rounded-2xl text-base uppercase tracking-widest shadow-lg active:scale-95 transition-transform"
+                                                            className="w-full bg-alfred-lime text-alfred-navy font-black py-7 rounded-xl text-base uppercase tracking-widest shadow-lg active:scale-95 transition-transform"
                                                         >
                                                             Descargar la App
                                                         </Button>

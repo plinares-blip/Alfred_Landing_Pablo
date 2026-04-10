@@ -133,7 +133,7 @@ export function CommandCenter() {
                                     {isActive && (
                                         <motion.div layoutId="active-bar-desktop" className="absolute left-0 top-4 bottom-4 w-1 bg-[#B4FB00] rounded-r-full shadow-[0_0_15px_#B4FB00]" />
                                     )}
-                                    <div className={cn("p-4 rounded-xl transition-all duration-500", isActive ? "bg-[#B4FB00] text-navy" : "bg-white/5 text-gray-500")}>
+                                    <div className={cn("p-4 rounded-xl transition-all duration-500", isActive ? "bg-[#B4FB00] text-[#0B1226]" : "bg-white/5 text-gray-500")}>
                                         <Icon size={24} strokeWidth={isActive ? 2.5 : 2} />
                                     </div>
                                     <div className="flex-grow">

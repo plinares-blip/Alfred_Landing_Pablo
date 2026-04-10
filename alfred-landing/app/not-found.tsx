@@ -26,7 +26,7 @@ export default function NotFound() {
 
                     <div className="pt-4">
                         <Link href="/">
-                            <Button size="lg" className="bg-alfred-lime text-alfred-navy hover:bg-white font-black rounded-full px-10 h-16 text-lg transition-all duration-300 shadow-[0_0_30px_rgba(180,251,0,0.2)] hover:shadow-[0_0_40px_rgba(180,251,0,0.4)] gap-3">
+                            <Button size="lg" className="bg-alfred-lime text-alfred-navy hover:bg-white font-black px-10 h-16 text-lg transition-all duration-300 shadow-[0_0_30px_rgba(180,251,0,0.2)] hover:shadow-[0_0_40px_rgba(180,251,0,0.4)] gap-3">
                                 <MoveLeft size={20} />
                                 Volver al Inicio
                             </Button>

@@ -190,7 +190,7 @@ export function Navbar({ mode, setMode, lean = false, hideLinks = false }: Navba
                                 <Link href="/asistente">
                                     <Button
                                         size="sm"
-                                        className="bg-alfred-lime text-alfred-navy hover:bg-white transition-colors font-bold rounded-full px-6"
+                                        className="bg-alfred-lime text-alfred-navy hover:bg-white transition-colors font-bold px-6"
                                     >
                                         Hablar con Alfred
                                     </Button>
@@ -199,7 +199,7 @@ export function Navbar({ mode, setMode, lean = false, hideLinks = false }: Navba
                                 <a href="https://empresas.alfred.co/" target="_blank" rel="noopener noreferrer">
                                     <Button
                                         size="sm"
-                                        className="bg-alfred-lime text-alfred-navy hover:bg-white transition-colors font-bold rounded-full px-6"
+                                        className="bg-alfred-lime text-alfred-navy hover:bg-white transition-colors font-bold px-6"
                                     >
                                         Iniciar Sesión
                                     </Button>
@@ -281,13 +281,13 @@ export function Navbar({ mode, setMode, lean = false, hideLinks = false }: Navba
 
                             {mode === "personal" ? (
                                 <Link href="/asistente" className="w-full max-w-xs" onClick={() => setIsMobileMenuOpen(false)}>
-                                    <Button className="w-full h-14 text-lg bg-alfred-lime text-alfred-navy hover:bg-white font-bold rounded-full shadow-[0_0_20px_rgba(180,251,0,0.3)]">
+                                    <Button className="w-full h-14 text-lg bg-alfred-lime text-alfred-navy hover:bg-white font-bold shadow-[0_0_20px_rgba(180,251,0,0.3)]">
                                         Hablar con Alfred
                                     </Button>
                                 </Link>
                             ) : (
                                 <a href="https://empresas.alfred.co/" target="_blank" rel="noopener noreferrer" className="w-full max-w-xs" onClick={() => setIsMobileMenuOpen(false)}>
-                                    <Button className="w-full h-14 text-lg bg-alfred-lime text-alfred-navy hover:bg-white font-bold rounded-full shadow-[0_0_20px_rgba(180,251,0,0.3)]">
+                                    <Button className="w-full h-14 text-lg bg-alfred-lime text-alfred-navy hover:bg-white font-bold shadow-[0_0_20px_rgba(180,251,0,0.3)]">
                                         Iniciar Sesión
                                     </Button>
                                 </a>

@@ -327,7 +327,7 @@ export function B2BLeadForm() {
                                                                             key={size}
                                                                             type="button"
                                                                             onClick={() => field.onChange(size)}
-                                                                            className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${isActive
+                                                                            className={`px-6 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${isActive
                                                                                 ? "bg-[#B4FB00] text-black font-bold shadow-[0_0_15px_rgba(180,251,0,0.3)] scale-105"
                                                                                 : "bg-white/5 text-white hover:bg-white/10 border-transparent border hover:border-white/20"
                                                                                 }`}
@@ -358,7 +358,7 @@ export function B2BLeadForm() {
                                                                             key={role}
                                                                             type="button"
                                                                             onClick={() => field.onChange(role)}
-                                                                            className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${isActive
+                                                                            className={`px-6 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${isActive
                                                                                 ? "bg-white text-black font-bold shadow-[0_0_15px_rgba(255,255,255,0.3)] scale-105"
                                                                                 : "bg-white/5 text-white hover:bg-white/10 border-transparent border hover:border-white/20"
                                                                                 }`}
@@ -466,7 +466,7 @@ export function B2BLeadForm() {
                                                 <button
                                                     type="submit"
                                                     disabled={isSubmitting}
-                                                    className="w-full mt-auto flex items-center justify-center p-6 bg-[#B4FB00] rounded-full text-black hover:bg-white hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(180,251,0,0.4)] transition-all duration-300 group disabled:opacity-50 disabled:cursor-not-allowed"
+                                                    className="w-full mt-auto flex items-center justify-center p-6 bg-[#B4FB00] rounded-xl text-black hover:bg-white hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(180,251,0,0.4)] transition-all duration-300 group disabled:opacity-50 disabled:cursor-not-allowed"
                                                     style={{ fontFamily: "var(--font-gotham), sans-serif" }}
                                                 >
                                                     {isSubmitting ? (

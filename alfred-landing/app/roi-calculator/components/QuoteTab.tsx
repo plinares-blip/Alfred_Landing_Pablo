@@ -432,7 +432,7 @@ export const QuoteTab: React.FC<QuoteTabProps> = ({ state, onChange }) => {
                                                 }`}
                                         >
                                             {opt.recommended && (
-                                                <div className="absolute -top-2 px-3 py-1 bg-alfred-blue text-[9px] font-black uppercase text-white rounded-full tracking-wider shadow-lg">
+                                                <div className="absolute -top-2 px-3 py-1 bg-alfred-blue text-[9px] font-black uppercase text-white rounded-xl tracking-wider shadow-lg">
                                                     Mejor Valor
                                                 </div>
                                             )}

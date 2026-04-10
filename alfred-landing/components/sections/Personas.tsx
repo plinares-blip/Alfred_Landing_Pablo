@@ -28,21 +28,21 @@ export function Personas() {
                 {/* Custom Toggle */}
                 {/* Custom Toggle Corregido */}
                 <div className="flex justify-center mb-10 xl:mb-16">
-                    <div className="relative grid grid-cols-2 bg-white/5 p-1 rounded-full w-[310px] md:w-[400px]">
+                    <div className="relative grid grid-cols-2 bg-white/5 p-1 rounded-xl w-[310px] md:w-[400px]">
                         <div
-                            className={`absolute top-1 bottom-1 w-[calc(50%-4px)] rounded-full bg-alfred-lime transition-all duration-300 ${activeTab === "convenio" ? "left-1" : "left-[calc(50%+2px)]"
+                            className={`absolute top-1 bottom-1 w-[calc(50%-4px)] rounded-xl bg-alfred-lime transition-all duration-300 ${activeTab === "convenio" ? "left-1" : "left-[calc(50%+2px)]"
                                 }`}
                         />
                         <button
                             onClick={() => setActiveTab("convenio")}
-                            className={`relative z-10 w-full py-3 rounded-full text-sm md:text-base font-bold transition-colors ${activeTab === "convenio" ? "text-alfred-navy" : "text-white hover:text-white/80"
+                            className={`relative z-10 w-full py-3 rounded-xl text-sm md:text-base font-bold transition-colors ${activeTab === "convenio" ? "text-alfred-navy" : "text-white hover:text-white/80"
                                 }`}
                         >
                             Tengo Convenio
                         </button>
                         <button
                             onClick={() => setActiveTab("particular")}
-                            className={`relative z-10 w-full py-3 rounded-full text-sm md:text-base font-bold transition-colors ${activeTab === "particular" ? "text-alfred-navy" : "text-white hover:text-white/80"
+                            className={`relative z-10 w-full py-3 rounded-xl text-sm md:text-base font-bold transition-colors ${activeTab === "particular" ? "text-alfred-navy" : "text-white hover:text-white/80"
                                 }`}
                         >
                             Soy Particular
