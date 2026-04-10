@@ -240,7 +240,7 @@ export function ContactForm({ source, className, onSuccess }: ContactFormProps) 
             <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full h-20 text-xl font-black bg-[#B4FB00] text-black hover:bg-white hover:scale-[1.01] hover:shadow-[0_0_40px_rgba(180,251,0,0.3)] transition-all duration-300 rounded-none uppercase tracking-[0.2em] relative group"
+                className="w-full h-20 text-xl font-black bg-[#B4FB00] text-black hover:bg-white hover:scale-[1.01] hover:shadow-[0_0_40px_rgba(180,251,0,0.3)] transition-all duration-300 rounded-xl uppercase tracking-[0.2em] relative group"
                 style={{ fontFamily: "var(--font-gotham), sans-serif" }}
             >
                 {isSubmitting ? (
