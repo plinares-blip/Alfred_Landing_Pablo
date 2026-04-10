@@ -14,6 +14,7 @@ import Link from "next/link";
 
 import Image from "next/image";
 import { DOWNLOAD_LINK } from "@/lib/constants";
+import { trackEvent } from "@/lib/analytics";
 
 
 
@@ -179,13 +180,12 @@ export function Hero({ mode, setMode }: HeroProps) {
                     />
 
                     <button
-
-                        onClick={() => setMode("personal")}
-
+                        onClick={() => {
+                            trackEvent('select_audience_mode', { mode: 'personal', from: mode });
+                            setMode("personal");
+                        }}
                         className={`relative z-10 w-full py-2 text-sm font-bold transition-colors duration-300 whitespace-nowrap ${mode === "personal" ? "text-alfred-navy" : "text-white/60 hover:text-white"
-
                             }`}
-
                     >
 
                         Para Ti
@@ -193,13 +193,12 @@ export function Hero({ mode, setMode }: HeroProps) {
                     </button>
 
                     <button
-
-                        onClick={() => setMode("business")}
-
+                        onClick={() => {
+                            trackEvent('select_audience_mode', { mode: 'business', from: mode });
+                            setMode("business");
+                        }}
                         className={`relative z-10 w-full py-2 text-sm font-bold transition-colors duration-300 whitespace-nowrap ${mode === "business" ? "text-alfred-navy" : "text-white/60 hover:text-white"
-
                             }`}
-
                     >
 
                         Para Tu Empresa
@@ -358,13 +357,14 @@ export function Hero({ mode, setMode }: HeroProps) {
                                 transition={{ type: "spring", stiffness: 50 }}
                             >
                                 <Image
-                                    src={mode === "personal" ? "/images/key-visuals/kvPersonas.webp" : "/images/key-visuals/kvEmpresas.webp"}
+                                    src={mode === "personal" ? "/images/key-visuals/V2kvPersonas.webp" : "/images/key-visuals/V2kvEmpresas.webp"}
                                     alt={mode === "personal" ? "Alfred Personas" : "Alfred Empresas"}
                                     fill
-                                    // object-center garantiza que ambas fotos floten exactamente en el mismo centro matemático de la caja
                                     className="drop-shadow-2xl object-contain object-center"
                                     priority
+                                    quality={100}
                                     sizes="(max-width: 1024px) 100vw, 50vw"
+                                    unoptimized
                                 />
                             </motion.div>
                         </div>

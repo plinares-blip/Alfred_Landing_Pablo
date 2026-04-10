@@ -7,6 +7,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
+import { trackEvent } from "@/lib/analytics";
 
 interface NavbarProps {
     mode: "personal" | "business" | "alianzas" | "talleres" | "careers";
@@ -69,6 +70,7 @@ export function Navbar({ mode, setMode, lean = false, hideLinks = false }: Navba
 
     const handleLogoClick = (e: React.MouseEvent) => {
         e.preventDefault();
+        trackEvent('click_logo', { section: 'navbar', current_path: pathname });
         if (pathname === "/") {
             // Already on home page → smooth scroll to top
             window.scrollTo({ top: 0, behavior: "smooth" });
@@ -142,7 +144,7 @@ export function Navbar({ mode, setMode, lean = false, hideLinks = false }: Navba
                             fill
                             className="object-contain object-left"
                             priority
-                            sizes="(max-width: 768px) 128px, 160px"
+                            sizes="(max-width: 768px) 256px, 320px"
                         />
                     </button>
 
@@ -151,7 +153,10 @@ export function Navbar({ mode, setMode, lean = false, hideLinks = false }: Navba
                         {links.map((link) => (
                             <button
                                 key={link.name}
-                                onClick={() => scrollToSection(link.href)}
+                                onClick={() => {
+                                    trackEvent('click_navbar_link', { name: link.name, href: link.href });
+                                    scrollToSection(link.href);
+                                }}
                                 className={cn(
                                     "transition-colors text-sm font-medium tracking-wide relative cursor-pointer bg-transparent border-none",
                                     activeSection === link.href.substring(1)
@@ -180,6 +185,7 @@ export function Navbar({ mode, setMode, lean = false, hideLinks = false }: Navba
                                     <Button
                                         variant="ghost"
                                         size="sm"
+                                        onClick={() => trackEvent('click_navbar_cta', { name: 'ser_taller' })}
                                         className="text-white hover:text-alfred-lime transition-colors font-bold"
                                     >
                                         Ser taller Alfred
@@ -190,6 +196,7 @@ export function Navbar({ mode, setMode, lean = false, hideLinks = false }: Navba
                                 <Link href="/asistente">
                                     <Button
                                         size="sm"
+                                        onClick={() => trackEvent('click_navbar_cta', { name: 'hablar_con_alfred' })}
                                         className="bg-alfred-lime text-alfred-navy hover:bg-white transition-colors font-bold px-6"
                                     >
                                         Hablar con Alfred
@@ -199,6 +206,7 @@ export function Navbar({ mode, setMode, lean = false, hideLinks = false }: Navba
                                 <a href="https://empresas.alfred.co/" target="_blank" rel="noopener noreferrer">
                                     <Button
                                         size="sm"
+                                        onClick={() => trackEvent('click_navbar_cta', { name: 'iniciar_sesion' })}
                                         className="bg-alfred-lime text-alfred-navy hover:bg-white transition-colors font-bold px-6"
                                     >
                                         Iniciar Sesión

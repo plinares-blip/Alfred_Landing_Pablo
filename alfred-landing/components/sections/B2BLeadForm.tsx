@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { motion, AnimatePresence } from "framer-motion";
 import { Loader2, CheckCircle2 } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 interface B2BFormData {
     name: string;
@@ -47,6 +48,19 @@ export function B2BLeadForm() {
     const watchedFleet = watch("fleetSize");
     const watchedRole = watch("role");
     const watchedCustomPain = watch("customPain");
+    
+    // Track values for intent analysis (Micro-conversions)
+    useEffect(() => {
+        if (watchedFleet) {
+            trackEvent('form_value_change', { field: 'fleet_size', value: watchedFleet, form_name: 'diagnostico_b2b' });
+        }
+    }, [watchedFleet]);
+
+    useEffect(() => {
+        if (watchedRole) {
+            trackEvent('form_value_change', { field: 'role', value: watchedRole, form_name: 'diagnostico_b2b' });
+        }
+    }, [watchedRole]);
 
     const onSubmit = async (data: B2BFormData) => {
         setIsSubmitting(true);
@@ -79,6 +93,13 @@ export function B2BLeadForm() {
                     'value': 1.0,
                     'currency': 'COP'
                 });
+                
+                // Track GA4 generate_lead event
+                trackEvent('generate_lead', { 
+                    form_name: 'diagnostico_b2b', 
+                    fleet_size: data.fleetSize,
+                    role: data.role
+                });
             }
             // =========================================
 
@@ -108,6 +129,12 @@ export function B2BLeadForm() {
     };
 
     const handlePainSelect = (id: string) => {
+        // Track the first interaction as form_start
+        trackEvent('form_start', { 
+            form_name: 'diagnostico_b2b', 
+            selected_pain: id 
+        });
+        
         setValue("painPoint", id);
         if (id !== "otro") {
             setTimeout(() => {
@@ -144,7 +171,12 @@ export function B2BLeadForm() {
     const progressPercent = step === 1 ? 33 : step === 2 ? 66 : 100;
 
     return (
-        <section id="contacto" className="relative z-20 w-full bg-[#111E3E] py-16 lg:py-32 overflow-hidden selection:bg-alfred-lime selection:text-alfred-navy">
+        <motion.section 
+            id="contacto" 
+            onViewportEnter={() => trackEvent('view_form_section', { section: 'b2b_lead_form' })}
+            viewport={{ once: true, amount: 0.3 }}
+            className="relative z-20 w-full bg-[#111E3E] py-16 lg:py-32 overflow-hidden selection:bg-alfred-lime selection:text-alfred-navy"
+        >
             <div className="container mx-auto px-4 lg:px-12 xl:px-24">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 lg:gap-24 items-start relative">
 
@@ -487,6 +519,6 @@ export function B2BLeadForm() {
                     </div>
                 </div>
             </div>
-        </section>
+        </motion.section>
     );
 }

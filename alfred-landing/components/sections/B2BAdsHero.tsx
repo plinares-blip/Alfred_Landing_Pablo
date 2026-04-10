@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 export function B2BAdsHero() {
     return (
@@ -38,7 +39,10 @@ export function B2BAdsHero() {
                             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
                                 <Button 
                                     size="lg" 
-                                    onClick={() => document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })}
+                                    onClick={() => {
+                                        trackEvent('click_hero_cta', { section: 'hero', mode: 'b2b', button_text: 'Hablar con un Experto' });
+                                        document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" });
+                                    }}
                                     className="w-full sm:w-auto h-16 px-10 text-xl font-bold shadow-[0_0_40px_rgba(0,150,251,0.4)] hover:shadow-[0_0_60px_rgba(0,150,251,0.6)] bg-alfred-sky text-white hover:bg-alfred-blue transition-all duration-300"
                                 >
                                     Hablar con un Experto

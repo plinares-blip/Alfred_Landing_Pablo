@@ -12,7 +12,7 @@ import { ChevronDown, ArrowUpRight, CheckCircle2, ShieldCheck, Ticket, Building2
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 
 import NextImage from "next/image";
-
+import { trackEvent } from "@/lib/analytics";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { DOWNLOAD_LINK } from "@/lib/constants";
 
@@ -723,15 +723,12 @@ function BusinessView() {
                     <div className="max-w-4xl mx-auto text-center">
 
                         <motion.h3
-
                             initial={{ opacity: 0, y: 20 }}
-
                             whileInView={{ opacity: 1, y: 0 }}
-
+                            onViewportEnter={() => trackEvent('view_conversion_point', { section: 'alianzas_cta' })}
+                            viewport={{ once: true }}
                             className="text-5xl lg:text-5xl xl:text-[64px] font-black text-white mb-6 leading-tight uppercase tracking-tighter"
-
                             style={{ fontFamily: "var(--font-gotham), sans-serif" }}
-
                         >
 
                             Diseñemos tu Alianza
@@ -957,7 +954,17 @@ export function Convenios({ mode }: ConveniosProps) {
 
                                                 className="relative cursor-pointer group/phone"
 
-                                                onClick={() => setSelectedInsurer(isSelected ? null : insurer)}
+                                                onClick={() => {
+                                                    const newSelection = isSelected ? null : insurer;
+                                                    if (newSelection) {
+                                                        trackEvent('click_partnership_detail', { 
+                                                            insurer_id: insurer.id, 
+                                                            insurer_name: insurer.name,
+                                                            mode: 'personal'
+                                                        });
+                                                    }
+                                                    setSelectedInsurer(newSelection);
+                                                }}
 
                                                 animate={{
                                                     x: isOtherSelected

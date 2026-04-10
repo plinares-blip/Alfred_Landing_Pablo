@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { motion, useInView, useSpring, useMotionValue } from "framer-motion";
 import { Globe } from "lucide-react";
 import { RegionalCoverageMap } from "@/components/sections/RegionalCoverageMap";
+import { trackEvent } from "@/lib/analytics";
 
 
 // LEVEL 1: IMPACT DATA
@@ -141,7 +142,12 @@ export function ImpactCards() {
     };
 
     return (
-        <section id="impacto" className="relative pt-12 lg:pt-16 xl:pt-20 pb-8 lg:pb-12 overflow-hidden bg-[#111E3E]">
+        <motion.section 
+            id="impacto" 
+            onViewportEnter={() => trackEvent('view_social_proof', { section: 'impact_cards' })}
+            viewport={{ once: true, amount: 0.3 }}
+            className="relative pt-12 lg:pt-16 xl:pt-20 pb-8 lg:pb-12 overflow-hidden bg-[#111E3E]"
+        >
             <div className="absolute inset-0 bg-[#111E3E]" />
             <div className="absolute top-0 inset-x-0 h-64 bg-gradient-to-b from-[#0A0F1A] to-transparent z-10 opacity-50" />
 
@@ -226,7 +232,7 @@ export function ImpactCards() {
                     </div>
                 </div>
             </div>
-        </section>
+        </motion.section>
     );
 }
 
@@ -287,10 +293,13 @@ export function TrackRecord() {
 
                             {/* Premium Pill Button Trigger */}
                             <motion.button
-                                onClick={() => setShowMap(true)}
+                                onClick={() => {
+                                    trackEvent('view_social_proof', { action: 'open_map', location: 'track_record' });
+                                    setShowMap(true);
+                                }}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.98 }}
-                                className="group/btn relative flex items-center gap-3 px-6 py-2.5 rounded-xl border border-alfred-lime bg-white/5 shadow-[0_0_15px_rgba(180,251,0,0.2)] transition-all duration-300 hover:bg-alfred-lime/15 hover:shadow-[0_0_25px_rgba(180,251,0,0.4)]"
+                                className="group/btn relative flex items-center gap-3 px-6 py-2.5 rounded-xl border border-alfred-lime bg-white/5 shadow-[0_0_15px_rgba(180,251,0,0.2)] transition-all duration-300 hover:bg-alfred-lime/15 hover:shadow-[0_0_25_rgba(180,251,0,0.4)]"
                             >
                                 <span className="text-white text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em]">
                                     Explorar Mapa 3D
@@ -430,6 +439,7 @@ export function IndustryRecognition() {
                                 href={logo.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                onClick={() => trackEvent('view_social_proof', { action: 'click_press_logo', press_name: logo.src.split('/').pop()?.split('.')[0] })}
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{
                                     opacity: 1,

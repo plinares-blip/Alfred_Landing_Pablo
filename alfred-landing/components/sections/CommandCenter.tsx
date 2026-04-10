@@ -13,6 +13,7 @@ import {
     ChevronRight
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { trackEvent } from "@/lib/analytics";
 
 const features = [
     {
@@ -125,7 +126,10 @@ export function CommandCenter() {
                             return (
                                 <button
                                     key={feature.id}
-                                    onClick={() => setActiveIndex(idx)}
+                                    onClick={() => {
+                                        trackEvent('click_feature_detail', { feature_id: feature.id, feature_title: feature.title });
+                                        setActiveIndex(idx);
+                                    }}
                                     className={cn("w-full text-left p-4 lg:p-2 xl:py-1.5 xl:px-4 2xl:p-4 rounded-2xl transition-all duration-500 group relative flex items-center gap-4 2xl:gap-6",
                                         isActive ? "bg-white/5 border border-white/10 shadow-2xl" : "hover:bg-white/5 border border-transparent"
                                     )}
@@ -256,7 +260,10 @@ export function CommandCenter() {
                                 return (
                                     <div
                                         key={`mob-tape-${feature.id}`}
-                                        onClick={() => setActiveIndex(idx)}
+                                        onClick={() => {
+                                            trackEvent('click_feature_detail', { feature_id: feature.id, feature_title: feature.title, device: 'mobile' });
+                                            setActiveIndex(idx);
+                                        }}
                                         className="flex items-center justify-center h-full cursor-pointer relative"
                                         style={{ width: ITEM_WIDTH }}
                                     >
