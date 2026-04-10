@@ -958,8 +958,8 @@ export function Convenios({ mode }: ConveniosProps) {
                                                 onClick={() => {
                                                     const newSelection = isSelected ? null : insurer;
                                                     if (newSelection) {
-                                                        trackEvent('click_partnership_detail', { 
-                                                            insurer_id: insurer.id, 
+                                                        trackEvent('click_partnership_detail', {
+                                                            insurer_id: insurer.id,
                                                             insurer_name: insurer.name,
                                                             mode: 'personal'
                                                         });
@@ -1247,21 +1247,35 @@ export function Convenios({ mode }: ConveniosProps) {
 
                         </div>
 
-                        {/* B2B Trojan Horse — subtle cross-sell link */}
-                        <div className="flex justify-center mt-16 lg:mt-20">
-                            <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
-                                <span className="text-sm text-white/50 font-medium">¿Quieres ver el logo de tu empresa aquí?</span>
-
-                                <Link
-                                    href="/alianzas"
-                                    className="group flex items-center text-sm text-white font-bold ml-0 sm:ml-2 hover:text-alfred-lime transition-colors cursor-pointer"
+                        {/* B2B Gateway — aspirational cross-sell */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                            className="mt-20 lg:mt-28 text-center max-w-2xl mx-auto"
+                        >
+                            <p className="text-white/40 text-xs uppercase tracking-[0.3em] font-bold mb-4">Para empresas y aseguradoras</p>
+                            <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-white leading-tight mb-4">
+                                Imagina tu marca{" "}
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-alfred-lime to-alfred-green">
+                                    aquí.
+                                </span>
+                            </h3>
+                            <p className="text-base md:text-lg text-white/50 leading-relaxed mb-8 max-w-lg mx-auto">
+                                Potencia la lealtad de tus clientes. Sin desarrollar nada.
+                            </p>
+                            <Link href="/alianzas">
+                                <motion.button
+                                    whileHover={{ scale: 1.03 }}
+                                    whileTap={{ scale: 0.97 }}
+                                    className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-alfred-lime/30 bg-alfred-lime/5 text-alfred-lime font-bold text-lg hover:bg-alfred-lime/10 hover:border-alfred-lime/50 transition-all duration-300"
                                 >
-                                    Explorar Convenios Corporativos
-                                    <ArrowUpRight className="w-4 h-4 ml-1 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                                </Link>
-
-                            </div>
-                        </div>
+                                    Explorar Alianzas Corporativas
+                                    <ArrowUpRight className="w-5 h-5 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                                </motion.button>
+                            </Link>
+                        </motion.div>
 
 
 
