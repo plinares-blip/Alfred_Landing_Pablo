@@ -61,14 +61,14 @@ export function CommandCenter() {
     const [containerWidth, setContainerWidth] = useState(0);
 
     useEffect(() => {
-        if (containerRef.current) {
-            setContainerWidth(containerRef.current.offsetWidth);
-        }
-        const handleResize = () => {
-            if (containerRef.current) setContainerWidth(containerRef.current.offsetWidth);
-        };
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
+        if (!containerRef.current) return;
+        const ro = new ResizeObserver((entries) => {
+            for (const entry of entries) {
+                setContainerWidth(entry.contentRect.width);
+            }
+        });
+        ro.observe(containerRef.current);
+        return () => ro.disconnect();
     }, []);
 
     // Preload all feature images so tab switching feels instant

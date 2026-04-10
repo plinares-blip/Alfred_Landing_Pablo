@@ -80,46 +80,53 @@ export function Navbar({ mode, setMode, lean = false, hideLinks = false }: Navba
         }
     };
 
+    // Lightweight scroll handler — only tracks scroll position for header styling
     useEffect(() => {
         const handleScroll = () => {
-            const currentScrollY = window.scrollY;
-            setIsScrolled(currentScrollY > 20);
-            lastScrollY.current = currentScrollY;
+            setIsScrolled(window.scrollY > 20);
+        };
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        handleScroll();
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
-            let currentSection = "";
+    // IntersectionObserver for active section detection — no forced reflow
+    useEffect(() => {
+        const allTargetIds = links.flatMap(l => l.targetIds);
+        if (allTargetIds.length === 0) return;
 
-            // 1. Detectar si estamos en el top (Hero)
-            if (currentScrollY < 100) {
-                setActiveSection("");
-                return;
-            }
+        const visibleSections = new Set<string>();
 
-            // 2. Iterar sobre los links del modo actual para encontrar la sección visible
-            for (const link of links) {
-                for (const id of link.targetIds) {
-                    const el = document.getElementById(id);
-                    if (el) {
-                        const rect = el.getBoundingClientRect();
-                        // Si la parte superior de la sección está cerca del top del viewport
-                        if (rect.top <= 200 && rect.bottom >= 200) {
-                            currentSection = link.href.substring(1);
-                            break;
-                        }
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        visibleSections.add(entry.target.id);
+                    } else {
+                        visibleSections.delete(entry.target.id);
+                    }
+                });
+
+                // Find the first link whose targetIds overlap with visible sections
+                let found = "";
+                for (const link of links) {
+                    if (link.targetIds.some(id => visibleSections.has(id))) {
+                        found = link.href.substring(1);
+                        break;
                     }
                 }
-                if (currentSection) break;
-            }
+                setActiveSection(found);
+            },
+            { rootMargin: "-100px 0px -60% 0px" }
+        );
 
-            setActiveSection(currentSection);
-        };
+        allTargetIds.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) observer.observe(el);
+        });
 
-        window.addEventListener("scroll", handleScroll);
-        handleScroll();
-
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, [mode, isMobileMenuOpen]); // Agregamos isMobileMenuOpen a dependencias
+        return () => observer.disconnect();
+    }, [mode, links]);
 
     return (
         <>
@@ -167,11 +174,11 @@ export function Navbar({ mode, setMode, lean = false, hideLinks = false }: Navba
                                 {link.name}
                                 {activeSection === link.href.substring(1) && (
                                     <motion.div
-                                        layoutId="active-nav"
                                         className="absolute -bottom-1 left-0 right-0 h-0.5 bg-alfred-lime"
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
-                                        exit={{ opacity: 0 }}
+                                        initial={{ scaleX: 0 }}
+                                        animate={{ scaleX: 1 }}
+                                        exit={{ scaleX: 0 }}
+                                        transition={{ duration: 0.2 }}
                                     />
                                 )}
                             </button>

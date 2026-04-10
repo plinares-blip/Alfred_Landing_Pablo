@@ -161,18 +161,12 @@ export function Hero({ mode, setMode }: HeroProps) {
 
                     <motion.div
 
-                        layoutId="active-pill"
-
-                        className="absolute top-1.5 bottom-1.5 bg-alfred-lime rounded-xl shadow-[0_0_20px_rgba(180,251,0,0.3)]"
+                        className="absolute top-1.5 bottom-1.5 left-1.5 w-[calc(50%-8px)] bg-alfred-lime rounded-xl shadow-[0_0_20px_rgba(180,251,0,0.3)]"
 
                         initial={false}
 
                         animate={{
-
-                            left: mode === "personal" ? "6px" : "calc(50% + 2px)",
-
-                            width: "calc(50% - 8px)"
-
+                            x: mode === "personal" ? 0 : "calc(100% + 4px)",
                         }}
 
                         transition={{ type: "spring", stiffness: 300, damping: 30 }}

@@ -1,5 +1,4 @@
 import { LandingPage } from "@/components/LandingPage";
-import { Suspense } from "react";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -7,10 +6,12 @@ export const metadata: Metadata = {
   description: "Alfred orquesta la industria automotriz para devolverte tu tiempo. Gestión inteligente de mantenimientos, trámites y seguros.",
 };
 
-export default function Home() {
-  return (
-    <Suspense fallback={null}>
-      <LandingPage />
-    </Suspense>
-  );
+const VALID_MODES = ["personal", "business", "alianzas", "talleres", "careers"] as const;
+type Mode = typeof VALID_MODES[number];
+
+export default async function Home({ searchParams }: { searchParams: Promise<{ mode?: string }> }) {
+  const params = await searchParams;
+  const initialMode: Mode = VALID_MODES.includes(params.mode as Mode) ? (params.mode as Mode) : "personal";
+
+  return <LandingPage initialMode={initialMode} />;
 }

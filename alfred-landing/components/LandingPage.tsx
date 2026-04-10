@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
 import dynamic from "next/dynamic";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -18,17 +17,12 @@ const Nosotros = dynamic(() => import("@/components/sections/Nosotros").then(m =
 const SocialProof = dynamic(() => import("@/components/sections/SocialProof").then(m => ({ default: m.SocialProof })));
 const SupportStrip = dynamic(() => import("@/components/sections/SupportStrip").then(m => ({ default: m.SupportStrip })));
 
-export function LandingPage() {
-    const searchParams = useSearchParams();
-    const [mode, setMode] = useState<"personal" | "business" | "alianzas" | "talleres" | "careers">("personal");
+interface LandingPageProps {
+    initialMode: "personal" | "business" | "alianzas" | "talleres" | "careers";
+}
 
-    // Sync mode from URL query param on mount
-    useEffect(() => {
-        const queryMode = searchParams.get("mode");
-        if (queryMode && ["personal", "business", "alianzas", "talleres", "careers"].includes(queryMode)) {
-            setMode(queryMode as any);
-        }
-    }, [searchParams]);
+export function LandingPage({ initialMode }: LandingPageProps) {
+    const [mode, setMode] = useState(initialMode);
 
     // Save mode on change and update the URL silently to enable back-button restoration
     useEffect(() => {
