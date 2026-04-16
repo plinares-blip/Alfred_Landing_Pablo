@@ -106,66 +106,32 @@ export async function POST(request: Request) {
         }
 
         // ==========================================
-        // ✉️ ENVÍO DE CORREO AUTOMÁTICO (WEBHOOK)
-        // El asunto y cuerpo del correo se construyen
-        // en el Apps Script, no aquí. Solo enviamos
-        // los datos crudos del lead.
+        // ✉️ ENVÍO DE DATOS A GOOGLE APPS SCRIPT (GAS)
+        // El script de Google recibe los datos y:
+        // 1. Guarda el lead en Google Sheets.
+        // 2. Decide y envía el correo automático.
         // ==========================================
-        if (process.env.MAIL_WEBHOOK_URL) {
-            try {
-                const mailResponse = await fetch(process.env.MAIL_WEBHOOK_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        to_email: email,
-                        to_name: name,
-                        phone: phone,
-                        company: company || '',
-                        source: source || 'General'
-                    })
-                });
+        const gasWebhookUrl = process.env.MAIL_WEBHOOK_URL || 'https://script.google.com/macros/s/AKfycbxvAIGOfcsxBpfqWxwlP87SHcvlzNzjTZk9TZk9ZUzuP5sv5tPg1WDfJI-O04ZkpAf79hGX/exec';
 
-                if (!mailResponse.ok) {
-                    console.error('Error al enviar webhook de correo:', mailResponse.statusText);
-                }
-            } catch (error) {
-                console.error('Error enviando webhook de correo:', error);
+        try {
+            const gasResponse = await fetch(gasWebhookUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    to_email: email,
+                    to_name: name,
+                    phone: phone,
+                    company: company || '',
+                    message: message || '',
+                    source: source || 'General'
+                })
+            });
+
+            if (!gasResponse.ok) {
+                console.error('Error al enviar a Google Apps Script:', gasResponse.statusText);
             }
-        }
-
-        // ==========================================
-        // 📊 GOOGLE SHEETS (APP SCRIPT WEBHOOKS)
-        // ==========================================
-        let sheetsWebhookUrl: string | undefined;
-
-        if (sourceLower.includes('aliado') || sourceLower.includes('taller')) {
-            sheetsWebhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_ALIADOS;
-        } else if (sourceLower.includes('empresa') || sourceLower.includes('flota')) {
-            sheetsWebhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_EMPRESAS;
-        }
-
-        if (sheetsWebhookUrl) {
-            try {
-                const sheetResponse = await fetch(sheetsWebhookUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        name,
-                        email,
-                        phone,
-                        company: company || '',
-                        message: message || '',
-                        source: source || 'General',
-                        timestamp: new Date().toISOString(),
-                    }),
-                });
-
-                if (!sheetResponse.ok) {
-                    console.error('Error enviando a Google Sheets:', sheetResponse.statusText);
-                }
-            } catch (error) {
-                console.error('Error enviando a Google Sheets:', error);
-            }
+        } catch (error) {
+            console.error('Error enviando a Google Apps Script:', error);
         }
 
         return NextResponse.json({ success: true, message: 'Mensaje enviado correctamente' });
