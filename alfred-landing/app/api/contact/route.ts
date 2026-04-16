@@ -133,6 +133,41 @@ export async function POST(request: Request) {
             }
         }
 
+        // ==========================================
+        // 📊 GOOGLE SHEETS (APP SCRIPT WEBHOOKS)
+        // ==========================================
+        let sheetsWebhookUrl: string | undefined;
+
+        if (sourceLower.includes('aliado') || sourceLower.includes('taller')) {
+            sheetsWebhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_ALIADOS;
+        } else if (sourceLower.includes('empresa') || sourceLower.includes('flota')) {
+            sheetsWebhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_EMPRESAS;
+        }
+
+        if (sheetsWebhookUrl) {
+            try {
+                const sheetResponse = await fetch(sheetsWebhookUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name,
+                        email,
+                        phone,
+                        company: company || '',
+                        message: message || '',
+                        source: source || 'General',
+                        timestamp: new Date().toISOString(),
+                    }),
+                });
+
+                if (!sheetResponse.ok) {
+                    console.error('Error enviando a Google Sheets:', sheetResponse.statusText);
+                }
+            } catch (error) {
+                console.error('Error enviando a Google Sheets:', error);
+            }
+        }
+
         return NextResponse.json({ success: true, message: 'Mensaje enviado correctamente' });
     } catch (error) {
         console.error('Error processing contact form:', error);

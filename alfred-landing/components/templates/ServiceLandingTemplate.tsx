@@ -213,7 +213,7 @@ export default function ServiceLandingTemplate({
                     </blockquote>
                     <p className="text-alfred-lime font-bold text-xl mb-6">— {data.socialProof.author}</p>
 
-                    <div className="relative inline-flex items-center gap-3 px-8 py-3 bg-gradient-to-r from-alfred-lime/10 to-transparent border border-alfred-lime/20 rounded-full overflow-hidden group">
+                    <div className="relative inline-flex items-center gap-3 px-8 py-3 bg-gradient-to-r from-alfred-lime/10 to-transparent border border-alfred-lime/20 rounded-xl overflow-hidden group">
                         <div className="absolute inset-0 bg-alfred-lime/5 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
                         <Activity size={18} className="text-alfred-lime" />
                         <span className="text-sm font-black uppercase tracking-[0.2em] text-white/90">

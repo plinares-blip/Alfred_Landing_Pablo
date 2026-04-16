@@ -1,10 +1,12 @@
+import dynamic from "next/dynamic";
 import { B2BAdsHero } from "@/components/sections/B2BAdsHero";
-import { CommandCenter } from "@/components/sections/CommandCenter";
-import { ClientMarquee } from "@/components/sections/SocialProof";
-import { B2BLeadForm } from "@/components/sections/B2BLeadForm";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { Metadata } from "next";
+
+const CommandCenter = dynamic(() => import("@/components/sections/CommandCenter").then(m => ({ default: m.CommandCenter })));
+const ClientMarquee = dynamic(() => import("@/components/sections/SocialProof").then(m => ({ default: m.ClientMarquee })));
+const B2BLeadForm = dynamic(() => import("@/components/sections/B2BLeadForm").then(m => ({ default: m.B2BLeadForm })));
 
 export const metadata: Metadata = {
   title: "Alfred | Control de Flota en la Nube",
@@ -22,7 +24,7 @@ export default function FlotasProLanding() {
             <B2BAdsHero />
             <CommandCenter />
             
-            <section className="bg-[#111E3E] pt-12 pb-24">
+            <section className="bg-[#111E3E] pt-12 pb-0">
                 <ClientMarquee />
             </section>
             

@@ -58,7 +58,7 @@ export default function TalleresClient() {
                                 <Button
                                     size="lg"
                                     onClick={() => document.getElementById("formulario-aliados")?.scrollIntoView({ behavior: "smooth" })}
-                                    className="bg-alfred-lime text-alfred-navy hover:bg-white font-black rounded-full px-10 h-16 text-lg transition-all duration-300 shadow-[0_0_30px_rgba(180,251,0,0.2)] hover:shadow-[0_0_40px_rgba(180,251,0,0.4)]"
+                                    className="bg-alfred-lime text-alfred-navy hover:bg-white font-black px-10 h-16 text-lg transition-all duration-300 shadow-[0_0_30px_rgba(180,251,0,0.2)] hover:shadow-[0_0_40px_rgba(180,251,0,0.4)]"
                                 >
                                     Quiero ser Aliado Alfred
                                 </Button>

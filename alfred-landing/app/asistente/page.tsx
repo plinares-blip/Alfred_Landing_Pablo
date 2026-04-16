@@ -6,7 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import ChatInterface from "@/components/chat/ChatInterface";
 
 export default function AsistentePage() {
-    const [mode, setMode] = useState<"personal" | "business" | "alianzas" | "talleres">("personal");
+    const [mode, setMode] = useState<"personal" | "business" | "alianzas" | "talleres" | "careers">("personal");
 
     return (
         <main className="min-h-screen bg-alfred-dark selection:bg-alfred-lime selection:text-alfred-navy overflow-hidden">

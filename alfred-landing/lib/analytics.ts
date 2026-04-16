@@ -1,5 +1,5 @@
 /**
- * Analytics utilities for form tracking
+ * Analytics utilities for GA4 and Google Ads tracking
  */
 
 // Get UTM parameters from URL
@@ -17,33 +17,40 @@ export function getUTMParams(): Record<string, string> {
     return utmParams;
 }
 
-// Track form start event
-export function trackFormStart(formName: string): void {
-    if (typeof window === 'undefined') return;
-
-    // Google Analytics 4
-    if (typeof window.gtag === 'function') {
-        window.gtag('event', 'form_start', {
-            form_name: formName,
+/**
+ * Generic event tracker for GA4
+ * @param eventName Name of the event to track
+ * @param eventParams Additional parameters for the event
+ */
+export const trackEvent = (eventName: string, eventParams?: Record<string, any>) => {
+    if (typeof window !== 'undefined' && window.gtag) {
+        window.gtag('event', eventName, {
+            ...eventParams,
+            // Include UTM context by default if available
+            ...getUTMParams(),
         });
+        
+        // Debugging log (only in development)
+        if (process.env.NODE_ENV === 'development') {
+            console.log(`[Analytics Event] ${eventName}`, eventParams);
+        }
     }
+};
 
-    console.log(`[Analytics] Form started: ${formName}`);
+// Track form start event (Refactored to use trackEvent)
+export function trackFormStart(formName: string, additionalParams?: Record<string, any>): void {
+    trackEvent('form_start', {
+        form_name: formName,
+        ...additionalParams,
+    });
 }
 
-// Track form submission
-export function trackFormSubmit(formName: string, metadata?: Record<string, string>): void {
-    if (typeof window === 'undefined') return;
-
-    // Google Analytics 4
-    if (typeof window.gtag === 'function') {
-        window.gtag('event', 'form_submit', {
-            form_name: formName,
-            ...metadata,
-        });
-    }
-
-    console.log(`[Analytics] Form submitted: ${formName}`, metadata);
+// Track form submission (Refactored to use trackEvent)
+export function trackFormSubmit(formName: string, metadata?: Record<string, any>): void {
+    trackEvent('form_submit', {
+        form_name: formName,
+        ...metadata,
+    });
 }
 
 // Extend Window interface for gtag

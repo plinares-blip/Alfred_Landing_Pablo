@@ -1,15 +1,17 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { QuoteTab } from './components/QuoteTab';
 import { RoiTab } from './components/RoiTab';
 import { QuoteState, TechPlan, PaymentTerm, ContractDuration, ROIState } from './types';
 import { Calculator, PieChart, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { trackEvent } from '@/lib/analytics';
 
 export default function ROICalculatorClient() {
     const [activeTab, setActiveTab] = useState<'quote' | 'roi'>('roi');
+    const isFirstRender = useRef(true);
 
     const [quoteState, setQuoteState] = useState<QuoteState>({
         numVehicles: 20,
@@ -32,6 +34,41 @@ export default function ROICalculatorClient() {
     const handleRoiChange = (updates: Partial<ROIState>) => {
         setRoiState((prev) => ({ ...prev, ...updates }));
     };
+
+    // --- Analytics Tracking ---
+
+    // Track Tab Switch
+    const handleTabChange = (tab: 'quote' | 'roi') => {
+        if (tab !== activeTab) {
+            trackEvent('engage_roi_calculator', { action: 'switch_tab', target_tab: tab });
+            setActiveTab(tab);
+        }
+    };
+
+    // Debounced Tracking for Quote & ROI Values
+    useEffect(() => {
+        if (isFirstRender.current) {
+            isFirstRender.current = false;
+            return;
+        }
+
+        const timer = setTimeout(() => {
+            trackEvent('engage_roi_calculator', {
+                action: 'update_values',
+                tab: activeTab,
+                num_vehicles: quoteState.numVehicles,
+                plan: quoteState.plan,
+                include_in_plant: quoteState.includeInPlant,
+                num_workshops: quoteState.numWorkshops,
+                payment_term: quoteState.paymentTerm,
+                contract_duration: quoteState.contractDuration,
+                preventive_cost: roiState.preventiveCostPerMonth,
+                corrective_cost: roiState.correctiveCostPerMonth
+            });
+        }, 2000); // 2 second debounce to capture "final" intention
+
+        return () => clearTimeout(timer);
+    }, [quoteState, roiState, activeTab]);
 
     return (
         <div className="min-h-screen bg-alfred-dark text-white pb-20">
@@ -76,7 +113,7 @@ export default function ROICalculatorClient() {
                 <div className="flex flex-col sm:flex-row justify-center mb-10">
                     <div className="bg-alfred-surface p-1 rounded-xl inline-flex shadow-lg border border-white/5">
                         <button
-                            onClick={() => setActiveTab('quote')}
+                            onClick={() => handleTabChange('quote')}
                             className={`flex items-center gap-2 px-6 py-3 rounded-lg font-bold text-sm transition-all duration-300 ${activeTab === 'quote'
                                 ? 'bg-alfred-blue text-white shadow-md'
                                 : 'text-gray-400 hover:text-white hover:bg-white/5'
@@ -86,7 +123,7 @@ export default function ROICalculatorClient() {
                             Cotizador
                         </button>
                         <button
-                            onClick={() => setActiveTab('roi')}
+                            onClick={() => handleTabChange('roi')}
                             className={`flex items-center gap-2 px-6 py-3 rounded-lg font-bold text-sm transition-all duration-300 ${activeTab === 'roi'
                                 ? 'bg-alfred-blue text-white shadow-md'
                                 : 'text-gray-400 hover:text-white hover:bg-white/5'

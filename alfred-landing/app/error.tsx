@@ -40,14 +40,14 @@ export default function Error({
                         <Button
                             onClick={() => reset()}
                             size="lg"
-                            className="bg-white text-alfred-navy hover:bg-gray-100 font-black rounded-full px-10 h-16 text-lg transition-all duration-300 gap-3 w-full sm:w-auto"
+                            className="bg-white text-alfred-navy hover:bg-gray-100 font-black px-10 h-16 text-lg transition-all duration-300 gap-3 w-full sm:w-auto"
                         >
                             <RefreshCcw size={20} />
                             Reintentar
                         </Button>
 
                         <Link href="/" className="w-full sm:w-auto">
-                            <Button size="lg" variant="outline" className="border-white/10 hover:bg-white/5 text-white font-black rounded-full px-10 h-16 text-lg transition-all duration-300 gap-3 w-full sm:w-auto">
+                            <Button size="lg" variant="outline" className="border-white/10 hover:bg-white/5 text-white font-black px-10 h-16 text-lg transition-all duration-300 gap-3 w-full sm:w-auto">
                                 <Home size={20} />
                                 Ir al Inicio
                             </Button>

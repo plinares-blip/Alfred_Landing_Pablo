@@ -13,6 +13,7 @@ import {
     ChevronRight
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { trackEvent } from "@/lib/analytics";
 
 const features = [
     {
@@ -60,14 +61,22 @@ export function CommandCenter() {
     const [containerWidth, setContainerWidth] = useState(0);
 
     useEffect(() => {
-        if (containerRef.current) {
-            setContainerWidth(containerRef.current.offsetWidth);
-        }
-        const handleResize = () => {
-            if (containerRef.current) setContainerWidth(containerRef.current.offsetWidth);
-        };
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
+        if (!containerRef.current) return;
+        const ro = new ResizeObserver((entries) => {
+            for (const entry of entries) {
+                setContainerWidth(entry.contentRect.width);
+            }
+        });
+        ro.observe(containerRef.current);
+        return () => ro.disconnect();
+    }, []);
+
+    // Preload all feature images so tab switching feels instant
+    useEffect(() => {
+        features.forEach((f) => {
+            const img = new window.Image();
+            img.src = f.image;
+        });
     }, []);
 
     const nextFeature = () => {
@@ -125,7 +134,10 @@ export function CommandCenter() {
                             return (
                                 <button
                                     key={feature.id}
-                                    onClick={() => setActiveIndex(idx)}
+                                    onClick={() => {
+                                        trackEvent('click_feature_detail', { feature_id: feature.id, feature_title: feature.title });
+                                        setActiveIndex(idx);
+                                    }}
                                     className={cn("w-full text-left p-4 lg:p-2 xl:py-1.5 xl:px-4 2xl:p-4 rounded-2xl transition-all duration-500 group relative flex items-center gap-4 2xl:gap-6",
                                         isActive ? "bg-white/5 border border-white/10 shadow-2xl" : "hover:bg-white/5 border border-transparent"
                                     )}
@@ -133,7 +145,7 @@ export function CommandCenter() {
                                     {isActive && (
                                         <motion.div layoutId="active-bar-desktop" className="absolute left-0 top-4 bottom-4 w-1 bg-[#B4FB00] rounded-r-full shadow-[0_0_15px_#B4FB00]" />
                                     )}
-                                    <div className={cn("p-4 rounded-xl transition-all duration-500", isActive ? "bg-[#B4FB00] text-navy" : "bg-white/5 text-gray-500")}>
+                                    <div className={cn("p-4 rounded-xl transition-all duration-500", isActive ? "bg-[#B4FB00] text-[#0B1226]" : "bg-white/5 text-gray-500")}>
                                         <Icon size={24} strokeWidth={isActive ? 2.5 : 2} />
                                     </div>
                                     <div className="flex-grow">
@@ -256,7 +268,10 @@ export function CommandCenter() {
                                 return (
                                     <div
                                         key={`mob-tape-${feature.id}`}
-                                        onClick={() => setActiveIndex(idx)}
+                                        onClick={() => {
+                                            trackEvent('click_feature_detail', { feature_id: feature.id, feature_title: feature.title, device: 'mobile' });
+                                            setActiveIndex(idx);
+                                        }}
                                         className="flex items-center justify-center h-full cursor-pointer relative"
                                         style={{ width: ITEM_WIDTH }}
                                     >

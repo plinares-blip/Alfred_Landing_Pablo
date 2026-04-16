@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { motion, AnimatePresence } from "framer-motion";
 import { Loader2, CheckCircle2 } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 interface B2BFormData {
     name: string;
@@ -47,6 +48,19 @@ export function B2BLeadForm() {
     const watchedFleet = watch("fleetSize");
     const watchedRole = watch("role");
     const watchedCustomPain = watch("customPain");
+    
+    // Track values for intent analysis (Micro-conversions)
+    useEffect(() => {
+        if (watchedFleet) {
+            trackEvent('form_value_change', { field: 'fleet_size', value: watchedFleet, form_name: 'diagnostico_b2b' });
+        }
+    }, [watchedFleet]);
+
+    useEffect(() => {
+        if (watchedRole) {
+            trackEvent('form_value_change', { field: 'role', value: watchedRole, form_name: 'diagnostico_b2b' });
+        }
+    }, [watchedRole]);
 
     const onSubmit = async (data: B2BFormData) => {
         setIsSubmitting(true);
@@ -79,6 +93,13 @@ export function B2BLeadForm() {
                     'value': 1.0,
                     'currency': 'COP'
                 });
+                
+                // Track GA4 generate_lead event
+                trackEvent('generate_lead', { 
+                    form_name: 'diagnostico_b2b', 
+                    fleet_size: data.fleetSize,
+                    role: data.role
+                });
             }
             // =========================================
 
@@ -108,6 +129,12 @@ export function B2BLeadForm() {
     };
 
     const handlePainSelect = (id: string) => {
+        // Track the first interaction as form_start
+        trackEvent('form_start', { 
+            form_name: 'diagnostico_b2b', 
+            selected_pain: id 
+        });
+        
         setValue("painPoint", id);
         if (id !== "otro") {
             setTimeout(() => {
@@ -144,7 +171,12 @@ export function B2BLeadForm() {
     const progressPercent = step === 1 ? 33 : step === 2 ? 66 : 100;
 
     return (
-        <section id="contacto" className="relative z-20 w-full bg-[#111E3E] py-16 lg:py-32 overflow-hidden selection:bg-alfred-lime selection:text-alfred-navy">
+        <motion.section 
+            id="contacto" 
+            onViewportEnter={() => trackEvent('view_form_section', { section: 'b2b_lead_form' })}
+            viewport={{ once: true, amount: 0.3 }}
+            className="relative z-20 w-full bg-[#111E3E] py-16 lg:py-32 overflow-hidden selection:bg-alfred-lime selection:text-alfred-navy"
+        >
             <div className="container mx-auto px-4 lg:px-12 xl:px-24">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 lg:gap-24 items-start relative">
 
@@ -211,8 +243,8 @@ export function B2BLeadForm() {
                                 {/* Thin Subtle Progress Bar */}
                                 <div className="absolute top-0 left-0 right-0 h-1 bg-white/5 z-50">
                                     <motion.div
-                                        className="h-full bg-alfred-lime shadow-[0_0_10px_rgba(180,251,0,0.5)]"
-                                        animate={{ width: `${progressPercent}%` }}
+                                        className="h-full w-full bg-alfred-lime shadow-[0_0_10px_rgba(180,251,0,0.5)] origin-left"
+                                        animate={{ scaleX: progressPercent / 100 }}
                                         transition={{ duration: 0.5, ease: "easeOut" }}
                                     />
                                 </div>
@@ -327,7 +359,7 @@ export function B2BLeadForm() {
                                                                             key={size}
                                                                             type="button"
                                                                             onClick={() => field.onChange(size)}
-                                                                            className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${isActive
+                                                                            className={`px-6 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${isActive
                                                                                 ? "bg-[#B4FB00] text-black font-bold shadow-[0_0_15px_rgba(180,251,0,0.3)] scale-105"
                                                                                 : "bg-white/5 text-white hover:bg-white/10 border-transparent border hover:border-white/20"
                                                                                 }`}
@@ -358,7 +390,7 @@ export function B2BLeadForm() {
                                                                             key={role}
                                                                             type="button"
                                                                             onClick={() => field.onChange(role)}
-                                                                            className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${isActive
+                                                                            className={`px-6 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${isActive
                                                                                 ? "bg-white text-black font-bold shadow-[0_0_15px_rgba(255,255,255,0.3)] scale-105"
                                                                                 : "bg-white/5 text-white hover:bg-white/10 border-transparent border hover:border-white/20"
                                                                                 }`}
@@ -466,7 +498,7 @@ export function B2BLeadForm() {
                                                 <button
                                                     type="submit"
                                                     disabled={isSubmitting}
-                                                    className="w-full mt-auto flex items-center justify-center p-6 bg-[#B4FB00] rounded-full text-black hover:bg-white hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(180,251,0,0.4)] transition-all duration-300 group disabled:opacity-50 disabled:cursor-not-allowed"
+                                                    className="w-full mt-auto flex items-center justify-center p-6 bg-[#B4FB00] rounded-xl text-black hover:bg-white hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(180,251,0,0.4)] transition-all duration-300 group disabled:opacity-50 disabled:cursor-not-allowed"
                                                     style={{ fontFamily: "var(--font-gotham), sans-serif" }}
                                                 >
                                                     {isSubmitting ? (
@@ -487,6 +519,6 @@ export function B2BLeadForm() {
                     </div>
                 </div>
             </div>
-        </section>
+        </motion.section>
     );
 }

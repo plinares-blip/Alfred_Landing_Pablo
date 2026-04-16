@@ -43,7 +43,7 @@ export function WorkshopCertification() {
 
                                 <Link
                                     href="/talleres"
-                                    className="group inline-flex items-center gap-3 md:gap-4 px-6 md:px-8 py-3 md:py-4 bg-alfred-lime text-alfred-dark hover:scale-105 transition-all rounded-full text-sm md:text-base font-black uppercase tracking-widest shadow-[0_0_40px_rgba(180,251,0,0.4)]"
+                                    className="group inline-flex items-center gap-3 md:gap-4 px-6 md:px-8 py-3 md:py-4 bg-alfred-lime text-alfred-dark hover:scale-105 transition-all rounded-xl text-sm md:text-base font-black uppercase tracking-widest shadow-[0_0_40px_rgba(180,251,0,0.4)]"
                                 >
                                     <span>Descubrir talleres elite</span>
                                     <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />

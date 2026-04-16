@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { trackEvent } from "@/lib/analytics";
 
 const services = [
     {
@@ -89,6 +90,11 @@ export function Servicios({ mode = "personal" }: ServiciosProps) {
                         <Link
                             key={idx}
                             href={`/servicios/${service.slug}?mode=${mode}`}
+                            onClick={() => trackEvent('click_service_detail', { 
+                                service_id: service.slug, 
+                                service_title: service.title,
+                                mode: mode 
+                            })}
                             className={cn(
                                 "group block relative overflow-hidden rounded-[2.5rem] bg-[#0c1222] border border-white/5 shadow-2xl transition-all duration-500 hover:border-white/20 hover:scale-[1.01] active:scale-[0.99]",
                                 service.gridClass
@@ -129,7 +135,7 @@ export function Servicios({ mode = "personal" }: ServiciosProps) {
 
                                     {/* Action indicator */}
                                     <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        <div className="w-8 h-8 rounded-full bg-alfred-lime flex items-center justify-center text-alfred-dark">
+                                        <div className="w-8 h-8 rounded-xl bg-alfred-lime flex items-center justify-center text-alfred-dark">
                                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                                                 <path d="M5 12h14M12 5l7 7-7 7" />
                                             </svg>

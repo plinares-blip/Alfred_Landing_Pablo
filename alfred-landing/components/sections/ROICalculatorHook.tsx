@@ -188,7 +188,7 @@ export function ROICalculatorHook() {
                     >
                         <Link href="/roi-calculator">
                             <motion.button
-                                className="group relative inline-flex items-center gap-3 px-10 py-5 rounded-full bg-alfred-lime text-[#111E3E] font-black text-lg md:text-xl uppercase tracking-wide transition-all duration-300 hover:bg-white hover:scale-105"
+                                className="group relative inline-flex items-center gap-3 px-10 py-5 rounded-xl bg-alfred-lime text-[#111E3E] font-black text-lg md:text-xl uppercase tracking-wide transition-all duration-300 hover:bg-white hover:scale-105"
                                 whileTap={{ scale: 0.98 }}
                             >
                                 <Calculator className="relative z-10 text-[#111E3E]" size={24} />

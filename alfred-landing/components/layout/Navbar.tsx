@@ -7,6 +7,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
+import { trackEvent } from "@/lib/analytics";
 
 interface NavbarProps {
     mode: "personal" | "business" | "alianzas" | "talleres" | "careers";
@@ -69,6 +70,7 @@ export function Navbar({ mode, setMode, lean = false, hideLinks = false }: Navba
 
     const handleLogoClick = (e: React.MouseEvent) => {
         e.preventDefault();
+        trackEvent('click_logo', { section: 'navbar', current_path: pathname });
         if (pathname === "/") {
             // Already on home page → smooth scroll to top
             window.scrollTo({ top: 0, behavior: "smooth" });
@@ -78,46 +80,53 @@ export function Navbar({ mode, setMode, lean = false, hideLinks = false }: Navba
         }
     };
 
+    // Lightweight scroll handler — only tracks scroll position for header styling
     useEffect(() => {
         const handleScroll = () => {
-            const currentScrollY = window.scrollY;
-            setIsScrolled(currentScrollY > 20);
-            lastScrollY.current = currentScrollY;
+            setIsScrolled(window.scrollY > 20);
+        };
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        handleScroll();
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
-            let currentSection = "";
+    // IntersectionObserver for active section detection — no forced reflow
+    useEffect(() => {
+        const allTargetIds = links.flatMap(l => l.targetIds);
+        if (allTargetIds.length === 0) return;
 
-            // 1. Detectar si estamos en el top (Hero)
-            if (currentScrollY < 100) {
-                setActiveSection("");
-                return;
-            }
+        const visibleSections = new Set<string>();
 
-            // 2. Iterar sobre los links del modo actual para encontrar la sección visible
-            for (const link of links) {
-                for (const id of link.targetIds) {
-                    const el = document.getElementById(id);
-                    if (el) {
-                        const rect = el.getBoundingClientRect();
-                        // Si la parte superior de la sección está cerca del top del viewport
-                        if (rect.top <= 200 && rect.bottom >= 200) {
-                            currentSection = link.href.substring(1);
-                            break;
-                        }
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        visibleSections.add(entry.target.id);
+                    } else {
+                        visibleSections.delete(entry.target.id);
+                    }
+                });
+
+                // Find the first link whose targetIds overlap with visible sections
+                let found = "";
+                for (const link of links) {
+                    if (link.targetIds.some(id => visibleSections.has(id))) {
+                        found = link.href.substring(1);
+                        break;
                     }
                 }
-                if (currentSection) break;
-            }
+                setActiveSection(found);
+            },
+            { rootMargin: "-100px 0px -60% 0px" }
+        );
 
-            setActiveSection(currentSection);
-        };
+        allTargetIds.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) observer.observe(el);
+        });
 
-        window.addEventListener("scroll", handleScroll);
-        handleScroll();
-
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, [mode, isMobileMenuOpen]); // Agregamos isMobileMenuOpen a dependencias
+        return () => observer.disconnect();
+    }, [mode, links]);
 
     return (
         <>
@@ -142,7 +151,7 @@ export function Navbar({ mode, setMode, lean = false, hideLinks = false }: Navba
                             fill
                             className="object-contain object-left"
                             priority
-                            sizes="(max-width: 768px) 128px, 160px"
+                            sizes="(max-width: 768px) 256px, 320px"
                         />
                     </button>
 
@@ -151,7 +160,10 @@ export function Navbar({ mode, setMode, lean = false, hideLinks = false }: Navba
                         {links.map((link) => (
                             <button
                                 key={link.name}
-                                onClick={() => scrollToSection(link.href)}
+                                onClick={() => {
+                                    trackEvent('click_navbar_link', { name: link.name, href: link.href });
+                                    scrollToSection(link.href);
+                                }}
                                 className={cn(
                                     "transition-colors text-sm font-medium tracking-wide relative cursor-pointer bg-transparent border-none",
                                     activeSection === link.href.substring(1)
@@ -162,11 +174,11 @@ export function Navbar({ mode, setMode, lean = false, hideLinks = false }: Navba
                                 {link.name}
                                 {activeSection === link.href.substring(1) && (
                                     <motion.div
-                                        layoutId="active-nav"
                                         className="absolute -bottom-1 left-0 right-0 h-0.5 bg-alfred-lime"
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
-                                        exit={{ opacity: 0 }}
+                                        initial={{ scaleX: 0 }}
+                                        animate={{ scaleX: 1 }}
+                                        exit={{ scaleX: 0 }}
+                                        transition={{ duration: 0.2 }}
                                     />
                                 )}
                             </button>
@@ -180,6 +192,7 @@ export function Navbar({ mode, setMode, lean = false, hideLinks = false }: Navba
                                     <Button
                                         variant="ghost"
                                         size="sm"
+                                        onClick={() => trackEvent('click_navbar_cta', { name: 'ser_taller' })}
                                         className="text-white hover:text-alfred-lime transition-colors font-bold"
                                     >
                                         Ser taller Alfred
@@ -190,7 +203,8 @@ export function Navbar({ mode, setMode, lean = false, hideLinks = false }: Navba
                                 <Link href="/asistente">
                                     <Button
                                         size="sm"
-                                        className="bg-alfred-lime text-alfred-navy hover:bg-white transition-colors font-bold rounded-full px-6"
+                                        onClick={() => trackEvent('click_navbar_cta', { name: 'hablar_con_alfred' })}
+                                        className="bg-alfred-lime text-alfred-navy hover:bg-white transition-colors font-bold px-6"
                                     >
                                         Hablar con Alfred
                                     </Button>
@@ -199,7 +213,8 @@ export function Navbar({ mode, setMode, lean = false, hideLinks = false }: Navba
                                 <a href="https://empresas.alfred.co/" target="_blank" rel="noopener noreferrer">
                                     <Button
                                         size="sm"
-                                        className="bg-alfred-lime text-alfred-navy hover:bg-white transition-colors font-bold rounded-full px-6"
+                                        onClick={() => trackEvent('click_navbar_cta', { name: 'iniciar_sesion' })}
+                                        className="bg-alfred-lime text-alfred-navy hover:bg-white transition-colors font-bold px-6"
                                     >
                                         Iniciar Sesión
                                     </Button>
@@ -281,13 +296,13 @@ export function Navbar({ mode, setMode, lean = false, hideLinks = false }: Navba
 
                             {mode === "personal" ? (
                                 <Link href="/asistente" className="w-full max-w-xs" onClick={() => setIsMobileMenuOpen(false)}>
-                                    <Button className="w-full h-14 text-lg bg-alfred-lime text-alfred-navy hover:bg-white font-bold rounded-full shadow-[0_0_20px_rgba(180,251,0,0.3)]">
+                                    <Button className="w-full h-14 text-lg bg-alfred-lime text-alfred-navy hover:bg-white font-bold shadow-[0_0_20px_rgba(180,251,0,0.3)]">
                                         Hablar con Alfred
                                     </Button>
                                 </Link>
                             ) : (
                                 <a href="https://empresas.alfred.co/" target="_blank" rel="noopener noreferrer" className="w-full max-w-xs" onClick={() => setIsMobileMenuOpen(false)}>
-                                    <Button className="w-full h-14 text-lg bg-alfred-lime text-alfred-navy hover:bg-white font-bold rounded-full shadow-[0_0_20px_rgba(180,251,0,0.3)]">
+                                    <Button className="w-full h-14 text-lg bg-alfred-lime text-alfred-navy hover:bg-white font-bold shadow-[0_0_20px_rgba(180,251,0,0.3)]">
                                         Iniciar Sesión
                                     </Button>
                                 </a>

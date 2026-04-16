@@ -5,7 +5,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
 export default function TerminosPage() {
-    const [mode, setMode] = useState<"personal" | "business" | "alianzas" | "talleres">("personal");
+    const [mode, setMode] = useState<"personal" | "business" | "alianzas" | "talleres" | "careers">("personal");
     return (
         <main className="min-h-screen bg-alfred-dark text-white selection:bg-alfred-lime selection:text-alfred-blue">
             <Navbar mode={mode} setMode={setMode} />
@@ -13,7 +13,7 @@ export default function TerminosPage() {
             <div className="pt-32 pb-20 container mx-auto px-6 max-w-4xl">
                 <div className="space-y-8 text-white/80 leading-relaxed font-jakarta">
 
-                    <h1 className="text-3xl md:text-5xl font-bold text-white mb-10 font-gotham text-center md:text-left">Términos y condiciones Alfred 2025</h1>
+                    <h1 className="text-3xl md:text-5xl font-bold text-white mb-10 font-gotham text-center md:text-left">Términos y condiciones Alfred 2026</h1>
 
                     <p className="font-semibold text-white">Términos y Condiciones de uso de la aplicación móvil de Alfred y del sitio web www.alfred.com.co</p>
                     <p className="text-sm text-white/60">Versión: 012220</p>

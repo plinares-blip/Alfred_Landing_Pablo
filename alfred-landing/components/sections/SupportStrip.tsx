@@ -53,7 +53,7 @@ export function SupportStrip() {
                         whileTap={{ scale: 0.98 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
-                        className="group relative flex items-center gap-4 px-10 py-5 rounded-full bg-[#0A1128] border border-[#B4FB00] transition-all duration-300"
+                        className="group relative flex items-center gap-4 px-10 py-5 rounded-xl bg-[#0A1128] border border-[#B4FB00] transition-all duration-300"
                     >
                         {/* WhatsApp Icon */}
                         <svg

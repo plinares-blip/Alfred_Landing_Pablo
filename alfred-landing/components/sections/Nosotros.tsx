@@ -169,7 +169,7 @@ export function Nosotros() {
                             </h4>
                             <Link
                                 href="/careers"
-                                className="inline-block border border-[#B4FB00] text-[#B4FB00] hover:bg-[#B4FB00] hover:text-[#111E3E] text-[10px] lg:text-base font-bold px-5 lg:px-8 py-2 md:py-3 rounded-full transition-all duration-300 transform hover:scale-105"
+                                className="inline-block border border-[#B4FB00] text-[#B4FB00] hover:bg-[#B4FB00] hover:text-[#111E3E] text-[10px] lg:text-base font-bold px-5 lg:px-8 py-2 md:py-3 rounded-xl transition-all duration-300 transform hover:scale-105"
                             >
                                 Unirse al Equipo
                             </Link>
