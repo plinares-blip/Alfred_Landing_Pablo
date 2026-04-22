@@ -29,7 +29,7 @@ export function WorkshopCertification() {
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="relative w-full overflow-hidden rounded-[2.5rem] border border-white/5 shadow-2xl group bg-[#0c1222] min-h-[450px] lg:h-[400px] xl:h-[480px] flex items-center"
+                    className="relative w-full overflow-hidden rounded-[2.5rem] border border-white/5 shadow-2xl bg-[#0c1222] min-h-[450px] lg:h-[400px] xl:h-[480px] flex items-center"
                 >
                     {/* Watermark/Background Image */}
                     <div className="absolute right-0 bottom-0 w-[80%] h-[60%] md:right-[-10%] md:top-1/2 md:-translate-y-1/2 md:w-[55%] md:h-[110%] opacity-[0.05] pointer-events-none z-0">

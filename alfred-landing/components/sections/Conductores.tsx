@@ -102,59 +102,57 @@ export function Conductores({ mode = "personal" }: ConductoresProps) {
 
                         {/* EL GATILLO - Zona del pulgar Mobile + QR Desktop */}
                         <div className="w-full lg:w-auto flex flex-col items-center lg:items-start">
-                            {mode === "business" ? (
-                                <motion.button
-                                    onClick={() => document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })}
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="group relative inline-flex items-center justify-center gap-4 px-10 py-5 bg-[#B4FB00] rounded-xl w-full lg:min-w-[320px] shadow-[0_10px_40px_rgba(180,251,0,0.2)] hover:shadow-[0_15px_60px_rgba(180,251,0,0.4)] transition-all duration-300 overflow-hidden cursor-pointer border-none"
-                                >
-                                    <span className="relative z-10 text-[#111E3E] font-black text-sm md:text-base uppercase tracking-widest">
-                                        Agenda tu Demo
-                                    </span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-[#111E3E] relative z-10 group-hover:translate-x-1 transition-transform">
-                                        <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
-                                    </svg>
-                                </motion.button>
-                            ) : (
-                                <>
-                                    {/* MÓVIL: Botón directo */}
-                                    <div className="w-full lg:hidden">
-                                        <motion.a
-                                            href={DOWNLOAD_LINK}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            whileHover={{ scale: 1.05 }}
-                                            whileTap={{ scale: 0.95 }}
-                                            className="group relative inline-flex items-center justify-center gap-4 px-10 py-5 bg-[#B4FB00] rounded-xl w-full shadow-[0_10px_40px_rgba(180,251,0,0.2)] hover:shadow-[0_15px_60px_rgba(180,251,0,0.4)] transition-all duration-300 overflow-hidden"
-                                        >
-                                            <span className="relative z-10 text-[#111E3E] font-black text-sm md:text-base uppercase tracking-widest">
-                                                Pedir un Alfred
-                                            </span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-[#111E3E] relative z-10 group-hover:translate-x-1 transition-transform">
-                                                <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
-                                            </svg>
-                                            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                                        </motion.a>
-                                    </div>
-
-                                    {/* DESKTOP: QR + Texto Flotando */}
-                                    <div className="hidden lg:flex items-center gap-6 group">
-                                        <div className="relative w-14 h-14 transition-all duration-500 group-hover:scale-[3] group-hover:z-50 group-hover:bg-[#0c1222] group-hover:p-1 group-hover:rounded-lg">
-                                            <NextImage
-                                                src="/images/qr/codigo.webp"
-                                                alt="Descarga Alfred"
-                                                fill
-                                                className="object-contain"
-                                                sizes="56px"
-                                            />
-                                        </div>
-                                        <span className="text-white font-black text-lg xl:text-xl uppercase tracking-widest opacity-90 group-hover:opacity-100 group-hover:text-[#B4FB00] transition-all">
+                            {/* MÓVIL: Botón directo */}
+                            <div className="w-full lg:hidden">
+                                {mode === "business" ? (
+                                    <motion.button
+                                        onClick={() => document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })}
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        className="group relative inline-flex items-center justify-center gap-4 px-10 py-5 bg-[#B4FB00] rounded-xl w-full shadow-[0_10px_40px_rgba(180,251,0,0.2)] hover:shadow-[0_15px_60px_rgba(180,251,0,0.4)] transition-all duration-300 overflow-hidden cursor-pointer border-none"
+                                    >
+                                        <span className="relative z-10 text-[#111E3E] font-black text-sm md:text-base uppercase tracking-widest">
+                                            Agenda tu Demo
+                                        </span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-[#111E3E] relative z-10 group-hover:translate-x-1 transition-transform">
+                                            <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+                                        </svg>
+                                    </motion.button>
+                                ) : (
+                                    <motion.a
+                                        href={DOWNLOAD_LINK}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        className="group relative inline-flex items-center justify-center gap-4 px-10 py-5 bg-[#B4FB00] rounded-xl w-full shadow-[0_10px_40px_rgba(180,251,0,0.2)] hover:shadow-[0_15px_60px_rgba(180,251,0,0.4)] transition-all duration-300 overflow-hidden"
+                                    >
+                                        <span className="relative z-10 text-[#111E3E] font-black text-sm md:text-base uppercase tracking-widest">
                                             Pedir un Alfred
                                         </span>
-                                    </div>
-                                </>
-                            )}
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-[#111E3E] relative z-10 group-hover:translate-x-1 transition-transform">
+                                            <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+                                        </svg>
+                                        <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                                    </motion.a>
+                                )}
+                            </div>
+
+                            {/* DESKTOP: QR + Texto Flotando */}
+                            <div className="hidden lg:flex items-center gap-6 group">
+                                <div className="relative w-14 h-14 transition-all duration-500 group-hover:scale-[3] group-hover:z-50 group-hover:bg-[#0c1222] group-hover:p-1 group-hover:rounded-lg">
+                                    <NextImage
+                                        src="/images/qr/codigo.webp"
+                                        alt="Descarga Alfred"
+                                        fill
+                                        className="object-contain"
+                                        sizes="56px"
+                                    />
+                                </div>
+                                <span className="text-white font-black text-lg xl:text-xl uppercase tracking-widest opacity-90 group-hover:opacity-100 group-hover:text-[#B4FB00] transition-all">
+                                    Pedir un Alfred
+                                </span>
+                            </div>
 
                             {/* Contenedor de tiendas alineado con el botón (Solo móvil) */}
                             {mode !== "business" && (
