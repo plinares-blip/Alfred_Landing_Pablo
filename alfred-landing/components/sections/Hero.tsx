@@ -223,9 +223,9 @@ export function Hero({ mode, setMode }: HeroProps) {
                                 <h1 className="text-4xl md:text-6xl lg:text-5xl xl:text-6xl font-black text-white leading-[0.9] tracking-tight mb-4 lg:mb-6">
                                     {mode === "personal" ? (
                                         <>
-                                            Tu vehículo. <br />
+                                            Todo para tu carro y moto{" "}
                                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-alfred-green to-alfred-lime drop-shadow-[0_0_30px_rgba(21,235,0,0.3)]">
-                                                Resuelto.
+                                                en un app.
                                             </span>
                                         </>
                                     ) : (
@@ -239,7 +239,7 @@ export function Hero({ mode, setMode }: HeroProps) {
                                 </h1>
                                 <p className="text-lg md:text-xl lg:text-lg xl:text-xl text-white/50 font-light leading-relaxed max-w-lg mx-auto lg:mx-0">
                                     {mode === "personal"
-                                        ? "Olvídate de los talleres, los trámites y el estrés. Alfred es tu copiloto personal. Tú solo conduce."
+                                        ? "Hacemos que tener un vehículo sea fácil: recibe recordatorios y encuentra los mejores proveedores para tener todo al día."
                                         : "Centraliza gastos, mantenimientos y conductores en un solo dashboard inteligente. Operación en Colombia y México."}
                                 </p>
                             </div>
@@ -251,25 +251,12 @@ export function Hero({ mode, setMode }: HeroProps) {
 
                                         {/* 1. MÓVIL: Botones de Acción Directa (Solo visibles hasta xl) */}
                                         <div className="flex flex-col gap-4 w-full px-8 sm:px-0 xl:hidden">
-                                            {/* Hablar con Alfred (Prioridad Móvil) */}
-                                            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                                                <Link href="/asistente" className="block w-full">
-                                                    <Button
-                                                        size="lg"
-                                                        className="w-full h-16 text-xl font-bold transition-all duration-500 bg-alfred-green text-alfred-navy shadow-[0_0_30px_rgba(21,235,0,0.3)] hover:bg-alfred-lime whitespace-nowrap"
-                                                    >
-                                                        Hablar con Alfred
-                                                    </Button>
-                                                </Link>
-                                            </motion.div>
-
-                                            {/* Descargar App (Secundario en móvil) */}
+                                            {/* Descargar App (Privilegiado en móvil) */}
                                             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                                                 <Link href={DOWNLOAD_LINK} target="_blank" className="block w-full">
                                                     <Button
-                                                        variant="outline"
                                                         size="lg"
-                                                        className="w-full h-14 text-lg font-bold border-alfred-green text-alfred-green hover:bg-alfred-green/10"
+                                                        className="w-full h-16 text-xl font-bold transition-all duration-500 bg-alfred-green text-alfred-navy shadow-[0_0_30px_rgba(21,235,0,0.3)] hover:bg-alfred-lime whitespace-nowrap"
                                                     >
                                                         Descargar la App
                                                     </Button>
