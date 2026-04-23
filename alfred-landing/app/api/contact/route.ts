@@ -106,33 +106,77 @@ export async function POST(request: Request) {
         }
 
         // ==========================================
-        // ✉️ ENVÍO DE DATOS A GOOGLE APPS SCRIPT (GAS)
-        // El script de Google recibe los datos y:
-        // 1. Guarda el lead en Google Sheets.
-        // 2. Decide y envía el correo automático.
+        // ✉️ ENVÍO DE CORREO AUTOMÁTICO (WEBHOOK) — DESACTIVADO
         // ==========================================
-        const gasWebhookUrl = process.env.MAIL_WEBHOOK_URL || 'https://script.google.com/macros/s/AKfycbxvAIGOfcsxBpfqWxwlP87SHcvlzNzjTZk9TZk9ZUzuP5sv5tPg1WDfJI-O04ZkpAf79hGX/exec';
+        // if (process.env.MAIL_WEBHOOK_URL) {
+        //     let emailSubject = 'Gracias por contactar a Alfred';
+        //     let emailBodyText = `Hola ${name},\n\nRecibimos tu solicitud y un experto de nuestro equipo te contactará lo más pronto posible.\n\nSaludos,\nEquipo Alfred`;
+        //
+        //     if (sourceLower.includes('aliado') || sourceLower.includes('taller')) {
+        //         emailSubject = 'Información sobre incorporación de nuevos aliados';
+        //         emailBodyText = `Buenos días ${name}. ...`;
+        //     } else if (sourceLower.includes('empresa') || sourceLower.includes('flota')) {
+        //         emailSubject = 'Eleva el control de tu flota con Alfred 🚀';
+        //         emailBodyText = `Hola ${name}, ...`;
+        //     }
+        //
+        //     try {
+        //         const mailResponse = await fetch(process.env.MAIL_WEBHOOK_URL, {
+        //             method: 'POST',
+        //             headers: { 'Content-Type': 'application/json' },
+        //             body: JSON.stringify({
+        //                 to_email: email,
+        //                 to_name: name,
+        //                 phone: phone,
+        //                 company: company || '',
+        //                 subject: emailSubject,
+        //                 body_text: emailBodyText,
+        //                 source: source || 'General'
+        //             })
+        //         });
+        //
+        //         if (!mailResponse.ok) {
+        //             console.error('Error al enviar webhook de correo:', mailResponse.statusText);
+        //         }
+        //     } catch (error) {
+        //         console.error('Error enviando webhook de correo:', error);
+        //     }
+        // }
 
-        try {
-            const gasResponse = await fetch(gasWebhookUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    to_email: email,
-                    to_name: name,
-                    phone: phone,
-                    company: company || '',
-                    message: message || '',
-                    source: source || 'General'
-                })
-            });
-
-            if (!gasResponse.ok) {
-                console.error('Error al enviar a Google Apps Script:', gasResponse.statusText);
-            }
-        } catch (error) {
-            console.error('Error enviando a Google Apps Script:', error);
-        }
+        // ==========================================
+        // 📊 GOOGLE SHEETS (APP SCRIPT WEBHOOKS) — DESACTIVADO
+        // ==========================================
+        // let sheetsWebhookUrl: string | undefined;
+        //
+        // if (sourceLower.includes('aliado') || sourceLower.includes('taller')) {
+        //     sheetsWebhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_ALIADOS;
+        // } else if (sourceLower.includes('empresa') || sourceLower.includes('flota')) {
+        //     sheetsWebhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_EMPRESAS;
+        // }
+        //
+        // if (sheetsWebhookUrl) {
+        //     try {
+        //         const sheetResponse = await fetch(sheetsWebhookUrl, {
+        //             method: 'POST',
+        //             headers: { 'Content-Type': 'application/json' },
+        //             body: JSON.stringify({
+        //                 name,
+        //                 email,
+        //                 phone,
+        //                 company: company || '',
+        //                 message: message || '',
+        //                 source: source || 'General',
+        //                 timestamp: new Date().toISOString(),
+        //             }),
+        //         });
+        //
+        //         if (!sheetResponse.ok) {
+        //             console.error('Error enviando a Google Sheets:', sheetResponse.statusText);
+        //         }
+        //     } catch (error) {
+        //         console.error('Error enviando a Google Sheets:', error);
+        //     }
+        // }
 
         return NextResponse.json({ success: true, message: 'Mensaje enviado correctamente' });
     } catch (error) {
